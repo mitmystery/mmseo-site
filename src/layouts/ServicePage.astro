@@ -1,0 +1,122 @@
+---
+/**
+ * ServicePage.astro — layout wrapper for all 6 service sub-pages.
+ *
+ * Provides:
+ *   • Base.astro <head> with page-specific meta + BreadcrumbList JSON-LD
+ *   • Nav + Footer (shared)
+ *   • Breadcrumb nav trail (visible + schema)
+ *   • <slot /> for page content
+ *
+ * Props:
+ *   title        — page <title>
+ *   description  — meta description
+ *   canonical    — canonical URL
+ *   h1           — the page H1 (passed down for breadcrumb)
+ *   breadcrumb   — e.g. "Technical SEO" (label shown in breadcrumb trail)
+ */
+
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  breadcrumb: string;
+}
+
+const { title, description, canonical, breadcrumb } = Astro.props;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://www.mmseo.co.uk/',
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': breadcrumb,
+      'item': canonical,
+    },
+  ],
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={breadcrumbSchema}
+>
+  <Nav />
+
+  <!-- Breadcrumb trail (visible) -->
+  <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list" vocab="https://schema.org/" typeof="BreadcrumbList">
+        <li property="itemListElement" typeof="ListItem">
+          <a href="/" property="item" typeof="WebPage">
+            <span property="name">Home</span>
+          </a>
+          <meta property="position" content="1" />
+        </li>
+        <li class="sep" aria-hidden="true">/</li>
+        <li property="itemListElement" typeof="ListItem">
+          <span property="name">{breadcrumb}</span>
+          <meta property="position" content="2" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .breadcrumb-bar {
+    background-color: #0A0A0F;
+    padding-top: 88px; /* clears fixed nav (68px) + gap */
+    padding-bottom: 0;
+  }
+
+  .breadcrumb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.45);
+  }
+
+  .breadcrumb-list a {
+    color: rgba(248, 247, 242, 0.45);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-list a:hover {
+    color: #FF6826;
+  }
+
+  .breadcrumb-list li:last-child {
+    color: rgba(248, 247, 242, 0.8);
+  }
+
+  .sep {
+    color: rgba(248, 247, 242, 0.25);
+  }
+</style>

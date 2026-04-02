@@ -1,0 +1,211 @@
+---
+/**
+ * Services.astro — Section 03, dark.
+ * 6 service cards in a 3-col desktop / 2-col tablet / 1-col mobile grid.
+ * Each card links to its dedicated service sub-page.
+ */
+
+const services = [
+  {
+    icon: 'target',
+    title: 'SEO Strategy',
+    desc: 'Custom roadmaps built around your goals, your market, and your competitors. Every campaign starts with data — not guesswork.',
+    href: '/seo-strategy/',
+  },
+  {
+    icon: 'wrench',
+    title: 'Technical SEO',
+    desc: 'Crawl audits, Core Web Vitals, indexation, structured data, site speed. I fix the issues that stop Google from seeing your site.',
+    href: '/technical-seo/',
+  },
+  {
+    icon: 'search',
+    title: 'Keyword Research',
+    desc: 'Precision keyword mapping that aligns search intent with your commercial objectives. Find the terms your customers actually use.',
+    href: '/keyword-research/',
+  },
+  {
+    icon: 'file-text',
+    title: 'On-Page SEO',
+    desc: 'Content optimisation, meta data, internal linking, and page structure — tuned to rank and convert.',
+    href: '/on-page-seo/',
+  },
+  {
+    icon: 'link',
+    title: 'Link Building',
+    desc: 'Quality backlinks through digital PR, blogger outreach, and content-led link acquisition. Authority that\'s earned, not bought.',
+    href: '/off-page-seo/',
+  },
+  {
+    icon: 'map-pin',
+    title: 'Local SEO',
+    desc: 'Google Business Profile optimisation, local citations, and geo-targeted content. Dominate searches in Manchester, Stockport, and your key local areas.',
+    href: '/local-seo/',
+  },
+] as const;
+
+type IconName = typeof services[number]['icon'];
+---
+
+<section id="services" class="section-dark section-pad services-section">
+  <span class="section-number" aria-hidden="true">03</span>
+
+  <div class="container">
+    <div class="services-header reveal">
+      <p class="eyebrow">Services</p>
+      <h2 class="services-h2">Full-stack freelance SEO services</h2>
+      <p class="services-sub">
+        From technical foundations to content strategy and link building —
+        everything your site needs to outrank the competition.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <article class={`card-dark service-card reveal reveal-delay-${(i % 3) + 1}`}>
+          <div class="service-icon" aria-hidden="true">
+            {s.icon === 'target' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+              </svg>
+            )}
+            {s.icon === 'wrench' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            )}
+            {s.icon === 'search' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            )}
+            {s.icon === 'file-text' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
+              </svg>
+            )}
+            {s.icon === 'link' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+            )}
+            {s.icon === 'map-pin' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            )}
+          </div>
+
+          <h3 class="service-title">{s.title}</h3>
+          <p class="service-desc">{s.desc}</p>
+          <a href={s.href} class="service-link" aria-label={`Learn more about ${s.title}`}>
+            Learn more <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-header {
+    max-width: 640px;
+    margin-bottom: 3.5rem;
+  }
+
+  .services-h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    color: #fff;
+    margin-bottom: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .services-sub {
+    font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+    color: rgba(248, 247, 242, 0.6);
+    line-height: 1.7;
+    max-width: 58ch;
+  }
+
+  /* ── Grid ────────────────────────────────────────────────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 580px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ── Card ────────────────────────────────────────────────── */
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 104, 38, 0.12);
+    border-radius: 0.375rem;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .service-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+
+  .service-desc {
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.58);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+
+  .service-link:hover {
+    gap: 0.5rem;
+    color: #fff;
+  }
+</style>

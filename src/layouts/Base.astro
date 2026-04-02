@@ -1,0 +1,126 @@
+---
+/**
+ * Base.astro — site-wide <head> with meta tags, JSON-LD, deferred GA4.
+ *
+ * Props:
+ *   title       — page <title>
+ *   description — meta description
+ *   canonical   — canonical URL (defaults to current page URL)
+ *   ogImage     — OG image URL (defaults to site OG image)
+ *   schema      — JSON-LD object/array injected as application/ld+json
+ *   noindex     — set true to noindex (e.g. thank-you pages)
+ */
+
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  schema?: Record<string, unknown>;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical = new URL(Astro.url.pathname, Astro.site).href,
+  ogImage = 'https://www.mmseo.co.uk/og-image.jpg',
+  schema,
+  noindex = false,
+} = Astro.props;
+
+// Replace with your GA4 Measurement ID once created
+const GA_ID = 'G-83NJ4NF8CJ';
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ── Primary meta ─────────────────────────────────────── -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+
+    <!-- ── Open Graph ────────────────────────────────────────── -->
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogImage} />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:type"        content="website" />
+    <meta property="og:locale"      content="en_GB" />
+    <meta property="og:site_name"   content="MM SEO" />
+
+    <!-- ── Twitter / X card ─────────────────────────────────── -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImage} />
+
+    <!-- ── Favicon ──────────────────────────────────────────── -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon"  href="/favicon.ico" />
+
+    <!-- ── Font preloads (self-hosted woff2) ────────────────── -->
+    <!--
+      After `npm install`, @fontsource resolves these via Vite.
+      If you prefer fully predictable URLs, copy the woff2 files from
+      node_modules/@fontsource/*/files/ into /public/fonts/ and
+      uncomment the preloads below:
+
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/syne-700.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/dm-sans-400.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="/fonts/dm-sans-500.woff2" />
+    -->
+
+    <!-- ── JSON-LD structured data ──────────────────────────── -->
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)} />
+    )}
+
+    <!-- ── Deferred GA4 (loads on first scroll, not on pageload) -->
+    <script define:vars={{ GA_ID }}>
+      window.addEventListener('scroll', function loadGA() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', GA_ID, { send_page_view: true });
+        window.gtag = gtag;
+      }, { once: true, passive: true });
+    </script>
+
+    <!-- ── Scroll reveal (IntersectionObserver, <1 KB) ──────── -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      });
+    </script>
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>

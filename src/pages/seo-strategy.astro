@@ -1,0 +1,273 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<ServicePage
+  title="SEO Strategy Consultant Manchester | MM SEO"
+  description="Bespoke SEO strategy from an experienced freelance consultant. Manchester & UK-based."
+  canonical="https://www.mmseo.co.uk/seo-strategy/"
+  breadcrumb="SEO Strategy"
+>
+
+  <!-- ── 1. Hero band (dark) ─────────────────────────────────── -->
+  <section class="sp-hero section-dark">
+    <div class="container sp-hero-inner reveal">
+      <p class="eyebrow">SEO Strategy Consultant — Manchester &amp; UK</p>
+      <h1 class="sp-h1">SEO Strategy — A Roadmap That Actually Goes Somewhere</h1>
+      <p class="sp-intro">
+        Most SEO agencies give you a list of tactics and call it a strategy. A real
+        strategy starts with your business goals, maps the search landscape around
+        them, and produces a prioritised plan of action that connects what you do
+        in month one to where you want to be in month twelve.
+      </p>
+      <a href="/#contact" class="btn-primary">Book a Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- ── 2. Main content (light) ─────────────────────────────── -->
+  <section class="sp-content section-light">
+    <div class="container sp-content-inner reveal">
+      <h2 class="sp-h2">What Proper SEO Strategy Looks Like</h2>
+
+      <p>
+        Strategy without execution is just planning. Execution without strategy is
+        just activity. The campaigns that consistently deliver results are the ones
+        where every task — every piece of content, every technical fix, every link
+        built — is connected to a clear commercial objective and a realistic path
+        to getting there.
+      </p>
+      <p>
+        I build SEO strategies that are specific to your business, your market, and
+        your competitors. Not a templated deliverable with your logo pasted on the
+        front — a working document that shapes everything we do and evolves as the
+        data tells us what's working.
+      </p>
+
+      <h3 class="sp-h3">How I build an SEO strategy</h3>
+      <ul class="sp-list">
+        <li><strong>Discovery</strong> — understanding your business goals, revenue model, target customers, and what success looks like in concrete terms</li>
+        <li><strong>Technical audit</strong> — assessing the current health of your site and identifying any foundational issues that need resolving before other work can scale</li>
+        <li><strong>Competitor analysis</strong> — mapping who you're competing against in search, what they're doing well, and where their weaknesses are</li>
+        <li><strong>Keyword &amp; opportunity research</strong> — identifying the terms your customers search for, mapped to intent and prioritised by commercial value and attainability</li>
+        <li><strong>Content gap analysis</strong> — finding the topics and pages you're missing that your competitors have, and that your customers need</li>
+        <li><strong>Prioritised roadmap</strong> — a sequenced plan of action across technical, on-page, content, and off-page work — with short, medium, and long-term milestones</li>
+        <li><strong>KPI framework</strong> — agreeing the metrics that matter (rankings, organic traffic, leads, revenue) and how we'll track progress against them</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 3. Why it matters (dark) ────────────────────────────── -->
+  <section class="sp-why section-dark">
+    <div class="container sp-why-inner reveal">
+      <h2 class="sp-h2 chalk">Strategy Looks Different for Different Businesses</h2>
+      <p class="chalk-muted">
+        A local service business in Stockport needs a very different strategy from
+        a national eCommerce retailer — even if both want "more organic traffic."
+        The local business should lead with GBP optimisation, local citations, and
+        geo-targeted content. The eCommerce retailer needs to start with technical
+        crawl coverage, category page optimisation, and product schema. Applying
+        the same framework to both is how generic agencies produce generic results.
+      </p>
+      <p class="chalk-muted">
+        Short-term strategy focuses on the fixes and optimisations that will produce
+        movement in 0–3 months: technical issues, on-page improvements, and capturing
+        near-ranking terms. Medium-term strategy builds content and authority. Long-term
+        strategy establishes durable topical leadership in your niche — the kind of
+        organic presence that becomes a genuine competitive moat.
+      </p>
+      <p class="chalk-muted">
+        I also build strategies with honest timelines. If you're asking me what to
+        expect in three months versus twelve months, I'll tell you the truth — not
+        what you want to hear. That's the only way to build a client relationship
+        that produces results worth talking about.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 4. Relevant result (light) ──────────────────────────── -->
+  <section class="sp-result section-light">
+    <div class="container sp-result-inner reveal">
+      <p class="eyebrow dark-eyebrow">Proven Results</p>
+      <blockquote class="sp-quote">
+        <p class="sp-quote-metric">+95% organic traffic · +99.5% revenue</p>
+        <p class="sp-quote-context">
+          Number 1 Plates needed a strategy built from first principles — an in-depth
+          technical audit, keyword strategy backed by competitor and persona research,
+          and a phased execution plan. The result: core product keywords in the top
+          three, 95% organic traffic growth, and revenue that nearly doubled.
+        </p>
+        <footer class="sp-quote-credit">— Number 1 Plates (Automotive eCommerce · UK)</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ── 5. Contact CTA ───────────────────────────────────────── -->
+  <ContactForm />
+
+</ServicePage>
+
+<style>
+  .section-dark  { background-color: var(--ink);  color: var(--chalk); }
+  .section-light { background-color: var(--chalk); color: var(--ink); }
+
+  .container {
+    max-width: 860px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .sp-hero { padding: 5rem 0 4rem; }
+  .sp-hero-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+  .dark-eyebrow { color: var(--accent); }
+
+  .sp-h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .sp-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(248, 247, 242, 0.75);
+    max-width: 640px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+  }
+  .btn-primary:hover { background-color: var(--accent-dk); }
+
+  .sp-content { padding: 4rem 0; }
+  .sp-content-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sp-h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-h2.chalk { color: var(--chalk); }
+
+  .sp-h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0.5rem 0 0;
+  }
+
+  .sp-content p, .sp-content-inner p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(10, 10, 15, 0.8);
+  }
+
+  .sp-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sp-list li {
+    font-size: 1rem;
+    line-height: 1.65;
+    padding-left: 1.25rem;
+    position: relative;
+    color: rgba(10, 10, 15, 0.8);
+  }
+  .sp-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.875rem;
+  }
+
+  .sp-why { padding: 4rem 0; }
+  .sp-why-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+  .chalk { color: var(--chalk); }
+  .chalk-muted {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(248, 247, 242, 0.75);
+  }
+
+  .sp-result { padding: 4rem 0; }
+  .sp-result-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sp-quote {
+    margin: 0;
+    padding: 2rem;
+    border-left: 3px solid var(--accent);
+    background-color: rgba(10, 10, 15, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sp-quote-metric {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-quote-context {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(10, 10, 15, 0.75);
+    margin: 0;
+  }
+  .sp-quote-credit {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  revealEls.forEach(el => io.observe(el));
+</script>

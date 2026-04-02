@@ -1,0 +1,224 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<ServicePage
+  title="Local SEO Manchester & Stockport | MM SEO"
+  description="Local SEO specialist in Stockport. GBP optimisation, local citations, geo-targeted content for Manchester and the UK."
+  canonical="https://www.mmseo.co.uk/local-seo/"
+  breadcrumb="Local SEO"
+>
+
+  <!-- ── 1. Hero band (dark) ─────────────────────────────────── -->
+  <section class="sp-hero section-dark">
+    <div class="container sp-hero-inner reveal">
+      <p class="eyebrow">Local SEO — Manchester, Stockport &amp; UK</p>
+      <h1 class="sp-h1">Local SEO — Be Found When It Matters Most</h1>
+      <p class="sp-intro">
+        When your customers search for businesses like yours in your area, you need to
+        appear — in the map pack, in organic results, and on the right terms. Local SEO
+        is the set of strategies that makes that happen, and it's where I've helped
+        businesses in Manchester, Stockport, and across the UK consistently win
+        against larger, better-funded competitors.
+      </p>
+      <a href="/#contact" class="btn-primary">Book a Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- ── 2. Main content (light) ─────────────────────────────── -->
+  <section class="sp-content section-light">
+    <div class="container sp-content-inner reveal">
+      <h2 class="sp-h2">What Local SEO Involves</h2>
+
+      <p>
+        Local SEO is distinct from general organic SEO in that it focuses on ranking
+        in geographic searches — "SEO consultant Manchester", "solicitor Stockport",
+        "hair salon near me". These searches have extremely high commercial intent,
+        which makes local visibility directly tied to enquiries and footfall.
+      </p>
+      <p>
+        The local search ecosystem has three main components: your Google Business
+        Profile, your on-site geo-targeted content, and your local citations and
+        links. All three need to be strong and consistent for you to compete
+        effectively in the map pack and local organic results.
+      </p>
+
+      <h3 class="sp-h3">What I do</h3>
+      <ul class="sp-list">
+        <li><strong>Google Business Profile optimisation</strong> — complete profile setup, category selection, service areas, Q&amp;A, photo strategy, and ongoing management</li>
+        <li><strong>NAP consistency audit</strong> — ensuring your Name, Address, and Phone number are consistent across every directory, citation, and listing online</li>
+        <li><strong>Local citation building</strong> — strategic submissions to relevant UK business directories and industry-specific platforms</li>
+        <li><strong>Geo-targeted on-site content</strong> — location pages and service-area content written for both rankings and conversion</li>
+        <li><strong>Local keyword strategy</strong> — mapping geo-specific search terms (near me, city+service) to pages on your site</li>
+        <li><strong>Local link acquisition</strong> — building links from local newspapers, business associations, chambers of commerce, and community sites</li>
+        <li><strong>Review generation strategy</strong> — a practical approach to ethically generating more Google reviews, which directly influence local pack rankings</li>
+        <li><strong>Competitor benchmarking</strong> — understanding exactly what the businesses above you are doing and identifying the gaps we can close</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 3. Why it matters (dark) ────────────────────────────── -->
+  <section class="sp-why section-dark">
+    <div class="container sp-why-inner reveal">
+      <h2 class="sp-h2 chalk">Why Local SEO Is a Different Game</h2>
+      <p class="chalk-muted">
+        Local search results are heavily weighted towards proximity, prominence, and
+        relevance. A business that has optimised its Google Business Profile and
+        built consistent local citations will routinely outrank a larger competitor
+        with a stronger national presence — because Google's algorithm for local
+        results prioritises trust signals that are specific to the local context.
+      </p>
+      <p class="chalk-muted">
+        The map pack — the three Google Business listings that appear before organic
+        results — captures a significant share of clicks for local searches. For many
+        businesses, appearing in the map pack is more valuable than ranking number
+        one organically. I optimise for both, but the map pack is often where the
+        fastest wins are found.
+      </p>
+      <p class="chalk-muted">
+        I'm based in Marple, Stockport and work extensively with businesses in
+        Manchester, Stockport, and the wider Greater Manchester area — though my
+        local SEO work extends across the UK. My own local SEO experience means I
+        practise exactly what I preach.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 4. Contact CTA ───────────────────────────────────────── -->
+  <ContactForm />
+
+</ServicePage>
+
+<style>
+  .section-dark  { background-color: var(--ink);  color: var(--chalk); }
+  .section-light { background-color: var(--chalk); color: var(--ink); }
+
+  .container {
+    max-width: 860px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .sp-hero { padding: 5rem 0 4rem; }
+  .sp-hero-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .sp-h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .sp-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(248, 247, 242, 0.75);
+    max-width: 640px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+  }
+  .btn-primary:hover { background-color: var(--accent-dk); }
+
+  .sp-content { padding: 4rem 0; }
+  .sp-content-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sp-h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-h2.chalk { color: var(--chalk); }
+
+  .sp-h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0.5rem 0 0;
+  }
+
+  .sp-content p, .sp-content-inner p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(10, 10, 15, 0.8);
+  }
+
+  .sp-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sp-list li {
+    font-size: 1rem;
+    line-height: 1.65;
+    padding-left: 1.25rem;
+    position: relative;
+    color: rgba(10, 10, 15, 0.8);
+  }
+  .sp-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.875rem;
+  }
+
+  .sp-why { padding: 4rem 0; }
+  .sp-why-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+  .chalk { color: var(--chalk); }
+  .chalk-muted {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(248, 247, 242, 0.75);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  revealEls.forEach(el => io.observe(el));
+</script>

@@ -1,0 +1,360 @@
+/* ============================================================
+   Fonts — self-hosted via @fontsource (no Google Fonts lookup)
+   After `npm install`, copy woff2 files to /public/fonts/ OR
+   import these here and let Vite process them.
+   ============================================================ */
+@import '@fontsource/syne/latin-600.css';
+@import '@fontsource/syne/latin-700.css';
+@import '@fontsource/dm-sans/latin-400.css';
+@import '@fontsource/dm-sans/latin-500.css';
+@import '@fontsource/dm-mono/latin-500.css';
+
+/* ============================================================
+   Tailwind directives
+   ============================================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+  --ink:          #0A0A0F;
+  --ink-soft:     #141420;
+  --chalk:        #F8F7F2;
+  --white:        #FFFFFF;
+  --accent:       #FF6826;
+  --accent-dk:    #D94E10;
+  --muted:        #6B6B7B;
+  --border-dark:  rgba(255, 255, 255, 0.10);
+  --border-light: rgba(10, 10, 15, 0.10);
+}
+
+/* ============================================================
+   Base layer
+   ============================================================ */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--ink);
+    color: var(--chalk);
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* Body lock when mobile nav is open */
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', sans-serif;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img, video {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Accessible focus ring */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Scroll-margin offset for fixed nav */
+  section[id], div[id] {
+    scroll-margin-top: 80px;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* ============================================================
+   Component layer — reusable building blocks
+   ============================================================ */
+@layer components {
+
+  /* --- Section backgrounds (alternating rhythm) --- */
+  .section-dark {
+    background-color: var(--ink);
+    color: var(--chalk);
+  }
+
+  .section-light {
+    background-color: var(--chalk);
+    color: var(--ink);
+  }
+
+  .section-mid {
+    background-color: var(--ink-soft);
+    color: var(--chalk);
+  }
+
+  .section-footer {
+    background-color: #050508;
+    color: var(--chalk);
+  }
+
+  /* --- Section padding --- */
+  .section-pad {
+    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+
+  /* --- Container --- */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  /* --- Eyebrow label --- */
+  .eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-light .eyebrow {
+    color: var(--accent-dk);
+  }
+
+  /* --- Section watermark numbers (01, 02 …) --- */
+  .section-number {
+    position: absolute;
+    top: -0.1em;
+    right: clamp(1rem, 4vw, 3rem);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(80px, 14vw, 140px);
+    line-height: 1;
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
+    color: currentColor;
+  }
+
+  /* --- Buttons --- */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-dk);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(255, 104, 38, 0.35);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: var(--chalk);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    border: 1px solid var(--border-dark);
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  .btn-ghost-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .btn-ghost-dark:hover {
+    border-color: rgba(10, 10, 15, 0.35);
+    background-color: rgba(10, 10, 15, 0.05);
+  }
+
+  /* --- Nav link style --- */
+  .nav-link {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: rgba(248, 247, 242, 0.75);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* --- Scroll reveal --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* --- Stat numbers (DM Mono) --- */
+  .stat-number {
+    font-family: 'DM Mono', monospace;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  /* --- Divider --- */
+  .divider-dark  { border-color: var(--border-dark); }
+  .divider-light { border-color: var(--border-light); }
+
+  /* --- Card on dark background --- */
+  .card-dark {
+    background-color: var(--ink-soft);
+    border: 1px solid var(--border-dark);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-dark:hover {
+    border-color: rgba(255, 104, 38, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* --- Card on light background --- */
+  .card-light {
+    background-color: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-light:hover {
+    border-color: rgba(255, 104, 38, 0.25);
+    box-shadow: 0 8px 32px rgba(10, 10, 15, 0.10);
+    transform: translateY(-2px);
+  }
+}
+
+/* ============================================================
+   Utility overrides
+   ============================================================ */
+@layer utilities {
+  .text-muted-dark  { color: rgba(248, 247, 242, 0.55); }
+  .text-muted-light { color: var(--muted); }
+
+  .border-dark  { border-color: var(--border-dark); }
+  .border-light { border-color: var(--border-light); }
+}

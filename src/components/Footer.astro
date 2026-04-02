@@ -1,0 +1,206 @@
+---
+/**
+ * Footer.astro
+ *
+ * Three-part footer:
+ *   1. Logo + main nav + copyright
+ *   2. Service sub-page links + NAP address (critical for local SEO)
+ *
+ * NAP (Name, Address, Phone) is visible text — matches the LocalBusiness
+ * JSON-LD in Base.astro exactly. Never hide or clip this with CSS.
+ */
+
+const year = new Date().getFullYear();
+
+const serviceLinks = [
+  { label: 'Technical SEO',    href: '/technical-seo/' },
+  { label: 'Keyword Research', href: '/keyword-research/' },
+  { label: 'On-Page SEO',      href: '/on-page-seo/' },
+  { label: 'Link Building',    href: '/off-page-seo/' },
+  { label: 'Local SEO',        href: '/local-seo/' },
+  { label: 'SEO Strategy',     href: '/seo-strategy/' },
+];
+---
+
+<footer class="section-footer" aria-label="Site footer">
+  <div class="container">
+
+    <!-- ── Row 1: Logo / Nav / Copyright ─────────────────────── -->
+    <div class="footer-top">
+      <a href="/" class="footer-logo" aria-label="MM SEO — Home">
+        MM<span class="accent">SEO</span>
+      </a>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="/#services">Services</a>
+        <a href="/#results">Results</a>
+        <a href="/#testimonials">Testimonials</a>
+        <a href="/#faq">FAQs</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+
+      <p class="footer-copy">
+        &copy; {year} Mithul Mistry &middot; Freelance SEO Consultant, Stockport
+      </p>
+    </div>
+
+    <hr class="footer-rule" />
+
+    <!-- ── Row 2: Service links + NAP ───────────────────────── -->
+    <div class="footer-bottom">
+      <!-- NAP — critical local SEO signal. Keep visible, keep consistent. -->
+      <address class="footer-nap" aria-label="Business address and contact">
+        <strong>MM SEO</strong> &middot;
+        Marple, Stockport &middot;
+        <a href="tel:+447886315620">07886 315620</a> &middot;
+        <a href="mailto:mithul.mistry@gmail.com">mithul.mistry@gmail.com</a>
+      </address>
+
+      <nav class="footer-services" aria-label="Services">
+        {serviceLinks.map(({ label, href }) => (
+          <a href={href}>{label}</a>
+        ))}
+      </nav>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding-block: 3.5rem 2.5rem;
+  }
+
+  /* ── Row 1 ─────────────────────────────────────────────────── */
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      gap: 1rem;
+    }
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .footer-logo .accent {
+    color: #FF6826;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.5rem;
+  }
+
+  .footer-nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(248, 247, 242, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav a:hover {
+    color: #fff;
+  }
+
+  .footer-copy {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.4);
+    white-space: nowrap;
+  }
+
+  /* ── Divider ──────────────────────────────────────────────── */
+  .footer-rule {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    margin-block: 2rem;
+  }
+
+  /* ── Row 2 ─────────────────────────────────────────────────── */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  /* NAP — local SEO critical. Do not reduce opacity below 0.45. */
+  .footer-nap {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.45);
+    font-style: normal;
+    line-height: 1.6;
+  }
+
+  .footer-nap strong {
+    color: rgba(248, 247, 242, 0.65);
+    font-weight: 500;
+  }
+
+  .footer-nap a {
+    color: rgba(248, 247, 242, 0.45);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nap a:hover {
+    color: rgba(248, 247, 242, 0.85);
+  }
+
+  .footer-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-services {
+      justify-content: flex-end;
+    }
+  }
+
+  .footer-services a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.4);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .footer-services a:hover {
+    color: rgba(248, 247, 242, 0.8);
+  }
+</style>

@@ -1,0 +1,269 @@
+---
+/**
+ * Sectors.astro — Section 06, light.
+ * Tabbed interface: 8 sectors, fully keyboard-accessible.
+ */
+
+const sectors = [
+  {
+    id: 'law-firms',
+    label: 'Law Firms',
+    title: 'SEO for Law Firms & Legal Services',
+    body: `The legal industry is one of the most competitive search landscapes in the UK. Potential clients search for solicitors, family law firms, and conveyancers the same way they search for anything else — Google.
+
+I build keyword strategies around the specific practice areas your firm wants to grow, optimise your local search presence to dominate searches in your area, and develop authoritative content that establishes your firm as a trusted choice. Ideal for boutique firms and regional practices who want to reduce reliance on referrals.`,
+  },
+  {
+    id: 'estate-agents',
+    label: 'Estate Agents',
+    title: 'SEO for Estate Agents',
+    body: `Property search starts online, and the agents who rank highest win more valuations. I help estate agents capture high-intent searches — people actively looking to sell, let, or buy — through targeted local SEO, Google Business Profile optimisation, and content that answers the questions your customers are already asking.
+
+Whether you're an independent agency or a regional group, I'll build a strategy around your key locations and property types.`,
+  },
+  {
+    id: 'ecommerce',
+    label: 'eCommerce',
+    title: 'SEO for eCommerce',
+    body: `eCommerce SEO is where I've delivered some of my most significant results — including 552% revenue growth and 99.5% revenue increases for clients. From technical audits of Shopify, WooCommerce, and Magento stores to category page optimisation, product content strategy, and link building, I understand the commercial realities of online retail.
+
+Every recommendation is made with conversion in mind, not just rankings.`,
+  },
+  {
+    id: 'professional-services',
+    label: 'Professional Services',
+    title: 'SEO for Professional Services',
+    body: `Accountants, consultants, surveyors, architects — professional services firms often have brilliant local reputations but limited online visibility. I help you translate your expertise into search rankings, attracting qualified enquiries from people actively looking for what you offer.
+
+Thought leadership content, local SEO, and technical foundations combine to build durable online authority.`,
+  },
+  {
+    id: 'small-business',
+    label: 'Small Business',
+    title: 'SEO for Small Businesses',
+    body: `As a small business, you're competing against larger companies with bigger marketing budgets. Smart, focused SEO is how you level the playing field. I work with small businesses across Manchester and the UK to identify the highest-impact opportunities given your budget and timeline — and execute them efficiently.
+
+No bloated retainers, no services you don't need.`,
+  },
+  {
+    id: 'photographers',
+    label: 'Photographers',
+    title: 'SEO for Photographers',
+    body: `Photography is a highly visual industry — but clients still find you through search. Wedding photographers, commercial photographers, and portrait studios all benefit from strong local SEO and keyword strategies built around the services and locations they cover.
+
+I help photographers rank for the searches that matter most and convert that visibility into bookings.`,
+  },
+  {
+    id: 'salons',
+    label: 'Salons & Beauty',
+    title: 'SEO for Salons & Beauty Businesses',
+    body: `Most salon bookings start with a local search. Whether your clients are looking for a hair salon, nail bar, or aesthetic clinic, appearing at the top of Google Maps and organic results is critical. I help salons optimise their Google Business Profile, build local citations, and rank for the treatments and locations they serve.
+
+More visibility means more bookings.`,
+  },
+  {
+    id: 'financial',
+    label: 'Financial Services',
+    title: 'SEO for Financial Services',
+    body: `Financial services SEO requires particular care — YMYL pages are held to a higher standard by Google, meaning E-E-A-T signals matter more than ever. I work with IFAs, mortgage brokers, and financial planning firms to build content authority, technical credibility, and local search visibility — within the regulatory constraints of the sector.`,
+  },
+];
+---
+
+<section id="sectors" class="section-light section-pad sectors-section">
+  <span class="section-number" aria-hidden="true">06</span>
+
+  <div class="container">
+    <div class="sectors-header reveal">
+      <p class="eyebrow">Sectors</p>
+      <h2 class="sectors-h2">Who I work with</h2>
+      <p class="sectors-sub">
+        Whether you're a local Manchester business or a national eCommerce brand —
+        if SEO can move the needle, I can help.
+      </p>
+    </div>
+
+    <!-- Tab list -->
+    <div
+      class="tab-list reveal"
+      role="tablist"
+      aria-label="Business sectors"
+    >
+      {sectors.map((s, i) => (
+        <button
+          class="tab-btn"
+          role="tab"
+          id={`tab-${s.id}`}
+          aria-controls={`panel-${s.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          data-index={i}
+        >
+          {s.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Tab panels -->
+    <div class="tab-panels">
+      {sectors.map((s, i) => (
+        <div
+          class={`tab-panel${i === 0 ? ' is-active' : ''}`}
+          role="tabpanel"
+          id={`panel-${s.id}`}
+          aria-labelledby={`tab-${s.id}`}
+          hidden={i !== 0}
+        >
+          <h3 class="panel-title">{s.title}</h3>
+          {s.body.split('\n\n').map((para) => (
+            <p class="panel-body">{para}</p>
+          ))}
+          <a href="#contact" class="btn-ghost-dark panel-cta">
+            Discuss your sector →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sectors-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sectors-header {
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  .sectors-h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sectors-sub {
+    font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+    color: var(--muted);
+    line-height: 1.68;
+  }
+
+  /* ── Tab list ────────────────────────────────────────────── */
+  .tab-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 1px; /* prevent clipping focus ring */
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--border-light);
+  }
+
+  .tab-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px; /* overlap parent border-bottom */
+    padding: 0.625rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    border-radius: 0;
+  }
+
+  .tab-btn:hover {
+    color: var(--ink);
+  }
+
+  .tab-btn[aria-selected="true"] {
+    color: var(--accent-dk);
+    border-bottom-color: var(--accent-dk);
+    font-weight: 600;
+  }
+
+  /* ── Tab panels ──────────────────────────────────────────── */
+  .tab-panel {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .tab-panel.is-active {
+    display: flex;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel-title {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.25rem;
+  }
+
+  .panel-body {
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    color: rgba(10, 10, 15, 0.72);
+    line-height: 1.75;
+    max-width: 70ch;
+  }
+
+  .panel-cta {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+</style>
+
+<script>
+  const tabs   = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+
+  function activate(index: number) {
+    tabs.forEach((t, i) => {
+      const active = i === index;
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+      t.tabIndex = active ? 0 : -1;
+    });
+    panels.forEach((p, i) => {
+      const active = i === index;
+      p.hidden = !active;
+      p.classList.toggle('is-active', active);
+    });
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(i));
+
+    tab.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        activate((i + 1) % tabs.length);
+        tabs[(i + 1) % tabs.length].focus();
+      }
+      if (e.key === 'ArrowLeft') {
+        activate((i - 1 + tabs.length) % tabs.length);
+        tabs[(i - 1 + tabs.length) % tabs.length].focus();
+      }
+      if (e.key === 'Home') { activate(0); tabs[0].focus(); }
+      if (e.key === 'End')  { activate(tabs.length - 1); tabs[tabs.length - 1].focus(); }
+    });
+  });
+</script>

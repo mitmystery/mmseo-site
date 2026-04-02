@@ -1,0 +1,224 @@
+---
+/**
+ * FAQ.astro — Section 08, light.
+ * Keyboard-accessible accordion. Each item uses aria-expanded.
+ * FAQPage JSON-LD lives in the homepage schema in index.astro.
+ */
+
+const faqs = [
+  {
+    q: 'How long does SEO take to show results?',
+    a: 'Most campaigns begin showing meaningful movement in 3–6 months. Highly competitive keywords can take 9–12 months. I\'ll give you an honest, realistic timeline in our initial consultation — not the promises you\'ll sometimes get elsewhere.',
+  },
+  {
+    q: 'Why hire a freelance SEO consultant instead of an agency?',
+    a: 'You get direct access to the person doing the work. No junior account managers, no inflated overheads, no being deprioritised when a bigger client comes along. For most SMEs, a specialist freelancer delivers better results for less money than a mid-tier agency.',
+  },
+  {
+    q: 'Do you work with clients outside Manchester and Stockport?',
+    a: 'Yes — I work with clients across the UK. While based in Marple, Stockport, the majority of my work is remote. I have clients from London to Edinburgh.',
+  },
+  {
+    q: 'What industries do you specialise in?',
+    a: 'I\'ve delivered results across eCommerce, legal services, hospitality, financial services, professional services, and more. If your customers use Google to find businesses like yours, SEO can work for you.',
+  },
+  {
+    q: 'Do you offer one-off SEO audits?',
+    a: 'Yes. A standalone technical SEO audit is a great entry point if you\'re not ready for an ongoing retainer. You\'ll receive a prioritised action plan you can act on immediately — with me or in-house.',
+  },
+  {
+    q: 'How do you report on progress?',
+    a: 'You\'ll receive monthly reports covering rankings, organic traffic, and the commercial outcomes that matter. No vanity metrics — just the numbers that reflect real growth.',
+  },
+];
+---
+
+<section id="faq" class="section-light section-pad faq-section">
+  <span class="section-number" aria-hidden="true">08</span>
+
+  <div class="container faq-inner">
+
+    <div class="faq-header reveal">
+      <p class="eyebrow">FAQs</p>
+      <h2 class="faq-h2">Common questions</h2>
+    </div>
+
+    <dl class="faq-list">
+      {faqs.map((faq, i) => (
+        <div class={`faq-item reveal reveal-delay-${(i % 3) + 1}`}>
+          <dt>
+            <button
+              class="faq-trigger"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-btn-${i}`}
+            >
+              <span class="faq-question">{faq.q}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="icon-v"/>
+                  <line x1="5"  y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd
+            id={`faq-answer-${i}`}
+            class="faq-answer"
+            role="region"
+            aria-labelledby={`faq-btn-${i}`}
+            hidden
+          >
+            <div class="faq-answer-inner">
+              <p>{faq.a}</p>
+            </div>
+          </dd>
+        </div>
+      ))}
+    </dl>
+
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faq-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 860px) {
+    .faq-inner {
+      grid-template-columns: 300px 1fr;
+      align-items: start;
+      gap: 4rem;
+    }
+  }
+
+  .faq-header {
+    position: sticky;
+    top: 90px;
+  }
+
+  .faq-h2 {
+    font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+    color: var(--ink);
+    margin-top: 0.25rem;
+  }
+
+  /* ── List ────────────────────────────────────────────────── */
+  .faq-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── Item ────────────────────────────────────────────────── */
+  .faq-item {
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--border-light);
+  }
+
+  /* ── Trigger ─────────────────────────────────────────────── */
+  .faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.375rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .faq-question {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    color: var(--ink);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-dk);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .faq-trigger:hover .faq-icon {
+    background-color: rgba(10, 10, 15, 0.04);
+    border-color: rgba(10, 10, 15, 0.2);
+  }
+
+  /* Rotate the vertical bar of the + to make ✕ when open */
+  .icon-v {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+
+  .faq-trigger[aria-expanded="true"] .icon-v {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  /* ── Answer panel ────────────────────────────────────────── */
+  .faq-answer {
+    /* `hidden` attribute handles display:none */
+  }
+
+  .faq-answer-inner {
+    padding-bottom: 1.375rem;
+  }
+
+  .faq-answer p {
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    color: rgba(10, 10, 15, 0.7);
+    line-height: 1.75;
+    max-width: 65ch;
+  }
+</style>
+
+<script>
+  const triggers = document.querySelectorAll<HTMLButtonElement>('.faq-trigger');
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      const answerId = trigger.getAttribute('aria-controls')!;
+      const answer   = document.getElementById(answerId)!;
+
+      // Close all others
+      triggers.forEach((t) => {
+        if (t !== trigger) {
+          t.setAttribute('aria-expanded', 'false');
+          const id = t.getAttribute('aria-controls')!;
+          document.getElementById(id)!.hidden = true;
+        }
+      });
+
+      // Toggle this one
+      trigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      answer.hidden = expanded;
+    });
+  });
+</script>

@@ -1,0 +1,406 @@
+---
+/**
+ * ContactForm.astro — Section 09, dark.
+ *
+ * Full contact section with intro copy, direct contact details, and
+ * the Web3Forms-powered enquiry form.
+ *
+ * Reused on sub-pages via ServicePage.astro.
+ * Requires PUBLIC_WEB3FORMS_KEY in Cloudflare Pages environment variables.
+ */
+
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '';
+---
+
+<section id="contact" class="section-dark section-pad contact-section">
+  <span class="section-number" aria-hidden="true">09</span>
+
+  <div class="container contact-inner">
+
+    <!-- ── Intro ──────────────────────────────────────────── -->
+    <div class="contact-intro reveal">
+      <p class="eyebrow">Get in Touch</p>
+      <h2 class="contact-h2">Ready to start growing?</h2>
+      <p class="contact-sub">
+        Book a free 30-minute consultation. No hard sell —
+        just an honest conversation about what SEO can do for your business.
+      </p>
+
+      <ul class="contact-details" aria-label="Direct contact information">
+        <li>
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          <a href="tel:+447886315620">07886 315620</a>
+        </li>
+        <li>
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </span>
+          <a href="mailto:mithul.mistry@gmail.com">mithul.mistry@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+          </span>
+          <a
+            href="https://www.linkedin.com/in/mithul-mistry/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >linkedin.com/in/mithul-mistry</a>
+        </li>
+        <li>
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </span>
+          <span>Marple, Stockport</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── Form ───────────────────────────────────────────── -->
+    <div class="reveal reveal-delay-2">
+      <form
+        id="contact-form"
+        class="contact-form"
+        aria-label="SEO enquiry form"
+        novalidate
+      >
+        <!-- Web3Forms config -->
+        <input type="hidden" name="access_key"  value={accessKey} />
+        <input type="hidden" name="subject"     value="New SEO enquiry from mmseo.co.uk" />
+        <input type="hidden" name="from_name"   value="MM SEO Website" />
+        <!-- Honeypot anti-spam -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-name">Name <abbr title="required" aria-label="required">*</abbr></label>
+            <input
+              type="text" id="cf-name" name="name"
+              required autocomplete="name" placeholder="Your name"
+            />
+          </div>
+          <div class="form-field">
+            <label for="cf-email">Email <abbr title="required" aria-label="required">*</abbr></label>
+            <input
+              type="email" id="cf-email" name="email"
+              required autocomplete="email" placeholder="you@example.com"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-phone">Phone</label>
+            <input
+              type="tel" id="cf-phone" name="phone"
+              autocomplete="tel" placeholder="07700 000000"
+            />
+          </div>
+          <div class="form-field">
+            <label for="cf-website">Website <abbr title="required" aria-label="required">*</abbr></label>
+            <input
+              type="url" id="cf-website" name="website"
+              required placeholder="https://yoursite.co.uk"
+            />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="cf-message">How can I help?</label>
+          <textarea
+            id="cf-message" name="message" rows="4"
+            placeholder="Tell me a bit about your business and what you're looking to achieve…"
+          ></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="cf-source">How did you find me?</label>
+          <div class="select-wrap">
+            <select id="cf-source" name="source">
+              <option value="">Select…</option>
+              <option value="google">Google</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="referral">Referral</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="select-arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <button type="submit" id="cf-submit" class="btn-primary form-submit">
+          Send Message
+        </button>
+
+        <div id="form-success" class="form-msg form-msg--success" hidden role="alert">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <p>Message sent — I'll be in touch within 24 hours.</p>
+        </div>
+
+        <div id="form-error" class="form-msg form-msg--error" hidden role="alert">
+          <p>
+            Something went wrong. Please email
+            <a href="mailto:mithul.mistry@gmail.com">mithul.mistry@gmail.com</a>
+            directly.
+          </p>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .contact-inner {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 4rem;
+    }
+  }
+
+  /* ── Intro ─────────────────────────────────────────────── */
+  .contact-h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    color: #fff;
+    margin: 0.25rem 0 1rem;
+  }
+
+  .contact-sub {
+    font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+    color: rgba(248, 247, 242, 0.62);
+    line-height: 1.72;
+    max-width: 46ch;
+    margin-bottom: 2rem;
+  }
+
+  .contact-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-details li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.6);
+  }
+
+  .contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    color: rgba(248, 247, 242, 0.5);
+  }
+
+  .contact-details a {
+    color: rgba(248, 247, 242, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-details a:hover {
+    color: var(--accent);
+  }
+
+  /* ── Form ──────────────────────────────────────────────── */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.125rem;
+  }
+
+  @media (min-width: 480px) {
+    .form-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-field label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(248, 247, 242, 0.58);
+    letter-spacing: 0.02em;
+  }
+
+  .form-field label abbr {
+    text-decoration: none;
+    color: var(--accent);
+    margin-left: 0.15em;
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 0.25rem;
+    padding: 0.75rem 0.875rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.9);
+    width: 100%;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: rgba(248, 247, 242, 0.25);
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+
+  .select-arrow {
+    position: absolute;
+    right: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(248, 247, 242, 0.38);
+    pointer-events: none;
+    display: flex;
+  }
+
+  .form-submit {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Status messages ───────────────────────────────────── */
+  .form-msg {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 1rem 1.125rem;
+    border-radius: 0.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .form-msg p  { margin: 0; }
+  .form-msg svg { flex-shrink: 0; margin-top: 1px; }
+
+  .form-msg--success {
+    background-color: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    color: #86efac;
+  }
+
+  .form-msg--error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.22);
+    color: #fca5a5;
+  }
+
+  .form-msg--error a {
+    color: inherit;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  const form      = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('cf-submit')    as HTMLButtonElement | null;
+  const success   = document.getElementById('form-success') as HTMLElement | null;
+  const error     = document.getElementById('form-error')   as HTMLElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn) return;
+
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.style.display = 'none';
+        if (success) success.hidden = false;
+
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', {
+            event_category: 'contact',
+            event_label: 'form_submit',
+          });
+        }
+      } else {
+        throw new Error('failed');
+      }
+    } catch {
+      if (error) error.hidden = false;
+      submitBtn.textContent = 'Send Message';
+      submitBtn.disabled = false;
+    }
+  });
+</script>

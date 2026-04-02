@@ -1,0 +1,314 @@
+---
+/**
+ * Testimonials.astro — Section 07, dark.
+ * Auto-advancing carousel (7s), pauses on hover/focus.
+ * Previous / next controls + dot indicators.
+ */
+
+const testimonials = [
+  {
+    name: 'Jamie Bell',
+    role: 'MD, Illuminated Mirrors',
+    stars: 5,
+    quote: 'My rankings are now truly fantastic. I don\'t think they could have pleased me more regarding my online marketing. I am a very happy customer and honoured to finally have a team who actually look after their customers! I make a 25% and growing profit increase with MM SEO — it\'s as simple as that.',
+  },
+  {
+    name: 'Jake Askham',
+    role: '',
+    stars: 5,
+    quote: 'Mithul has an in-depth understanding of SEO across a wide variety of industries and his proactive approach means he\'s always up to date with the latest trends. His level of organisation and proactive nature means he\'s extremely easy to work with. I would 100% recommend working with Mithul and I\'m confident he\'d deliver fantastic results for any project he works on.',
+  },
+  {
+    name: 'Tom Brook',
+    role: '',
+    stars: 5,
+    quote: 'His knowledge, advice, and delivery were first class. I highly recommend him for SEO work and wouldn\'t hesitate to use him again.',
+  },
+];
+---
+
+<section id="testimonials" class="section-dark section-pad testimonials-section">
+  <span class="section-number" aria-hidden="true">07</span>
+
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <p class="eyebrow">Testimonials</p>
+      <h2 class="testimonials-h2">What clients and colleagues say</h2>
+    </div>
+
+    <div
+      class="carousel reveal"
+      aria-label="Client testimonials"
+      aria-roledescription="carousel"
+    >
+      <!-- Track -->
+      <div class="carousel-track" id="carousel-track">
+        {testimonials.map((t, i) => (
+          <div
+            class="carousel-slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${i + 1} of ${testimonials.length}`}
+            aria-hidden={i !== 0}
+          >
+            <!-- Stars -->
+            <div class="stars" aria-label={`${t.stars} stars`} role="img">
+              {'★'.repeat(t.stars)}
+            </div>
+
+            <!-- Quote -->
+            <blockquote class="t-quote">
+              <p>"{t.quote}"</p>
+            </blockquote>
+
+            <!-- Author -->
+            <footer class="t-author">
+              <div class="t-avatar" aria-hidden="true">
+                {t.name.charAt(0)}
+              </div>
+              <div>
+                <p class="t-name">{t.name}</p>
+                {t.role && <p class="t-role">{t.role}</p>}
+              </div>
+            </footer>
+          </div>
+        ))}
+      </div>
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <button
+          id="carousel-prev"
+          class="carousel-btn"
+          aria-label="Previous testimonial"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Select testimonial">
+          {testimonials.map((_, i) => (
+            <button
+              class={`dot${i === 0 ? ' is-active' : ''}`}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              aria-label={`Go to testimonial ${i + 1}`}
+              data-index={i}
+            />
+          ))}
+        </div>
+
+        <button
+          id="carousel-next"
+          class="carousel-btn"
+          aria-label="Next testimonial"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials-header {
+    margin-bottom: 3rem;
+  }
+
+  .testimonials-h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    color: #fff;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Carousel shell ──────────────────────────────────────── */
+  .carousel {
+    max-width: 760px;
+  }
+
+  .carousel-track {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Slides ──────────────────────────────────────────────── */
+  .carousel-slide {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: slideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .carousel-slide.is-active {
+    display: flex;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Stars */
+  .stars {
+    color: var(--accent);
+    font-size: 1.125rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Quote */
+  .t-quote {
+    margin: 0;
+  }
+
+  .t-quote p {
+    font-size: clamp(1.0625rem, 1.8vw, 1.3125rem);
+    font-style: italic;
+    color: rgba(248, 247, 242, 0.88);
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  /* Author */
+  .t-author {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .t-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 104, 38, 0.18);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .t-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: #fff;
+    margin: 0;
+  }
+
+  .t-role {
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.45);
+    margin: 0.15rem 0 0;
+  }
+
+  /* ── Controls ────────────────────────────────────────────── */
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(248, 247, 242, 0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .carousel-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: rgba(255, 104, 38, 0.08);
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(248, 247, 242, 0.2);
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .dot.is-active {
+    background-color: var(--accent);
+    transform: scale(1.25);
+  }
+</style>
+
+<script>
+  const slides  = Array.from(document.querySelectorAll<HTMLElement>('.carousel-slide'));
+  const dots    = Array.from(document.querySelectorAll<HTMLButtonElement>('.dot'));
+  const prevBtn = document.getElementById('carousel-prev') as HTMLButtonElement;
+  const nextBtn = document.getElementById('carousel-next') as HTMLButtonElement;
+  const carousel = document.querySelector<HTMLElement>('.carousel');
+
+  let current = 0;
+  let timer: ReturnType<typeof setInterval> | null = null;
+  const INTERVAL = 7000;
+
+  function goTo(index: number) {
+    slides[current].classList.remove('is-active');
+    slides[current].setAttribute('aria-hidden', 'true');
+    dots[current].classList.remove('is-active');
+    dots[current].setAttribute('aria-selected', 'false');
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add('is-active');
+    slides[current].setAttribute('aria-hidden', 'false');
+    dots[current].classList.add('is-active');
+    dots[current].setAttribute('aria-selected', 'true');
+  }
+
+  function startAuto() {
+    timer = setInterval(() => goTo(current + 1), INTERVAL);
+  }
+
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  // Init
+  slides[0].classList.add('is-active');
+  startAuto();
+
+  prevBtn.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+  nextBtn.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+  });
+
+  // Pause on hover / focus within
+  carousel?.addEventListener('mouseenter', stopAuto);
+  carousel?.addEventListener('mouseleave', startAuto);
+  carousel?.addEventListener('focusin',    stopAuto);
+  carousel?.addEventListener('focusout',   startAuto);
+</script>

@@ -1,0 +1,271 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<ServicePage
+  title="Link Building & Off-Page SEO | MM SEO"
+  description="Ethical, sustainable link building from a freelance SEO consultant with proven results."
+  canonical="https://www.mmseo.co.uk/off-page-seo/"
+  breadcrumb="Link Building"
+>
+
+  <!-- ── 1. Hero band (dark) ─────────────────────────────────── -->
+  <section class="sp-hero section-dark">
+    <div class="container sp-hero-inner reveal">
+      <p class="eyebrow">Link Building &amp; Off-Page SEO — UK</p>
+      <h1 class="sp-h1">Link Building — Earning Authority, Not Buying It</h1>
+      <p class="sp-intro">
+        Backlinks remain one of Google's most important ranking signals. But the kind
+        of links that move rankings and stand the test of algorithm updates are the
+        ones earned through genuine relevance and value — not bought in bulk from
+        link farms. I build the kind of authority that compounds over time.
+      </p>
+      <a href="/#contact" class="btn-primary">Book a Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- ── 2. Main content (light) ─────────────────────────────── -->
+  <section class="sp-content section-light">
+    <div class="container sp-content-inner reveal">
+      <h2 class="sp-h2">Why Backlinks Still Matter</h2>
+
+      <p>
+        Google's algorithm has evolved enormously over the past decade, but links
+        remain a fundamental trust signal. When authoritative, relevant websites link
+        to yours, it tells Google that your content is credible and worth surfacing.
+        The sites with the strongest, most relevant link profiles consistently outrank
+        those without them — even when on-page and technical factors are equal.
+      </p>
+      <p>
+        The quality and relevance of links matters far more than quantity. A single
+        editorial mention in a well-regarded industry publication is worth more than
+        hundreds of directory listings. My approach is built around this reality.
+      </p>
+
+      <h3 class="sp-h3">My link building approach</h3>
+      <ul class="sp-list">
+        <li><strong>Digital PR</strong> — creating genuinely newsworthy content or data assets that earn coverage from journalists and publishers</li>
+        <li><strong>Blogger &amp; editorial outreach</strong> — identifying and building relationships with relevant bloggers, writers, and site owners in your niche</li>
+        <li><strong>Content-led acquisition</strong> — producing linkable assets (guides, tools, research, statistics pages) that attract organic links</li>
+        <li><strong>Broken link building</strong> — finding broken outbound links on relevant sites and offering your content as a replacement</li>
+        <li><strong>Competitor backlink analysis</strong> — identifying sites that link to your competitors and building a case for why they should link to you</li>
+        <li><strong>Business &amp; industry directories</strong> — high-quality, curated directory submissions that contribute to NAP consistency and local authority</li>
+        <li><strong>Unlinked brand mentions</strong> — converting existing online mentions of your business into editorial backlinks</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 3. Why it matters (dark) ────────────────────────────── -->
+  <section class="sp-why section-dark">
+    <div class="container sp-why-inner reveal">
+      <h2 class="sp-h2 chalk">Ethical Link Building: What That Actually Means</h2>
+      <p class="chalk-muted">
+        "White hat" and "ethical" are terms that get thrown around loosely in SEO.
+        What they mean in practice is building links that Google would be comfortable
+        knowing about — editorial mentions, genuine outreach, and content that earns
+        its place. Not private blog networks, not paid placements disguised as editorial,
+        not reciprocal link exchanges that exist solely to game the algorithm.
+      </p>
+      <p class="chalk-muted">
+        The risk with low-quality link building isn't just that it won't work — it's
+        that it can actively damage your site's authority and trigger manual penalties.
+        I've helped clients recover from exactly this situation. Prevention is
+        considerably cheaper than the cure.
+      </p>
+      <p class="chalk-muted">
+        Honest expectations matter here too. Link building takes time. The results
+        of a link acquisition campaign typically begin to show in rankings after
+        3–6 months, as Google processes and weighs new links. I'll give you a
+        realistic projection based on your niche, your current authority, and the
+        competitiveness of your target terms.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 4. Relevant result (light) ──────────────────────────── -->
+  <section class="sp-result section-light">
+    <div class="container sp-result-inner reveal">
+      <p class="eyebrow dark-eyebrow">Proven Results</p>
+      <blockquote class="sp-quote">
+        <p class="sp-quote-metric">+125% organic traffic · +552% organic revenue</p>
+        <p class="sp-quote-context">
+          A targeted blogger outreach and link acquisition campaign — running alongside
+          technical fixes and content work — helped Illuminated Mirrors build the
+          authority their competitors had accumulated over years. The result was
+          125% organic traffic growth and 552% organic revenue growth within six months.
+        </p>
+        <footer class="sp-quote-credit">— Illuminated Mirrors (eCommerce · UK)</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ── 5. Contact CTA ───────────────────────────────────────── -->
+  <ContactForm />
+
+</ServicePage>
+
+<style>
+  .section-dark  { background-color: var(--ink);  color: var(--chalk); }
+  .section-light { background-color: var(--chalk); color: var(--ink); }
+
+  .container {
+    max-width: 860px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .sp-hero { padding: 5rem 0 4rem; }
+  .sp-hero-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+  .dark-eyebrow { color: var(--accent); }
+
+  .sp-h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .sp-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(248, 247, 242, 0.75);
+    max-width: 640px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+  }
+  .btn-primary:hover { background-color: var(--accent-dk); }
+
+  .sp-content { padding: 4rem 0; }
+  .sp-content-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sp-h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-h2.chalk { color: var(--chalk); }
+
+  .sp-h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0.5rem 0 0;
+  }
+
+  .sp-content p, .sp-content-inner p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(10, 10, 15, 0.8);
+  }
+
+  .sp-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sp-list li {
+    font-size: 1rem;
+    line-height: 1.65;
+    padding-left: 1.25rem;
+    position: relative;
+    color: rgba(10, 10, 15, 0.8);
+  }
+  .sp-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.875rem;
+  }
+
+  .sp-why { padding: 4rem 0; }
+  .sp-why-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+  .chalk { color: var(--chalk); }
+  .chalk-muted {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(248, 247, 242, 0.75);
+  }
+
+  .sp-result { padding: 4rem 0; }
+  .sp-result-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sp-quote {
+    margin: 0;
+    padding: 2rem;
+    border-left: 3px solid var(--accent);
+    background-color: rgba(10, 10, 15, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sp-quote-metric {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-quote-context {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(10, 10, 15, 0.75);
+    margin: 0;
+  }
+  .sp-quote-credit {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  revealEls.forEach(el => io.observe(el));
+</script>

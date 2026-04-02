@@ -1,0 +1,255 @@
+---
+/**
+ * Results.astro — Section 04, light.
+ * Two case study cards with metrics and client quotes.
+ */
+
+const caseStudies = [
+  {
+    client: 'Illuminated Mirrors',
+    sector: 'eCommerce · UK',
+    headline: '552% organic revenue growth in 6 months',
+    body: `Illuminated Mirrors were struggling with declining rankings,
+over-optimised content, and technical issues holding back crawlability.
+I conducted a full technical audit, rewrote their site content around
+search intent, launched an on-site blog strategy, and built authority
+through targeted blogger outreach.`,
+    metrics: [
+      { value: '+125%', label: 'Organic traffic' },
+      { value: '+552%', label: 'Organic revenue' },
+      { value: '75+',   label: 'Page 1 rankings' },
+    ],
+    quote: 'I make a 25% — and growing — profit increase with MM SEO. It\'s as simple as that.',
+    author: 'Jamie Bell, MD, Illuminated Mirrors',
+  },
+  {
+    client: 'Number 1 Plates',
+    sector: 'Automotive eCommerce · UK',
+    headline: '95% traffic growth and a near-doubling of revenue',
+    body: `Number 1 Plates engaged MM SEO to boost brand awareness and
+drive organic traffic. Starting with an in-depth technical audit, I
+identified crawl issues and content gaps, then built a comprehensive
+keyword strategy backed by competitor and persona research.`,
+    metrics: [
+      { value: '+95%',   label: 'Organic traffic' },
+      { value: '+99.5%', label: 'Revenue' },
+      { value: 'Top 3',  label: 'Core product keywords' },
+    ],
+    quote: null,
+    author: null,
+  },
+];
+---
+
+<section id="results" class="section-light section-pad results-section">
+  <span class="section-number" aria-hidden="true">04</span>
+
+  <div class="container">
+    <div class="results-header reveal">
+      <p class="eyebrow">Proven Results</p>
+      <h2 class="results-h2">Real numbers from real campaigns</h2>
+    </div>
+
+    <div class="case-studies">
+      {caseStudies.map((cs, i) => (
+        <article class={`case-card reveal reveal-delay-${i + 1}`}>
+          <!-- Client header -->
+          <header class="case-header">
+            <div>
+              <p class="case-client">{cs.client}</p>
+              <p class="case-sector">{cs.sector}</p>
+            </div>
+            <div class="case-badge" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
+              </svg>
+            </div>
+          </header>
+
+          <!-- Headline -->
+          <h3 class="case-headline">{cs.headline}</h3>
+
+          <!-- Body -->
+          <p class="case-body">{cs.body}</p>
+
+          <!-- Metrics -->
+          <div class="case-metrics" aria-label="Results">
+            {cs.metrics.map((m) => (
+              <div class="case-metric">
+                <span class="case-metric-value">{m.value}</span>
+                <span class="case-metric-label">{m.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          {cs.quote && (
+            <blockquote class="case-quote">
+              <p>"{cs.quote}"</p>
+              <footer>
+                <cite>— {cs.author}</cite>
+              </footer>
+            </blockquote>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .results-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .results-header {
+    margin-bottom: 3rem;
+  }
+
+  .results-h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-top: 0.25rem;
+  }
+
+  /* ── Case studies layout ─────────────────────────────────── */
+  .case-studies {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 860px) {
+    .case-studies {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ── Card ────────────────────────────────────────────────── */
+  .case-card {
+    background-color: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 0.625rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .case-card:hover {
+    box-shadow: 0 12px 48px rgba(10, 10, 15, 0.10);
+    transform: translateY(-3px);
+  }
+
+  /* Header */
+  .case-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .case-client {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .case-sector {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin: 0.2rem 0 0;
+    font-weight: 400;
+  }
+
+  .case-badge {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 104, 38, 0.09);
+    border-radius: 50%;
+    color: var(--accent-dk);
+  }
+
+  /* Headline */
+  .case-headline {
+    font-size: clamp(1.1875rem, 2vw, 1.4375rem);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  /* Body */
+  .case-body {
+    font-size: 0.9375rem;
+    color: rgba(10, 10, 15, 0.68);
+    line-height: 1.72;
+    white-space: pre-line;
+  }
+
+  /* Metrics strip */
+  .case-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .case-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .case-metric-value {
+    font-family: 'DM Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    color: var(--accent-dk);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .case-metric-label {
+    font-size: 0.78125rem;
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Quote */
+  .case-quote {
+    margin: 0;
+    padding: 1.25rem;
+    background-color: rgba(10, 10, 15, 0.03);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+
+  .case-quote p {
+    font-size: 0.9375rem;
+    font-style: italic;
+    color: rgba(10, 10, 15, 0.75);
+    line-height: 1.65;
+    margin: 0 0 0.5rem;
+  }
+
+  .case-quote cite {
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--muted);
+  }
+</style>

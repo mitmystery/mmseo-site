@@ -1,0 +1,191 @@
+---
+/**
+ * Hero.astro — Section 01, dark.
+ *
+ * • One H1 on the entire site (lives here only)
+ * • Headshot: desktop right, mobile below CTAs
+ * • Trust strip below CTAs
+ * • Photo: mix-blend-mode luminosity + bottom fade mask
+ */
+---
+
+<section id="home" class="hero section-dark">
+  <span class="section-number" aria-hidden="true">01</span>
+
+  <div class="container hero-inner">
+
+    <!-- ── Left: text ─────────────────────────────────────── -->
+    <div class="hero-content">
+      <p class="eyebrow">Freelance SEO Consultant — Manchester &amp; Stockport</p>
+
+      <h1 class="hero-h1">
+        Rank higher.<br>
+        Get found.<br>
+        Grow faster.
+      </h1>
+
+      <p class="hero-sub">
+        I'm Mithul Mistry — a freelance SEO consultant with 18 years of
+        experience turning underperforming websites into traffic and revenue
+        machines. No agency bloat. Just expert SEO, direct from the source.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+        <a href="#results" class="btn-ghost">See My Results →</a>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="trust-strip">
+        <span class="trust-label">Trusted by</span>
+        <ul class="trust-list" aria-label="Client list">
+          <li>Illuminated Mirrors</li>
+          <li>Number 1 Plates</li>
+          <li>Revolution Bars</li>
+          <li>Country House Wedding Venues</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Right: headshot ────────────────────────────────── -->
+    <div class="hero-photo-wrap">
+      <img
+        src="/mithul-mistry.jpg"
+        alt="Mithul Mistry, Freelance SEO Consultant based in Stockport"
+        class="hero-photo"
+        width="560"
+        height="700"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    padding-top: 68px; /* fixed nav height */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-block: clamp(3rem, 6vw, 5rem);
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 56fr 44fr;
+      gap: 3rem;
+      min-height: calc(100svh - 68px);
+    }
+  }
+
+  /* ── H1 ─────────────────────────────────────────────────── */
+  .hero-h1 {
+    font-size: clamp(2.75rem, 7.5vw, 5.75rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── Subheadline ─────────────────────────────────────────── */
+  .hero-sub {
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    color: rgba(248, 247, 242, 0.68);
+    max-width: 52ch;
+    line-height: 1.72;
+    margin-bottom: 2.25rem;
+  }
+
+  /* ── CTAs ────────────────────────────────────────────────── */
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-bottom: 2.75rem;
+  }
+
+  /* ── Trust strip ─────────────────────────────────────────── */
+  .trust-strip {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .trust-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(248, 247, 242, 0.32);
+    white-space: nowrap;
+  }
+
+  .trust-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .trust-list li {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(248, 247, 242, 0.52);
+  }
+
+  .trust-list li + li::before {
+    content: ' · ';
+    color: rgba(248, 247, 242, 0.22);
+    margin-inline: 0.35rem;
+  }
+
+  /* ── Photo ───────────────────────────────────────────────── */
+  .hero-photo-wrap {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  @media (min-width: 900px) {
+    .hero-photo-wrap {
+      justify-content: flex-end;
+      align-self: flex-end;
+    }
+  }
+
+  .hero-photo {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    mix-blend-mode: luminosity;
+    filter: contrast(1.05) brightness(0.95);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  @media (min-width: 900px) {
+    .hero-photo {
+      max-width: 100%;
+      max-height: calc(100svh - 68px);
+      object-fit: cover;
+      object-position: top center;
+    }
+  }
+</style>

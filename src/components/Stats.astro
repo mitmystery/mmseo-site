@@ -1,0 +1,199 @@
+---
+/**
+ * Stats.astro — Section 02, light.
+ * About section with 4 animated stats + body copy.
+ * Count-up triggers via IntersectionObserver on first viewport entry.
+ */
+---
+
+<section id="about" class="section-light section-pad stats-section">
+  <span class="section-number" aria-hidden="true">02</span>
+
+  <div class="container">
+
+    <!-- ── Header ─────────────────────────────────────────── -->
+    <div class="stats-header reveal">
+      <p class="eyebrow">About</p>
+      <h2 class="stats-h2">The SEO specialist who<br class="br-desktop"> actually does the work</h2>
+    </div>
+
+    <!-- ── Stats grid ─────────────────────────────────────── -->
+    <div class="stats-grid" aria-label="Key results">
+      <div class="stat-item reveal reveal-delay-1">
+        <div
+          class="stat-number"
+          data-target="18"
+          data-suffix="+"
+          aria-label="18 plus years experience"
+        >18+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-2">
+        <div
+          class="stat-number"
+          data-target="552"
+          data-suffix="%"
+          aria-label="552 percent organic revenue growth"
+        >552%</div>
+        <div class="stat-label">Organic revenue growth</div>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-3">
+        <div
+          class="stat-number"
+          data-target="125"
+          data-suffix="%"
+          aria-label="125 percent traffic increase"
+        >125%</div>
+        <div class="stat-label">Traffic increase</div>
+      </div>
+
+      <div class="stat-item reveal reveal-delay-4">
+        <div
+          class="stat-number"
+          data-target="220"
+          data-suffix="%"
+          aria-label="220 percent organic growth in 6 months"
+        >220%</div>
+        <div class="stat-label">Organic growth in 6 months</div>
+      </div>
+    </div>
+
+    <!-- ── Body copy ──────────────────────────────────────── -->
+    <div class="about-body reveal">
+      <p>
+        Most agencies take your money then hand your account to a junior.
+        With MM SEO, you deal directly with me — Mithul Mistry, a senior
+        SEO consultant with 18 years of experience across agency and in-house
+        digital environments in the UK.
+      </p>
+      <p>
+        I've helped eCommerce brands, professional service firms, and local
+        businesses in Manchester, Stockport, and beyond achieve consistent,
+        measurable growth through evidence-based SEO — not guesswork.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stats-header {
+    margin-bottom: 3rem;
+  }
+
+  .stats-h2 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    color: var(--ink);
+    margin-top: 0.25rem;
+  }
+
+  .br-desktop {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .br-desktop {
+      display: block;
+    }
+  }
+
+  /* ── Stats grid ─────────────────────────────────────────── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  @media (min-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .stat-number {
+    font-family: 'DM Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    line-height: 1;
+    color: var(--accent-dk);
+    letter-spacing: -0.02em;
+    tabular-nums: auto;
+  }
+
+  .stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── Body ───────────────────────────────────────────────── */
+  .about-body {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 70ch;
+  }
+
+  .about-body p {
+    font-size: clamp(1rem, 1.3vw, 1.0625rem);
+    color: rgba(10, 10, 15, 0.75);
+    line-height: 1.75;
+  }
+</style>
+
+<script>
+  // Count-up animation — triggers once when stat grid enters viewport
+  function runCountUp(el: HTMLElement) {
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const suffix = el.dataset.suffix ?? '';
+    const duration = 1800;
+    let startTime: number | null = null;
+
+    function easeOutCubic(t: number) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function step(timestamp: number) {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      el.textContent = Math.round(easeOutCubic(progress) * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const statsObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const nums = entry.target.querySelectorAll<HTMLElement>('[data-target]');
+          nums.forEach(runCountUp);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  const grid = document.querySelector('.stats-grid');
+  if (grid) statsObserver.observe(grid);
+</script>

@@ -1,0 +1,272 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<ServicePage
+  title="Keyword Research Services UK | MM SEO"
+  description="Strategic keyword research from a freelance SEO consultant with 18 years experience. Manchester & UK-based."
+  canonical="https://www.mmseo.co.uk/keyword-research/"
+  breadcrumb="Keyword Research"
+>
+
+  <!-- ── 1. Hero band (dark) ─────────────────────────────────── -->
+  <section class="sp-hero section-dark">
+    <div class="container sp-hero-inner reveal">
+      <p class="eyebrow">Keyword Research — Manchester &amp; UK</p>
+      <h1 class="sp-h1">Keyword Research That Drives Revenue, Not Just Traffic</h1>
+      <p class="sp-intro">
+        Most keyword research produces a long list of terms nobody converts on. I build
+        keyword strategies around what your customers actually search — matched to
+        commercial intent, mapped to your site architecture, and prioritised by
+        realistic opportunity.
+      </p>
+      <a href="/#contact" class="btn-primary">Book a Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- ── 2. Main content (light) ─────────────────────────────── -->
+  <section class="sp-content section-light">
+    <div class="container sp-content-inner reveal">
+      <h2 class="sp-h2">Keyword Research vs Keyword Guessing</h2>
+
+      <p>
+        There's a world of difference between picking keywords based on instinct and
+        building a strategy grounded in data. I use a combination of tools — Ahrefs,
+        Google Search Console, Google Keyword Planner, and competitor analysis — to
+        build a complete picture of the search landscape around your business.
+      </p>
+      <p>
+        The goal isn't maximum search volume. It's finding the terms where the intent
+        matches your offer, the competition is beatable within your budget and timeline,
+        and ranking will produce actual enquiries or sales — not just impressions.
+      </p>
+      <p>
+        Every keyword recommendation I make is tied to a rationale. You'll understand
+        why each term is on the list and what winning it means commercially.
+      </p>
+
+      <h3 class="sp-h3">What's included</h3>
+      <ul class="sp-list">
+        <li><strong>Search intent mapping</strong> — categorising keywords by informational, navigational, commercial, and transactional intent</li>
+        <li><strong>Competitor gap analysis</strong> — identifying terms your competitors rank for that you don't, and assessing the opportunity</li>
+        <li><strong>Head term vs long-tail strategy</strong> — balancing high-volume targets with the easier wins that drive early momentum</li>
+        <li><strong>Content architecture mapping</strong> — assigning keywords to existing or new pages to avoid internal cannibalisation</li>
+        <li><strong>Localised keyword sets</strong> — geo-specific terms for Manchester, Stockport, and your key target locations</li>
+        <li><strong>Seasonality analysis</strong> — identifying demand patterns that should shape content and campaign timing</li>
+        <li><strong>Priority scoring</strong> — each keyword ranked by a combination of volume, difficulty, intent match, and commercial value</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 3. Why it matters (dark) ────────────────────────────── -->
+  <section class="sp-why section-dark">
+    <div class="container sp-why-inner reveal">
+      <h2 class="sp-h2 chalk">The Foundation of Every Campaign</h2>
+      <p class="chalk-muted">
+        Keyword research isn't a one-time deliverable that sits in a spreadsheet. It's
+        the strategic layer that shapes everything — which pages you build, what content
+        you write, how your site is structured, and where you focus link acquisition.
+        Done properly, it gives you a clear map from your current position to where you
+        want to be.
+      </p>
+      <p class="chalk-muted">
+        I also use keyword research to identify content gaps — topics your customers are
+        searching for where you have no presence. These gaps represent some of the
+        highest-value opportunities, especially in competitive markets where going
+        head-to-head on core terms isn't the right first move.
+      </p>
+      <p class="chalk-muted">
+        The output is a working document, not a static report. I revisit and update
+        keyword strategies as campaigns evolve, rankings shift, and search behaviour
+        changes — because the best SEO is always adapting.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 4. Relevant result (light) ──────────────────────────── -->
+  <section class="sp-result section-light">
+    <div class="container sp-result-inner reveal">
+      <p class="eyebrow dark-eyebrow">Proven Results</p>
+      <blockquote class="sp-quote">
+        <p class="sp-quote-metric">Top 3 core product keywords · +99.5% revenue</p>
+        <p class="sp-quote-context">
+          For Number 1 Plates, a comprehensive keyword strategy — backed by competitor
+          and persona research — mapped high-intent purchase terms across their product
+          range. Combined with technical and on-page work, it drove their core product
+          keywords into the top three and nearly doubled revenue.
+        </p>
+        <footer class="sp-quote-credit">— Number 1 Plates (Automotive eCommerce · UK)</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ── 5. Contact CTA ───────────────────────────────────────── -->
+  <ContactForm />
+
+</ServicePage>
+
+<style>
+  .section-dark  { background-color: var(--ink);  color: var(--chalk); }
+  .section-light { background-color: var(--chalk); color: var(--ink); }
+
+  .container {
+    max-width: 860px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .sp-hero { padding: 5rem 0 4rem; }
+  .sp-hero-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+  }
+  .dark-eyebrow { color: var(--accent); }
+
+  .sp-h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--chalk);
+    margin: 0;
+  }
+
+  .sp-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(248, 247, 242, 0.75);
+    max-width: 640px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    padding: 0.8rem 1.75rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    align-self: flex-start;
+  }
+  .btn-primary:hover { background-color: var(--accent-dk); }
+
+  .sp-content { padding: 4rem 0; }
+  .sp-content-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sp-h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-h2.chalk { color: var(--chalk); }
+
+  .sp-h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0.5rem 0 0;
+  }
+
+  .sp-content p, .sp-content-inner p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(10, 10, 15, 0.8);
+  }
+
+  .sp-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sp-list li {
+    font-size: 1rem;
+    line-height: 1.65;
+    padding-left: 1.25rem;
+    position: relative;
+    color: rgba(10, 10, 15, 0.8);
+  }
+  .sp-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.875rem;
+  }
+
+  .sp-why { padding: 4rem 0; }
+  .sp-why-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+  .chalk { color: var(--chalk); }
+  .chalk-muted {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(248, 247, 242, 0.75);
+  }
+
+  .sp-result { padding: 4rem 0; }
+  .sp-result-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sp-quote {
+    margin: 0;
+    padding: 2rem;
+    border-left: 3px solid var(--accent);
+    background-color: rgba(10, 10, 15, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sp-quote-metric {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-quote-context {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(10, 10, 15, 0.75);
+    margin: 0;
+  }
+  .sp-quote-credit {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  revealEls.forEach(el => io.observe(el));
+</script>
