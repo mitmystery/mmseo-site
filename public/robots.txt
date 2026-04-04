@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mmseo.co.uk/sitemap-index.xml
+Sitemap: https://www.mmseo.co.uk/sitemap.xml
+AI-info: https://www.mmseo.co.uk/llm-info/
