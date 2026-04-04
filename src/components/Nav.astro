@@ -259,7 +259,6 @@ const services = [
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .nav-dropdown:hover .dropdown-panel,
   .nav-dropdown-trigger[aria-expanded="true"] + .dropdown-panel {
     opacity: 1;
     pointer-events: auto;
@@ -482,22 +481,47 @@ const services = [
     lastY = y;
   }, { passive: true });
 
-  // ── Desktop dropdown (click toggle + close on outside click) ─
+  // ── Desktop dropdown ─────────────────────────────────────────
+  const navDropdown     = document.getElementById('services-dropdown') as HTMLElement;
   const dropdownTrigger = document.querySelector('.nav-dropdown-trigger') as HTMLButtonElement;
   const dropdownPanel   = document.getElementById('services-menu') as HTMLElement;
 
-  dropdownTrigger?.addEventListener('click', () => {
+  let closeTimer: ReturnType<typeof setTimeout> | null = null;
+
+  function openDropdown() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    dropdownTrigger?.setAttribute('aria-expanded', 'true');
+  }
+
+  function scheduleClose() {
+    closeTimer = setTimeout(() => {
+      dropdownTrigger?.setAttribute('aria-expanded', 'false');
+    }, 200);
+  }
+
+  // Hover intent: open on enter, delayed close on leave
+  navDropdown?.addEventListener('mouseenter', openDropdown);
+  navDropdown?.addEventListener('mouseleave', scheduleClose);
+
+  // Click toggle (keyboard / touch fallback)
+  dropdownTrigger?.addEventListener('click', (e) => {
+    e.stopPropagation();
     const isOpen = dropdownTrigger.getAttribute('aria-expanded') === 'true';
-    dropdownTrigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    if (isOpen) {
+      dropdownTrigger.setAttribute('aria-expanded', 'false');
+    } else {
+      openDropdown();
+    }
   });
 
+  // Close on outside click
   document.addEventListener('click', (e) => {
-    if (!dropdownTrigger?.closest('.nav-dropdown')?.contains(e.target as Node)) {
+    if (!navDropdown?.contains(e.target as Node)) {
       dropdownTrigger?.setAttribute('aria-expanded', 'false');
     }
   });
 
-  // Close dropdown on link click
+  // Close on link click
   dropdownPanel?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       dropdownTrigger?.setAttribute('aria-expanded', 'false');
