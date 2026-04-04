@@ -1,7 +1,7 @@
 # Redirects for old mmseo.co.uk URLs → new hub+spoke structure
 # Cloudflare Pages reads this file automatically.
 
-/ai-info-page-for-mm-seo/                              /  301
+/ai-info-page-for-mm-seo/                              /llm-info/  301
 /contact/                                               /#contact  301
 /freelance-seo-consultant-manchester-get-found-get-results/  /  301
 /frequently-asked-questions-faqs/                       /#faq  301
