@@ -6,9 +6,20 @@
  *   • Transparent at top → ink + backdrop-blur once scrolled 60px
  *   • Hides on scroll-down (>120px from top), reappears on scroll-up
  *   • Mobile: hamburger toggles full-screen overlay
+ *   • Desktop: "Services" has a hover dropdown to all service pages
+ *   • Mobile: "Services" expands inline to show service sub-links
  *
  * All links use absolute paths with hashes so they work from any page.
  */
+
+const services = [
+  { label: 'SEO Strategy',    href: '/seo-strategy/' },
+  { label: 'Technical SEO',   href: '/technical-seo/' },
+  { label: 'Keyword Research',href: '/keyword-research/' },
+  { label: 'On-Page SEO',     href: '/on-page-seo/' },
+  { label: 'Link Building',   href: '/off-page-seo/' },
+  { label: 'Local SEO',       href: '/local-seo/' },
+];
 ---
 
 <header id="site-nav" aria-label="Site navigation">
@@ -20,7 +31,27 @@
 
     <!-- Desktop nav -->
     <nav class="nav-desktop" aria-label="Main">
-      <a href="/#services"     class="nav-link">Services</a>
+
+      <!-- Services dropdown -->
+      <div class="nav-dropdown" id="services-dropdown">
+        <button
+          class="nav-link nav-dropdown-trigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="services-menu"
+        >
+          Services
+          <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dropdown-panel" id="services-menu" role="menu" aria-label="Services">
+          {services.map(s => (
+            <a href={s.href} class="dropdown-link" role="menuitem">{s.label}</a>
+          ))}
+        </div>
+      </div>
+
       <a href="/#results"      class="nav-link">Results</a>
       <a href="/#testimonials" class="nav-link">Testimonials</a>
       <a href="/#faq"          class="nav-link">FAQs</a>
@@ -56,7 +87,22 @@
   </button>
 
   <nav class="nav-overlay-links" aria-label="Mobile navigation">
-    <a href="/#services"     class="nav-overlay-link">Services</a>
+
+    <!-- Services accordion -->
+    <div class="mobile-services">
+      <button class="nav-overlay-link mobile-services-trigger" aria-expanded="false" aria-controls="mobile-services-list">
+        Services
+        <svg class="mobile-chevron" width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="mobile-services-list" id="mobile-services-list" aria-hidden="true">
+        {services.map(s => (
+          <a href={s.href} class="mobile-service-link">{s.label}</a>
+        ))}
+      </div>
+    </div>
+
     <a href="/#results"      class="nav-overlay-link">Results</a>
     <a href="/#testimonials" class="nav-overlay-link">Testimonials</a>
     <a href="/#faq"          class="nav-overlay-link">FAQs</a>
@@ -133,9 +179,107 @@
     }
   }
 
+  .nav-link {
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.8);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+  }
+
   .nav-cta {
     font-size: 0.875rem;
     padding: 0.625rem 1.25rem;
+  }
+
+  /* ── Services dropdown ────────────────────────────────────── */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    font-size: 0.9375rem;
+  }
+
+  .chevron {
+    color: rgba(248, 247, 242, 0.5);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-dropdown-trigger[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-panel {
+    position: absolute;
+    top: calc(100% + 18px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 15, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 8px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 10;
+  }
+
+  /* Arrow notch */
+  .dropdown-panel::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: rgba(10, 10, 15, 0.96);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-dropdown:hover .dropdown-panel,
+  .nav-dropdown-trigger[aria-expanded="true"] + .dropdown-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 9px 14px;
+    color: rgba(248, 247, 242, 0.75);
+    text-decoration: none;
+    font-size: 0.875rem;
+    border-radius: 5px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .dropdown-link:hover {
+    background-color: rgba(255, 104, 38, 0.12);
+    color: #fff;
   }
 
   /* ── Hamburger ────────────────────────────────────────────── */
@@ -247,6 +391,66 @@
   .nav-overlay-cta {
     margin-top: 0.5rem;
   }
+
+  /* ── Mobile services accordion ────────────────────────────── */
+  .mobile-services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .mobile-services-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .mobile-chevron {
+    color: rgba(248, 247, 242, 0.5);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .mobile-services-trigger[aria-expanded="true"] .mobile-chevron {
+    transform: rotate(180deg);
+  }
+
+  .mobile-services-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.25s ease;
+    margin-top: 0;
+  }
+
+  .mobile-services-list.is-open {
+    max-height: 400px;
+    opacity: 1;
+    margin-top: 1rem;
+  }
+
+  .mobile-service-link {
+    font-size: 1rem;
+    color: rgba(248, 247, 242, 0.6);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+    padding: 2px 0;
+  }
+
+  .mobile-service-link:hover {
+    color: #FF6826;
+  }
 </style>
 
 <script>
@@ -278,6 +482,28 @@
     lastY = y;
   }, { passive: true });
 
+  // ── Desktop dropdown (click toggle + close on outside click) ─
+  const dropdownTrigger = document.querySelector('.nav-dropdown-trigger') as HTMLButtonElement;
+  const dropdownPanel   = document.getElementById('services-menu') as HTMLElement;
+
+  dropdownTrigger?.addEventListener('click', () => {
+    const isOpen = dropdownTrigger.getAttribute('aria-expanded') === 'true';
+    dropdownTrigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdownTrigger?.closest('.nav-dropdown')?.contains(e.target as Node)) {
+      dropdownTrigger?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close dropdown on link click
+  dropdownPanel?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      dropdownTrigger?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   // ── Mobile overlay toggle ────────────────────────────────────
   function openMenu() {
     overlay.classList.add('is-open');
@@ -298,8 +524,13 @@
   burger.addEventListener('click', openMenu);
   closeBtn.addEventListener('click', closeMenu);
 
-  // Close on overlay link click
-  overlay.querySelectorAll('a').forEach((link) => {
+  // Close on non-services overlay link click
+  overlay.querySelectorAll('a:not(.mobile-service-link)').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on service sub-link click
+  overlay.querySelectorAll('.mobile-service-link').forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
 
@@ -308,5 +539,16 @@
     if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
       closeMenu();
     }
+  });
+
+  // ── Mobile services accordion ────────────────────────────────
+  const mobileServicesTrigger = document.querySelector('.mobile-services-trigger') as HTMLButtonElement;
+  const mobileServicesList    = document.getElementById('mobile-services-list') as HTMLElement;
+
+  mobileServicesTrigger?.addEventListener('click', () => {
+    const isOpen = mobileServicesTrigger.getAttribute('aria-expanded') === 'true';
+    mobileServicesTrigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    mobileServicesList.classList.toggle('is-open', !isOpen);
+    mobileServicesList.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
   });
 </script>
