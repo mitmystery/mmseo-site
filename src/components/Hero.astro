@@ -49,15 +49,19 @@
 
     <!-- ── Right: headshot ────────────────────────────────── -->
     <div class="hero-photo-wrap">
-      <img
-        src="/mithul-mistry.jpg"
-        alt="Mithul Mistry, Freelance SEO Consultant based in Stockport"
-        class="hero-photo"
-        width="560"
-        height="700"
-        loading="eager"
-        fetchpriority="high"
-      />
+      <picture>
+        <source srcset="/mithul-mistry.webp" type="image/webp" />
+        <img
+          src="/mithul-mistry.jpg"
+          alt="Mithul Mistry, Freelance SEO Consultant based in Stockport"
+          class="hero-photo"
+          width="1200"
+          height="1200"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
     </div>
 
   </div>

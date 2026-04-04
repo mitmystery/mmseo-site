@@ -66,20 +66,11 @@ const GA_ID = 'G-83NJ4NF8CJ';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon"  href="/favicon.ico" />
 
-    <!-- ── Font preloads (self-hosted woff2) ────────────────── -->
-    <!--
-      After `npm install`, @fontsource resolves these via Vite.
-      If you prefer fully predictable URLs, copy the woff2 files from
-      node_modules/@fontsource/*/files/ into /public/fonts/ and
-      uncomment the preloads below:
-
+    <!-- ── Font preloads (critical woff2 files, stable URLs) ── -->
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="/fonts/syne-700.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="/fonts/dm-sans-400.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-          href="/fonts/dm-sans-500.woff2" />
-    -->
 
     <!-- ── JSON-LD structured data ──────────────────────────── -->
     {schema && (
