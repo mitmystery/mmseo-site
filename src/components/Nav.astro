@@ -136,10 +136,6 @@ const services = [
     border-bottom-color: rgba(255, 255, 255, 0.06);
   }
 
-  #site-nav.is-hidden {
-    transform: translateY(-100%);
-  }
-
   /* ── Inner layout ─────────────────────────────────────────── */
   .nav-inner {
     display: flex;
@@ -458,7 +454,7 @@ const services = [
   const overlay  = document.getElementById('nav-overlay') as HTMLElement;
   const closeBtn = document.getElementById('nav-close') as HTMLButtonElement;
 
-  // ── Scroll behaviour: scrolled state + hide/show ────────────
+  // ── Scroll behaviour: scrolled state ────────────────────────
   let lastY = window.scrollY;
 
   window.addEventListener('scroll', () => {
@@ -466,17 +462,6 @@ const services = [
 
     // Scrolled background
     nav.classList.toggle('is-scrolled', y > 60);
-
-    // Hide on scroll-down past 120px, show on scroll-up
-    if (y > 120) {
-      if (y > lastY + 8) {
-        nav.classList.add('is-hidden');
-      } else if (y < lastY - 8) {
-        nav.classList.remove('is-hidden');
-      }
-    } else {
-      nav.classList.remove('is-hidden');
-    }
 
     lastY = y;
   }, { passive: true });
