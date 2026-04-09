@@ -2,12 +2,12 @@
   <rect width="32" height="32" rx="6" fill="#0A0A0F"/>
   <text
     x="16"
-    y="22"
-    font-family="'Syne', 'Arial Black', sans-serif"
-    font-size="14"
-    font-weight="700"
+    y="23"
+    font-family="'Arial Black', 'Arial', sans-serif"
+    font-size="18"
+    font-weight="900"
     fill="#FF6826"
     text-anchor="middle"
-    letter-spacing="-0.5"
-  >MM</text>
+    letter-spacing="-1"
+  >M</text>
 </svg>
