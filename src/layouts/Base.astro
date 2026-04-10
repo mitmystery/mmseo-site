@@ -18,7 +18,7 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
-  schema?: Record<string, unknown>;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
 }
 
@@ -73,9 +73,10 @@ const GA_ID = 'G-83NJ4NF8CJ';
           href="/fonts/dm-sans-400.woff2" />
 
     <!-- ── JSON-LD structured data ──────────────────────────── -->
-    {schema && (
-      <script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)} />
-    )}
+    {Array.isArray(schema)
+      ? schema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s, null, 0)} />)
+      : schema && <script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)} />
+    }
 
     <!-- ── Google Ads ───────────────────────────────────────────── -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-798334161"></script>

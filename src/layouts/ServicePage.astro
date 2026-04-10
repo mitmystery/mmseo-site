@@ -47,13 +47,31 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  'name': breadcrumb,
+  'description': description,
+  'provider': {
+    '@type': 'Person',
+    'name': 'Mithul Mistry',
+    'url': 'https://www.mmseo.co.uk/',
+  },
+  'areaServed': [
+    { '@type': 'City', 'name': 'Manchester' },
+    { '@type': 'City', 'name': 'Stockport' },
+    { '@type': 'Country', 'name': 'United Kingdom' },
+  ],
+  'url': canonical,
+};
 ---
 
 <Base
   title={title}
   description={description}
   canonical={canonical}
-  schema={breadcrumbSchema}
+  schema={[breadcrumbSchema, serviceSchema]}
 >
   <Nav />
 
