@@ -5,7 +5,7 @@ import ContactForm from '../components/ContactForm.astro';
 
 <ServicePage
   title="On-Page SEO Services UK | MM SEO"
-  description="On-page SEO from an experienced freelance consultant. Based in Stockport, serving clients across the UK."
+  description="On-page SEO from an experienced freelance consultant. Title tags, content optimisation and intent alignment that improve rankings. Based in Stockport, serving the UK."
   canonical="https://www.mmseo.co.uk/on-page-seo/"
   breadcrumb="On-Page SEO"
 >
@@ -107,7 +107,28 @@ import ContactForm from '../components/ContactForm.astro';
     </div>
   </section>
 
-  <!-- ── 5. Contact CTA ───────────────────────────────────────── -->
+  <!-- ── 5. Related Services ─────────────────────────────────── -->
+  <section class="related-services section-dark">
+    <div class="container">
+      <p class="eyebrow">Related Services</p>
+      <div class="related-grid">
+        <a href="/keyword-research/" class="related-card">
+          <strong>Keyword Research</strong>
+          <span>Find the right terms to target before optimising your pages.</span>
+        </a>
+        <a href="/technical-seo/" class="related-card">
+          <strong>Technical SEO</strong>
+          <span>Fix the technical foundations that on-page optimisation depends on.</span>
+        </a>
+        <a href="/local-seo/" class="related-card">
+          <strong>Local SEO</strong>
+          <span>Combine on-page SEO with local signals to dominate nearby searches.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. Contact CTA ───────────────────────────────────────── -->
   <ContactForm />
 
 </ServicePage>
@@ -266,6 +287,29 @@ import ContactForm from '../components/ContactForm.astro';
     opacity: 1;
     transform: none;
   }
+
+  .related-services { padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.07); }
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  @media (min-width: 640px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.125rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.375rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .related-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,104,38,0.4); }
+  .related-card strong { font-size: 0.9375rem; color: #F8F7F2; font-weight: 600; }
+  .related-card span { font-size: 0.8125rem; color: rgba(248,247,242,0.5); line-height: 1.55; }
 </style>
 
 <script>

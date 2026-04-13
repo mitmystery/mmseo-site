@@ -5,7 +5,7 @@ import ContactForm from '../components/ContactForm.astro';
 
 <ServicePage
   title="Link Building & Off-Page SEO | MM SEO"
-  description="Ethical, sustainable link building from a freelance SEO consultant with proven results."
+  description="Ethical, sustainable link building from a freelance SEO consultant with 18 years of proven results. Quality backlinks that build authority and rankings. Manchester & UK."
   canonical="https://www.mmseo.co.uk/off-page-seo/"
   breadcrumb="Link Building"
 >
@@ -100,7 +100,28 @@ import ContactForm from '../components/ContactForm.astro';
     </div>
   </section>
 
-  <!-- ── 5. Contact CTA ───────────────────────────────────────── -->
+  <!-- ── 5. Related Services ─────────────────────────────────── -->
+  <section class="related-services section-dark">
+    <div class="container">
+      <p class="eyebrow">Related Services</p>
+      <div class="related-grid">
+        <a href="/technical-seo/" class="related-card">
+          <strong>Technical SEO</strong>
+          <span>Backlinks work harder when your site's technical foundations are solid.</span>
+        </a>
+        <a href="/keyword-research/" class="related-card">
+          <strong>Keyword Research</strong>
+          <span>Know which pages deserve links and which searches they should target.</span>
+        </a>
+        <a href="/seo-strategy/" class="related-card">
+          <strong>SEO Strategy</strong>
+          <span>Integrate link building into a wider SEO plan that drives lasting growth.</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. Contact CTA ───────────────────────────────────────── -->
   <ContactForm />
 
 </ServicePage>
@@ -259,6 +280,29 @@ import ContactForm from '../components/ContactForm.astro';
     opacity: 1;
     transform: none;
   }
+
+  .related-services { padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.07); }
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  @media (min-width: 640px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.125rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.375rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .related-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,104,38,0.4); }
+  .related-card strong { font-size: 0.9375rem; color: #F8F7F2; font-weight: 600; }
+  .related-card span { font-size: 0.8125rem; color: rgba(248,247,242,0.5); line-height: 1.55; }
 </style>
 
 <script>

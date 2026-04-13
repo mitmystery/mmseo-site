@@ -3,9 +3,48 @@ import ServicePage from '../layouts/ServicePage.astro';
 import ContactForm from '../components/ContactForm.astro';
 ---
 
+<script type="application/ld+json" is:inline>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does local SEO take to show results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Business Profile improvements can show results within 4–8 weeks. Organic local rankings typically improve meaningfully within 3–6 months of consistent work. The Map Pack is often faster to influence than organic positions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a physical address to rank locally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Google Business Profile, yes — you need a verifiable business address. For organic local SEO, a service area business without a public-facing premises can still rank for local searches through content and citation strategies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How important are Google reviews for local SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very. Review volume, recency, and rating are confirmed ranking factors for the Map Pack. A business with 50 recent reviews will almost always outrank an equivalent business with 5 old reviews, all else being equal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help businesses outside Manchester and Stockport?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — I work with local businesses across the UK. While I'm based in Stockport, local SEO is a remote-friendly service. I've helped businesses in London, Birmingham, Edinburgh, and across the UK improve their local search presence."
+      }
+    }
+  ]
+}</script>
+
 <ServicePage
   title="Local SEO Manchester & Stockport | MM SEO"
-  description="Local SEO specialist in Stockport. GBP optimisation, local citations, geo-targeted content for Manchester and the UK."
+  description="Local SEO specialist in Stockport. Google Business Profile optimisation, local citations and geo-targeted content for Manchester and UK businesses."
   canonical="https://www.mmseo.co.uk/local-seo/"
   breadcrumb="Local SEO"
 >
