@@ -1,8 +1,5 @@
-# Non-www → www canonical redirect
-https://mmseo.co.uk/* https://www.mmseo.co.uk/:splat 301
-
 # Redirects for old mmseo.co.uk URLs → new hub+spoke structure
-# Cloudflare Pages reads this file automatically.
+# Note: non-www → www redirect is handled via Cloudflare Redirect Rules in the dashboard.
 
 /ai-info-page-for-mm-seo/                              /llm-info/  301
 /contact/                                               /#contact  301
