@@ -90,6 +90,22 @@ const GA_ID = 'G-83NJ4NF8CJ';
       gtag('config', 'AW-798334161');
     </script>
 
+    <!-- ── Google Ads conversion tracking ───────────────────────── -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-798334161/4h5XCKHVi5scENG51vwC',
+            'event_callback': callback
+        });
+        return false;
+      }
+    </script>
+
     <!-- ── Microsoft Clarity ────────────────────────────────────── -->
     <script type="text/javascript">
       (function(c,l,a,r,i,t,y){

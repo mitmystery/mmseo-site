@@ -393,7 +393,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '67a9b07a-de54-4434-80
             event_category: 'contact',
             event_label: 'form_submit',
           });
-          window.gtag('event', 'ads_conversion_Submit_lead_form_1');
+        }
+        if (typeof (window as any).gtag_report_conversion === 'function') {
+          (window as any).gtag_report_conversion();
         }
       } else {
         throw new Error('failed');
