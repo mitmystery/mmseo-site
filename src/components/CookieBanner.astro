@@ -1,0 +1,126 @@
+---
+/**
+ * CookieBanner.astro — Google Consent Mode v2 cookie notice.
+ *
+ * Shows on first visit if no consent choice is stored in localStorage.
+ * Accept: grants all consent signals and fires gtag consent update.
+ * Reject: denies all consent signals (Consent Mode still fires pings).
+ */
+---
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite" hidden>
+  <p class="cookie-text">
+    We use cookies to measure ad performance and improve our services.
+    See our <a href="https://mitmystery.github.io/exercise-snacks-legal/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+  </p>
+  <div class="cookie-actions">
+    <button id="cookie-reject" class="cookie-btn cookie-btn--reject">Reject</button>
+    <button id="cookie-accept" class="cookie-btn cookie-btn--accept">Accept all</button>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background: #1c1c28;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 680px;
+    width: calc(100% - 2rem);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    flex-wrap: wrap;
+  }
+
+  .cookie-text {
+    margin: 0;
+    font-size: 0.875rem;
+    color: rgba(248, 247, 242, 0.65);
+    line-height: 1.55;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .cookie-text a {
+    color: rgba(248, 247, 242, 0.65);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .cookie-actions {
+    display: flex;
+    gap: 0.625rem;
+    flex-shrink: 0;
+  }
+
+  .cookie-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .cookie-btn--reject {
+    background: transparent;
+    color: rgba(248, 247, 242, 0.55);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .cookie-btn--reject:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(248, 247, 242, 0.8);
+  }
+
+  .cookie-btn--accept {
+    background: #FF6826;
+    color: #fff;
+    border-color: #FF6826;
+  }
+
+  .cookie-btn--accept:hover {
+    background: #D94E10;
+    border-color: #D94E10;
+  }
+</style>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const rejectBtn = document.getElementById('cookie-reject');
+
+  function updateConsent(granted: boolean) {
+    const state = granted ? 'granted' : 'denied';
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        ad_storage:         state,
+        analytics_storage:  state,
+        ad_user_data:       state,
+        ad_personalization: state,
+      });
+    }
+    try { localStorage.setItem('mm_consent', granted ? 'granted' : 'denied'); } catch(e) {}
+    if (banner) banner.hidden = true;
+  }
+
+  // Show banner only if no stored preference
+  try {
+    if (!localStorage.getItem('mm_consent') && banner) {
+      banner.hidden = false;
+    }
+  } catch(e) {}
+
+  acceptBtn?.addEventListener('click', () => updateConsent(true));
+  rejectBtn?.addEventListener('click', () => updateConsent(false));
+</script>

@@ -12,6 +12,7 @@
  */
 
 import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string;
@@ -81,11 +82,35 @@ const GA_ID = 'G-83NJ4NF8CJ';
       : schema && <script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)} />
     }
 
-    <!-- ── Google Ads ───────────────────────────────────────────── -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-798334161"></script>
+    <!-- ── Google Consent Mode v2 defaults (must run before any gtag) ── -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+
+      var _storedConsent = '';
+      try { _storedConsent = localStorage.getItem('mm_consent') || ''; } catch(e) {}
+
+      if (_storedConsent === 'granted') {
+        gtag('consent', 'default', {
+          ad_storage:        'granted',
+          analytics_storage: 'granted',
+          ad_user_data:      'granted',
+          ad_personalization:'granted'
+        });
+      } else {
+        gtag('consent', 'default', {
+          ad_storage:        'denied',
+          analytics_storage: 'denied',
+          ad_user_data:      'denied',
+          ad_personalization:'denied',
+          wait_for_update:    2000
+        });
+      }
+    </script>
+
+    <!-- ── Google Ads ───────────────────────────────────────────── -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-798334161"></script>
+    <script>
       gtag('js', new Date());
       gtag('config', 'AW-798334161');
     </script>
@@ -122,11 +147,9 @@ const GA_ID = 'G-83NJ4NF8CJ';
         s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
         s.async = true;
         document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', GA_ID, { send_page_view: true });
-        window.gtag = gtag;
+        // dataLayer and gtag already initialised by Consent Mode block above
+        window.gtag('js', new Date());
+        window.gtag('config', GA_ID, { send_page_view: true });
       }, { once: true, passive: true });
     </script>
 
@@ -151,5 +174,6 @@ const GA_ID = 'G-83NJ4NF8CJ';
 
   <body>
     <slot />
+    <CookieBanner />
   </body>
 </html>
