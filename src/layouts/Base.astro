@@ -138,6 +138,12 @@ const GA_ID = 'G-83NJ4NF8CJ';
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "w90rln1z31");
+      // Restore Clarity consent if user has previously accepted
+      try {
+        if (localStorage.getItem('mm_consent') === 'granted') {
+          window.clarity('consent');
+        }
+      } catch(e) {}
     </script>
 
     <!-- ── Deferred GA4 (loads on first scroll, not on pageload) -->

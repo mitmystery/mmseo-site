@@ -110,6 +110,9 @@
         ad_personalization: state,
       });
     }
+    if (granted && typeof (window as any).clarity === 'function') {
+      (window as any).clarity('consent');
+    }
     try { localStorage.setItem('mm_consent', granted ? 'granted' : 'denied'); } catch(e) {}
     if (banner) banner.hidden = true;
   }
