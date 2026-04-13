@@ -41,7 +41,8 @@ const serviceLinks = [
       </nav>
 
       <p class="footer-copy">
-        &copy; {year} Mithul Mistry &middot; Freelance SEO Consultant, Stockport
+        &copy; {year} Mithul Mistry &middot; Freelance SEO Consultant, Stockport &middot;
+        <a href="/privacy-policy/">Privacy Policy</a>
       </p>
     </div>
 
@@ -128,7 +129,16 @@ const serviceLinks = [
     font-family: 'DM Sans', sans-serif;
     font-size: 0.8125rem;
     color: rgba(248, 247, 242, 0.4);
-    white-space: nowrap;
+  }
+
+  .footer-copy a {
+    color: rgba(248, 247, 242, 0.4);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-copy a:hover {
+    color: rgba(248, 247, 242, 0.8);
   }
 
   /* ── Divider ──────────────────────────────────────────────── */
