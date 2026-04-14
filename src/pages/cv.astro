@@ -1,0 +1,742 @@
+---
+/**
+ * cv.astro — Password-gated CV page.
+ *
+ * • Client-side gate: password stored in sessionStorage
+ * • noindex, nofollow — must not be indexed
+ * • PDF download: /mithul-mistry-cv.pdf (pre-generated via npm run generate-cv)
+ * • Print stylesheet included for browser-print fallback
+ */
+
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const expertise = [
+  'SEO strategy', 'Technical SEO', 'Site migrations', 'AI search / GEO',
+  'Keyword research', 'Analytics & measurement', 'Tagging & tracking',
+  'Content strategy', 'Client leadership', 'GA4', 'GSC', 'Ahrefs',
+  'Screaming Frog', 'Sitebulb',
+];
+
+const workingStyle = [
+  'High ownership', 'Cross-functional collaboration', 'Attention to detail',
+  'Structured thinking', 'Mentoring, QA, and delivery leadership',
+];
+
+const sectorExposure = [
+  'eCommerce', 'Professional services', 'Education',
+  'Cultural organisations', 'Multi-site and lead generation brands',
+];
+
+const tools = ['GA4', 'Google Search Console', 'Ahrefs', 'Screaming Frog', 'Sitebulb'];
+
+const experience = [
+  {
+    company: 'R3 Agency',
+    role: 'Senior SEO Manager',
+    dates: 'Sep 2020 – Present',
+    bullets: [
+      'Develop and lead SEO strategies across high-value accounts, aligning technical, content, and authority work to commercial objectives.',
+      'Own technical audits and implementation planning; work closely with dev, content, and paid teams to improve delivery quality.',
+      'Manage client relationships, portfolio budgets, QA standards, and mentoring for junior SEOs.',
+      'Introduced AI-search readiness thinking alongside core SEO delivery.',
+    ],
+  },
+  {
+    company: 'Powerful Vision Ltd',
+    role: 'SEO Manager',
+    dates: 'Aug 2018 – Jul 2020',
+    bullets: [
+      'Led end-to-end SEO campaigns that delivered material revenue growth across client accounts.',
+      'Worked directly with C-level stakeholders to align SEO priorities with wider business goals.',
+      'Managed cross-functional delivery spanning developers and marketing specialists.',
+    ],
+  },
+  {
+    company: 'Platform81',
+    role: 'SEO Manager',
+    dates: 'Aug 2017 – Aug 2018',
+    bullets: [
+      'Built a comprehensive SEO service framework from the ground up.',
+      'Provided strategic direction to internal teams, improving delivery consistency and campaign performance.',
+      'Optimised existing client campaigns to improve results and satisfaction.',
+    ],
+  },
+  {
+    company: 'After Digital',
+    role: 'SEO Manager',
+    dates: 'Sep 2010 – Aug 2017',
+    bullets: [
+      'Provided high-level SEO consultancy and training across a varied client portfolio, with a particular focus on educational and cultural sectors.',
+      'Managed delivery across Manchester and Glasgow teams and acted as a senior point of support on complex accounts.',
+      'Developed and implemented the organic strategy for Illuminated Mirrors, delivering a 125% increase in organic traffic and 552% revenue growth within the first 6 months.',
+      'Managed broader digital delivery across SEO, paid search, content, and social, while mentoring teams and setting QA standards.',
+    ],
+  },
+  {
+    company: 'Just Search',
+    role: 'SEO Advisor',
+    dates: 'Oct 2009 – Sep 2010',
+    bullets: [
+      'Served as the technical liaison between account managers and the digital marketing team.',
+      'Developed campaign optimisation frameworks and led training for account management teams.',
+      'Specialised in troubleshooting and stabilising complex client accounts.',
+    ],
+  },
+  {
+    company: 'Firstfound',
+    role: 'SEO Consultant',
+    dates: 'Nov 2007 – Oct 2009',
+    bullets: [
+      'Delivered on-page optimisation across a portfolio of client accounts.',
+      'Managed white-label agency relationships and supported retention-focused delivery.',
+      'Built a strong foundation in hands-on SEO execution and account management.',
+    ],
+  },
+];
+---
+
+<Base
+  title="CV — Mithul Mistry | MM SEO"
+  description="Mithul Mistry — Senior SEO Manager. 18 years experience. CV available on request."
+  canonical="https://www.mmseo.co.uk/cv/"
+  noindex={true}
+>
+  <Nav />
+
+  <main>
+
+    <!-- ══ PASSWORD GATE ══════════════════════════════════════════════ -->
+    <div
+      id="cv-gate"
+      style="display:none; position:fixed; inset:0; background:#0A0A0F;
+             z-index:200; flex-direction:column; align-items:center;
+             justify-content:center; gap:1.5rem;"
+    >
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.5rem;
+                  color:#fff; letter-spacing:-0.02em;">
+        MM<span style="color:#FF6826">SEO</span>
+      </div>
+      <p style="color:rgba(255,255,255,0.5); font-size:0.9rem; text-align:center;
+                max-width:320px; margin:0; font-family:'DM Sans',sans-serif; line-height:1.6;">
+        This CV is private. Enter the access code to view.
+      </p>
+      <div style="display:flex; flex-direction:column; gap:0.75rem; width:100%; max-width:280px;">
+        <input
+          id="cv-password"
+          type="password"
+          placeholder="Access code"
+          autocomplete="current-password"
+          style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+                 color:#fff; padding:0.75rem 1rem; font-size:0.95rem; border-radius:2px;
+                 width:100%; outline:none; font-family:'DM Sans',sans-serif;"
+        />
+        <button
+          id="cv-submit"
+          style="background:#FF6826; color:#fff; border:none; padding:0.75rem 1rem;
+                 font-weight:600; font-size:0.9rem; cursor:pointer; border-radius:2px;
+                 width:100%; font-family:'DM Sans',sans-serif;"
+        >
+          Access CV
+        </button>
+        <p id="cv-error" style="display:none; color:#E24B4A; font-size:0.8rem;
+                                text-align:center; margin:0; font-family:'DM Sans',sans-serif;">
+          Incorrect code. Please try again.
+        </p>
+      </div>
+    </div>
+
+    <!-- ══ CV CONTENT ════════════════════════════════════════════════ -->
+    <div id="cv-content" style="display:none;">
+
+      <!-- ── SECTION 1: Hero (dark) ──────────────────────────────── -->
+      <section class="cv-dark-section cv-hero-section">
+        <div class="container cv-hero-grid">
+
+          <div class="cv-hero-left">
+            <h1 class="cv-name">Mithul Mistry</h1>
+            <p class="cv-job-title">Senior SEO Manager</p>
+            <p class="cv-subtitle">Technical SEO · Strategy · AI Search · Measurement</p>
+            <div class="cv-contact-row">
+              <span>📍 Stockport, UK</span>
+              <span>📞 07886 315620</span>
+              <span>✉️ mithul.mistry@gmail.com</span>
+              <span>🌐 mmseo.co.uk</span>
+              <span>LinkedIn: linkedin.com/in/mithul-mistry</span>
+            </div>
+          </div>
+
+          <div class="cv-hero-right">
+            <a
+              id="download-cv"
+              href="/mithul-mistry-cv.pdf"
+              download="Mithul-Mistry-CV-MM-SEO.pdf"
+              class="btn-primary cv-download-btn"
+            >
+              ↓ Download PDF
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── SECTION 2: Stats strip (chalk) ─────────────────────── -->
+      <section class="cv-stats-strip">
+        <div class="container cv-stats-grid">
+          <div class="cv-stat-block">
+            <div class="cv-stat-number">18+</div>
+            <div class="cv-stat-label">Years in SEO</div>
+          </div>
+          <div class="cv-stat-block">
+            <div class="cv-stat-number">552%</div>
+            <div class="cv-stat-label">Organic revenue growth in 6 months</div>
+          </div>
+          <div class="cv-stat-block">
+            <div class="cv-stat-number">125%</div>
+            <div class="cv-stat-label">Organic traffic increase</div>
+          </div>
+          <div class="cv-stat-block">
+            <div class="cv-stat-number">99.5%</div>
+            <div class="cv-stat-label">Revenue growth (eCommerce)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 3: Profile + Expertise (dark) ──────────────── -->
+      <section class="cv-dark-section cv-profile-section section-pad">
+        <div class="container cv-profile-grid">
+
+          <div class="cv-profile-left">
+            <p class="eyebrow">Profile</p>
+            <p class="cv-profile-text">
+              Senior SEO leader with 18 years of experience across agency and consultancy environments,
+              delivering technical, content, and strategic SEO programmes for eCommerce, lead generation,
+              and multi-site brands. Strong track record of aligning SEO with commercial outcomes, leading
+              cross-functional execution, raising delivery standards, and translating complex search work
+              into clear business impact.
+            </p>
+          </div>
+
+          <div class="cv-profile-right">
+            <div class="cv-pill-group">
+              <h3 class="cv-pill-heading">Core Expertise</h3>
+              <div class="cv-pills">
+                {expertise.map(tag => <span class="cv-pill">{tag}</span>)}
+              </div>
+            </div>
+            <div class="cv-pill-group">
+              <h3 class="cv-pill-heading">Working Style</h3>
+              <div class="cv-pills">
+                {workingStyle.map(tag => <span class="cv-pill">{tag}</span>)}
+              </div>
+            </div>
+            <div class="cv-pill-group">
+              <h3 class="cv-pill-heading">Sector Exposure</h3>
+              <div class="cv-pills">
+                {sectorExposure.map(tag => <span class="cv-pill">{tag}</span>)}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── SECTION 4: Selected Results callout (chalk) ─────────── -->
+      <section class="cv-light-section cv-callout-section section-pad">
+        <div class="container">
+          <div class="cv-callout-card">
+            <p class="cv-callout-text">
+              "Developed and implemented the organic strategy for Illuminated Mirrors — delivering a
+              125% increase in organic traffic and 552% revenue growth within the first 6 months."
+            </p>
+            <p class="cv-callout-attr">After Digital / Illuminated Mirrors</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 5: Experience (dark) ───────────────────────── -->
+      <section class="cv-dark-section cv-experience-section section-pad">
+        <div class="container">
+          <p class="eyebrow">Experience</p>
+          <div class="cv-timeline">
+            {experience.map((role, i) => (
+              <div class="cv-experience-item">
+                <div class="cv-role-header">
+                  <p class="cv-company">{role.company}</p>
+                  <h3 class="cv-role-title">{role.role}</h3>
+                  <p class="cv-dates">{role.dates}</p>
+                </div>
+                <ul class="cv-bullets">
+                  {role.bullets.map(b => <li>{b}</li>)}
+                </ul>
+                {i < experience.length - 1 && <hr class="cv-rule" />}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SECTION 6: Education + Tools (chalk) ───────────────── -->
+      <section class="cv-light-section section-pad">
+        <div class="container cv-edu-grid">
+
+          <div class="cv-edu-left">
+            <h3 class="cv-edu-heading">Education</h3>
+            <p class="cv-edu-degree">BSc Multimedia Technology (2:2)</p>
+            <p class="cv-edu-uni">University of Huddersfield, 2003–2006</p>
+          </div>
+
+          <div class="cv-edu-right">
+            <h3 class="cv-edu-heading">Tools</h3>
+            <div class="cv-pills">
+              {tools.map(t => <span class="cv-pill cv-pill-light">{t}</span>)}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Footer CTA (dark) ───────────────────────────────────── -->
+      <section class="cv-dark-section section-pad">
+        <div class="container cv-cta-inner">
+          <h2 class="cv-cta-heading">Interested in working together?</h2>
+          <a href="/#contact" class="btn-primary">Get in Touch</a>
+        </div>
+      </section>
+
+    </div>
+    <!-- /#cv-content -->
+
+  </main>
+
+  <Footer />
+
+</Base>
+
+<style>
+  /* ── Hero ─────────────────────────────────────────────────────────── */
+  .cv-hero-section {
+    padding-top: calc(68px + clamp(3rem, 6vw, 5rem));
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .cv-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .cv-hero-grid {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+  }
+
+  .cv-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    margin-bottom: 0.5rem;
+  }
+
+  .cv-job-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    color: #FF6826;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .cv-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.5);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .cv-contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.5);
+  }
+
+  .cv-hero-right {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .cv-hero-right {
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+
+  .cv-download-btn {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── Stats strip ──────────────────────────────────────────────────── */
+  .cv-stats-strip {
+    background-color: var(--chalk);
+    color: var(--ink);
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .cv-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .cv-stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .cv-stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .cv-stat-number {
+    font-family: 'DM Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    line-height: 1;
+    color: var(--accent-dk);
+    letter-spacing: -0.02em;
+  }
+
+  .cv-stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── Profile section ──────────────────────────────────────────────── */
+  .cv-profile-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 900px) {
+    .cv-profile-grid {
+      grid-template-columns: 5fr 4fr;
+      gap: 4rem;
+    }
+  }
+
+  .cv-profile-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 1.3vw, 1.0625rem);
+    color: rgba(248, 247, 242, 0.75);
+    line-height: 1.8;
+    max-width: 60ch;
+    margin-top: 0.75rem;
+  }
+
+  .cv-pill-group {
+    margin-bottom: 2rem;
+  }
+
+  .cv-pill-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .cv-pill-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.72rem;
+    color: rgba(248, 247, 242, 0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .cv-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cv-pill {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.8);
+    white-space: nowrap;
+    line-height: 1.5;
+  }
+
+  /* Pills on light background */
+  .cv-pill-light {
+    border-color: rgba(10, 10, 15, 0.2);
+    color: rgba(10, 10, 15, 0.7);
+  }
+
+  /* ── Callout section ──────────────────────────────────────────────── */
+  .cv-callout-section {
+    background-color: var(--chalk);
+  }
+
+  .cv-callout-card {
+    background: #fff;
+    border-left: 4px solid var(--accent);
+    padding: 2rem 2.25rem 2rem 2.5rem;
+    border-radius: 0 4px 4px 0;
+    max-width: 840px;
+    box-shadow: 0 4px 24px rgba(10, 10, 15, 0.07);
+  }
+
+  .cv-callout-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    color: var(--ink);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .cv-callout-attr {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* ── Experience section ───────────────────────────────────────────── */
+  .cv-timeline {
+    margin-top: 2rem;
+  }
+
+  .cv-experience-item {
+    padding: 0;
+  }
+
+  .cv-role-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .cv-company {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+
+  .cv-role-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.375rem;
+  }
+
+  .cv-dates {
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.38);
+    margin: 0;
+  }
+
+  .cv-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .cv-bullets li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.7);
+    line-height: 1.65;
+    padding-left: 1.375rem;
+    position: relative;
+  }
+
+  .cv-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 104, 38, 0.45);
+    font-size: 0.75rem;
+    top: 0.35em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .cv-rule {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    margin-block: 2.5rem;
+  }
+
+  /* ── Education section ────────────────────────────────────────────── */
+  .cv-edu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .cv-edu-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .cv-edu-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.875rem;
+  }
+
+  .cv-edu-degree {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .cv-edu-uni {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Footer CTA ───────────────────────────────────────────────────── */
+  .cv-cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    text-align: center;
+  }
+
+  .cv-cta-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    color: #fff;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+
+  /* ── Section backgrounds ──────────────────────────────────────────── */
+  .cv-dark-section {
+    background-color: var(--ink);
+    color: var(--chalk);
+  }
+
+  .cv-light-section {
+    background-color: var(--chalk);
+    color: var(--ink);
+  }
+
+  /* ── Task 3: Print stylesheet ─────────────────────────────────────── */
+  @media print {
+    #cv-gate  { display: none !important; }
+    #cv-content { display: block !important; }
+    nav, footer, #download-cv { display: none !important; }
+
+    body { background: white !important; }
+
+    .cv-dark-section {
+      background: #0A0A0F !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .cv-experience-item { page-break-inside: avoid; }
+    .cv-stats-strip     { page-break-inside: avoid; }
+
+    @page {
+      margin: 0;
+      size: A4;
+    }
+  }
+</style>
+
+<script>
+  const PASS = 'mmseo2025';
+
+  function showCV() {
+    const gate    = document.getElementById('cv-gate');
+    const content = document.getElementById('cv-content');
+    if (gate)    gate.style.display    = 'none';
+    if (content) content.style.display = 'block';
+  }
+
+  function checkAccess() {
+    if (sessionStorage.getItem('cv_access') === 'true') {
+      showCV();
+      return;
+    }
+    const gate    = document.getElementById('cv-gate');
+    const content = document.getElementById('cv-content');
+    if (gate)    gate.style.display    = 'flex';
+    if (content) content.style.display = 'none';
+  }
+
+  function attemptAccess() {
+    const input = document.getElementById('cv-password') as HTMLInputElement | null;
+    const error = document.getElementById('cv-error');
+    if (!input) return;
+    if (input.value === PASS) {
+      sessionStorage.setItem('cv_access', 'true');
+      showCV();
+    } else {
+      if (error) error.style.display = 'block';
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    checkAccess();
+
+    document.getElementById('cv-submit')?.addEventListener('click', attemptAccess);
+
+    (document.getElementById('cv-password') as HTMLInputElement | null)
+      ?.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter') attemptAccess();
+      });
+  });
+</script>
