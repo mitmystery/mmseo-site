@@ -745,12 +745,15 @@ const year = new Date().getFullYear();
     color: var(--ink);
   }
 
-  /* ── Print stylesheet ─────────────────────────────────────────────── */
+  /* ── Print stylesheet (also used by Puppeteer PDF via emulateMediaType) ── */
   @media print {
-    #cv-gate    { display: none !important; }
-    #cv-content { display: block !important; }
-    nav, #download-cv { display: none !important; }
+    /* ── Visibility ── */
+    #cv-gate                    { display: none !important; }
+    #cv-content                 { display: block !important; }
+    #site-nav, #nav-overlay,
+    #download-cv                { display: none !important; }
 
+    /* ── Backgrounds ── */
     body { background: white !important; }
 
     .cv-dark-section {
@@ -759,8 +762,90 @@ const year = new Date().getFullYear();
       print-color-adjust: exact;
     }
 
+    .cv-stats-strip,
+    .cv-light-section {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Hero: strip nav clearance ── */
+    .cv-hero-section {
+      padding-top: 1.75rem !important;
+      padding-bottom: 1.25rem !important;
+    }
+
+    .cv-name        { font-size: 2rem !important; margin-bottom: 0.2rem !important; }
+    .cv-job-title   { font-size: 1.125rem !important; margin-bottom: 0.2rem !important; }
+    .cv-subtitle    { font-size: 0.8125rem !important; margin-bottom: 0.75rem !important; }
+    .cv-contact-row { font-size: 0.75rem !important; gap: 0.25rem 1rem !important; }
+
+    /* ── Section padding ── */
+    .section-pad {
+      padding-top:    1.25rem !important;
+      padding-bottom: 1.25rem !important;
+    }
+
+    /* ── Stats strip ── */
+    .cv-stats-strip { padding-block: 0.875rem !important; }
+    .cv-stat-number { font-size: 2rem !important; }
+    .cv-stat-label  { font-size: 0.72rem !important; }
+
+    /* ── Profile section ── */
+    .cv-profile-grid {
+      grid-template-columns: 5fr 4fr !important;
+      gap: 2rem !important;
+    }
+
+    .cv-profile-text {
+      font-size: 0.8125rem !important;
+      line-height: 1.55 !important;
+      margin-top: 0.375rem !important;
+    }
+
+    .cv-pill-group  { margin-bottom: 0.75rem !important; }
+    .cv-pill        { padding: 0.15rem 0.5rem !important; font-size: 0.69rem !important; }
+    .cv-pills       { gap: 0.3rem !important; }
+
+    /* ── Selected Results ── */
+    .cv-results-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.75rem !important;
+      margin-top: 0.75rem !important;
+    }
+
+    .cv-result-card    { padding: 0.875rem !important; gap: 0.5rem !important; }
+    .cv-result-metrics { padding-top: 0.5rem !important; }
+    .cv-result-value   { font-size: 1.0625rem !important; }
+    .cv-result-label   { font-size: 0.69rem !important; }
+    .cv-result-summary { font-size: 0.79rem !important; line-height: 1.5 !important; }
+    .cv-result-client  { font-size: 0.9375rem !important; }
+    .cv-result-sector  { font-size: 0.75rem !important; }
+
+    /* ── Experience ── */
+    .cv-timeline    { margin-top: 0.75rem !important; }
+    .cv-rule        { margin-block: 0.625rem !important; }
+    .cv-role-header { margin-bottom: 0.35rem !important; }
+    .cv-role-title  { font-size: 0.9375rem !important; margin-bottom: 0.15rem !important; }
+    .cv-company     { font-size: 0.67rem !important; margin-bottom: 0.1rem !important; }
+    .cv-dates       { font-size: 0.72rem !important; }
+    .cv-bullets     { gap: 0.15rem !important; }
+    .cv-bullets li  { font-size: 0.78rem !important; line-height: 1.4 !important; padding-left: 1rem !important; }
+
+    /* ── Education ── */
+    .cv-edu-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 2rem !important;
+    }
+
+    .cv-edu-heading { font-size: 0.875rem !important; margin-bottom: 0.5rem !important; }
+    .cv-edu-degree  { font-size: 0.875rem !important; }
+    .cv-edu-uni     { font-size: 0.8125rem !important; }
+
+    /* ── CV footer ── */
+    .cv-footer { padding-block: 0.625rem !important; }
+
+    /* ── Page breaks ── */
     .cv-experience-item { page-break-inside: avoid; }
-    .cv-stats-strip     { page-break-inside: avoid; }
     .cv-result-card     { page-break-inside: avoid; }
 
     @page {
