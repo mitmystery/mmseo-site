@@ -10,7 +10,6 @@
 
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
 
 const expertise = [
   'SEO strategy', 'Technical SEO', 'Site migrations', 'AI search / GEO',
@@ -24,12 +23,30 @@ const workingStyle = [
   'Structured thinking', 'Mentoring, QA, and delivery leadership',
 ];
 
-const sectorExposure = [
-  'eCommerce', 'Professional services', 'Education',
-  'Cultural organisations', 'Multi-site and lead generation brands',
-];
-
 const tools = ['GA4', 'Google Search Console', 'Ahrefs', 'Screaming Frog', 'Sitebulb'];
+
+const caseStudies = [
+  {
+    client: 'Illuminated Mirrors',
+    sector: 'eCommerce',
+    summary: 'Full technical audit, content rewrite around search intent, blog strategy, and targeted link building — delivered within the first 6 months of engagement.',
+    metrics: [
+      { value: '+125%', label: 'Organic traffic' },
+      { value: '+552%', label: 'Organic revenue' },
+      { value: '75+',   label: 'Page 1 rankings' },
+    ],
+  },
+  {
+    client: 'Number 1 Plates',
+    sector: 'Automotive eCommerce',
+    summary: 'In-depth technical audit identifying crawl issues and content gaps, followed by a comprehensive keyword strategy backed by competitor and persona research.',
+    metrics: [
+      { value: '+95%',   label: 'Organic traffic' },
+      { value: '+99.5%', label: 'Revenue growth' },
+      { value: 'Top 3',  label: 'Core product keywords' },
+    ],
+  },
+];
 
 const experience = [
   {
@@ -95,10 +112,12 @@ const experience = [
     ],
   },
 ];
+
+const year = new Date().getFullYear();
 ---
 
 <Base
-  title="CV — Mithul Mistry | MM SEO"
+  title="CV — Mithul Mistry | Senior SEO Manager"
   description="Mithul Mistry — Senior SEO Manager. 18 years experience. CV available on request."
   canonical="https://www.mmseo.co.uk/cv/"
   noindex={true}
@@ -162,7 +181,6 @@ const experience = [
               <span>📍 Stockport, UK</span>
               <span>📞 07886 315620</span>
               <span>✉️ mithul.mistry@gmail.com</span>
-              <span>🌐 mmseo.co.uk</span>
               <span>LinkedIn: linkedin.com/in/mithul-mistry</span>
             </div>
           </div>
@@ -193,12 +211,12 @@ const experience = [
             <div class="cv-stat-label">Organic revenue growth in 6 months</div>
           </div>
           <div class="cv-stat-block">
-            <div class="cv-stat-number">125%</div>
-            <div class="cv-stat-label">Organic traffic increase</div>
-          </div>
-          <div class="cv-stat-block">
             <div class="cv-stat-number">99.5%</div>
             <div class="cv-stat-label">Revenue growth (eCommerce)</div>
+          </div>
+          <div class="cv-stat-block">
+            <div class="cv-stat-number">125%</div>
+            <div class="cv-stat-label">Organic traffic increase</div>
           </div>
         </div>
       </section>
@@ -231,26 +249,33 @@ const experience = [
                 {workingStyle.map(tag => <span class="cv-pill">{tag}</span>)}
               </div>
             </div>
-            <div class="cv-pill-group">
-              <h3 class="cv-pill-heading">Sector Exposure</h3>
-              <div class="cv-pills">
-                {sectorExposure.map(tag => <span class="cv-pill">{tag}</span>)}
-              </div>
-            </div>
           </div>
 
         </div>
       </section>
 
-      <!-- ── SECTION 4: Selected Results callout (chalk) ─────────── -->
-      <section class="cv-light-section cv-callout-section section-pad">
+      <!-- ── SECTION 4: Selected Results (chalk) ────────────────── -->
+      <section class="cv-light-section section-pad">
         <div class="container">
-          <div class="cv-callout-card">
-            <p class="cv-callout-text">
-              "Developed and implemented the organic strategy for Illuminated Mirrors — delivering a
-              125% increase in organic traffic and 552% revenue growth within the first 6 months."
-            </p>
-            <p class="cv-callout-attr">After Digital / Illuminated Mirrors</p>
+          <p class="eyebrow eyebrow-dark">Selected Results</p>
+          <div class="cv-results-grid">
+            {caseStudies.map(cs => (
+              <div class="cv-result-card">
+                <div class="cv-result-header">
+                  <p class="cv-result-client">{cs.client}</p>
+                  <p class="cv-result-sector">{cs.sector}</p>
+                </div>
+                <p class="cv-result-summary">{cs.summary}</p>
+                <div class="cv-result-metrics">
+                  {cs.metrics.map(m => (
+                    <div class="cv-result-metric">
+                      <span class="cv-result-value">{m.value}</span>
+                      <span class="cv-result-label">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -297,20 +322,17 @@ const experience = [
         </div>
       </section>
 
-      <!-- ── Footer CTA (dark) ───────────────────────────────────── -->
-      <section class="cv-dark-section section-pad">
-        <div class="container cv-cta-inner">
-          <h2 class="cv-cta-heading">Interested in working together?</h2>
-          <a href="/#contact" class="btn-primary">Get in Touch</a>
+      <!-- ── Minimal CV footer ───────────────────────────────────── -->
+      <footer class="cv-footer cv-dark-section">
+        <div class="container">
+          <p class="cv-footer-copy">&copy; {year} Mithul Mistry</p>
         </div>
-      </section>
+      </footer>
 
     </div>
     <!-- /#cv-content -->
 
   </main>
-
-  <Footer />
 
 </Base>
 
@@ -492,41 +514,99 @@ const experience = [
     line-height: 1.5;
   }
 
-  /* Pills on light background */
   .cv-pill-light {
     border-color: rgba(10, 10, 15, 0.2);
     color: rgba(10, 10, 15, 0.7);
   }
 
-  /* ── Callout section ──────────────────────────────────────────────── */
-  .cv-callout-section {
-    background-color: var(--chalk);
+  /* ── Eyebrow on light background ─────────────────────────────────── */
+  .eyebrow-dark {
+    color: var(--accent-dk);
   }
 
-  .cv-callout-card {
+  /* ── Selected Results ─────────────────────────────────────────────── */
+  .cv-results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 760px) {
+    .cv-results-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .cv-result-card {
     background: #fff;
-    border-left: 4px solid var(--accent);
-    padding: 2rem 2.25rem 2rem 2.5rem;
-    border-radius: 0 4px 4px 0;
-    max-width: 840px;
-    box-shadow: 0 4px 24px rgba(10, 10, 15, 0.07);
+    border: 1px solid rgba(10, 10, 15, 0.08);
+    border-radius: 0.5rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
   }
 
-  .cv-callout-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: clamp(1rem, 1.6vw, 1.125rem);
+  .cv-result-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .cv-result-client {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.0625rem;
     color: var(--ink);
-    line-height: 1.75;
-    font-style: italic;
-    margin-bottom: 1rem;
+    margin: 0;
   }
 
-  .cv-callout-attr {
-    font-family: 'DM Mono', monospace;
+  .cv-result-sector {
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.8125rem;
     color: var(--muted);
-    font-weight: 500;
     margin: 0;
+  }
+
+  .cv-result-summary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(10, 10, 15, 0.65);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .cv-result-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding-top: 1.125rem;
+    border-top: 1px solid rgba(10, 10, 15, 0.08);
+    margin-top: auto;
+  }
+
+  .cv-result-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .cv-result-value {
+    font-family: 'DM Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    color: var(--accent-dk);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .cv-result-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--muted);
+    line-height: 1.4;
   }
 
   /* ── Experience section ───────────────────────────────────────────── */
@@ -641,21 +721,16 @@ const experience = [
     margin: 0;
   }
 
-  /* ── Footer CTA ───────────────────────────────────────────────────── */
-  .cv-cta-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.75rem;
-    text-align: center;
+  /* ── CV-specific footer ───────────────────────────────────────────── */
+  .cv-footer {
+    padding-block: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .cv-cta-heading {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-    color: #fff;
-    letter-spacing: -0.025em;
+  .cv-footer-copy {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: rgba(248, 247, 242, 0.3);
     margin: 0;
   }
 
@@ -670,11 +745,11 @@ const experience = [
     color: var(--ink);
   }
 
-  /* ── Task 3: Print stylesheet ─────────────────────────────────────── */
+  /* ── Print stylesheet ─────────────────────────────────────────────── */
   @media print {
-    #cv-gate  { display: none !important; }
+    #cv-gate    { display: none !important; }
     #cv-content { display: block !important; }
-    nav, footer, #download-cv { display: none !important; }
+    nav, #download-cv { display: none !important; }
 
     body { background: white !important; }
 
@@ -686,6 +761,7 @@ const experience = [
 
     .cv-experience-item { page-break-inside: avoid; }
     .cv-stats-strip     { page-break-inside: avoid; }
+    .cv-result-card     { page-break-inside: avoid; }
 
     @page {
       margin: 0;
