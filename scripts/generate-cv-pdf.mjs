@@ -1,29 +1,82 @@
 /**
  * generate-cv-pdf.mjs
  *
- * Pre-generates /public/mithul-mistry-cv.pdf from the built CV page.
- * Run via: npm run generate-cv  (builds site first, then runs this)
+ * Serves the built dist/ via a local HTTP server so all assets (fonts, CSS,
+ * /_astro/* bundles) resolve correctly — file:// breaks absolute paths.
  *
- * The PDF is static — regenerate whenever CV content changes.
- * Committed to /public/ so it deploys with the site.
+ * Run via: npm run generate-cv  (builds site first, then runs this)
  */
 
 import puppeteer from 'puppeteer';
-import { fileURLToPath } from 'url';
+import http from 'http';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distDir   = path.join(__dirname, '../dist');
 
+// ── Minimal static file server ──────────────────────────────────────────────
+const MIME = {
+  '.html':  'text/html; charset=utf-8',
+  '.css':   'text/css',
+  '.js':    'application/javascript',
+  '.woff2': 'font/woff2',
+  '.woff':  'font/woff',
+  '.ttf':   'font/ttf',
+  '.png':   'image/png',
+  '.jpg':   'image/jpeg',
+  '.webp':  'image/webp',
+  '.svg':   'image/svg+xml',
+  '.ico':   'image/x-icon',
+  '.json':  'application/json',
+  '.xml':   'application/xml',
+  '.txt':   'text/plain',
+};
+
+function startServer() {
+  return new Promise((resolve) => {
+    const server = http.createServer((req, res) => {
+      let urlPath  = req.url.split('?')[0];
+      let filePath = path.join(distDir, urlPath);
+
+      // Directory → index.html
+      if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+        filePath = path.join(filePath, 'index.html');
+      }
+
+      if (!fs.existsSync(filePath)) {
+        res.writeHead(404);
+        res.end('Not found');
+        return;
+      }
+
+      const ext = path.extname(filePath).toLowerCase();
+      res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
+      fs.createReadStream(filePath).pipe(res);
+    });
+
+    // Port 0 = OS picks a free port
+    server.listen(0, '127.0.0.1', () => resolve(server));
+  });
+}
+
+// ── Main ─────────────────────────────────────────────────────────────────────
 async function generateCVPdf() {
-  const cvPath    = path.join(__dirname, '../dist/cv/index.html');
+  const cvHtmlPath = path.join(distDir, 'cv/index.html');
   const outputPath = path.join(__dirname, '../public/mithul-mistry-cv.pdf');
 
-  if (!fs.existsSync(cvPath)) {
+  if (!fs.existsSync(cvHtmlPath)) {
     console.error('❌  Built CV not found. Run npm run build first.');
-    console.error('    Expected:', cvPath);
+    console.error('    Expected:', cvHtmlPath);
     process.exit(1);
   }
+
+  // Serve dist/ so absolute paths (/fonts/, /_astro/, etc.) all resolve
+  const server = await startServer();
+  const { port } = server.address();
+  const cvUrl = `http://127.0.0.1:${port}/cv/`;
+  console.log(`Serving dist/ on :${port}`);
 
   console.log('Launching browser…');
   const browser = await puppeteer.launch({
@@ -31,52 +84,50 @@ async function generateCVPdf() {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
-  const page = await browser.newPage();
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1200, height: 900 });
 
-  // Set a large viewport so nothing is clipped
-  await page.setViewport({ width: 1200, height: 900 });
+    console.log('Loading CV…');
+    await page.goto(cvUrl, { waitUntil: 'networkidle0', timeout: 30000 });
 
-  console.log('Loading CV…');
-  await page.goto(`file://${cvPath}`, { waitUntil: 'networkidle0' });
+    // Bypass gate + strip navigation chrome for a clean PDF
+    await page.evaluate(() => {
+      document.getElementById('cv-gate')?.remove();
+      document.getElementById('nav-overlay')?.remove();
+      document.getElementById('site-nav')?.remove();
+      document.getElementById('cookie-banner')?.remove();
 
-  // Bypass the gate and strip chrome elements for a clean PDF
-  await page.evaluate(() => {
-    const gate        = document.getElementById('cv-gate');
-    const content     = document.getElementById('cv-content');
-    const downloadBtn = document.getElementById('download-cv');
-    const siteNav     = document.getElementById('site-nav');
-    const mobileOverlay = document.getElementById('nav-overlay');
-    const siteFooter  = document.querySelector('footer');
-    const cookieBanner = document.getElementById('cookie-banner');
+      const content     = document.getElementById('cv-content');
+      const downloadBtn = document.getElementById('download-cv');
+      const siteFooter  = document.querySelector('footer');
 
-    if (gate)         gate.remove();
-    if (content)      content.style.display = 'block';
-    if (downloadBtn)  downloadBtn.style.display = 'none';
-    if (siteNav)      siteNav.remove();
-    if (mobileOverlay) mobileOverlay.remove();
-    if (siteFooter)   siteFooter.remove();
-    if (cookieBanner) cookieBanner.remove();
-  });
+      if (content)     content.style.display     = 'block';
+      if (downloadBtn) downloadBtn.style.display  = 'none';
+      if (siteFooter)  siteFooter.style.display   = 'none';
+    });
 
-  // Allow fonts to render
-  await new Promise(resolve => setTimeout(resolve, 1200));
+    // Allow fonts + layout to settle
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-  console.log('Generating PDF…');
-  await page.pdf({
-    path: outputPath,
-    format: 'A4',
-    printBackground: true,
-    margin: { top: '0', right: '0', bottom: '0', left: '0' },
-    displayHeaderFooter: false,
-  });
+    console.log('Generating PDF…');
+    await page.pdf({
+      path: outputPath,
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '0', right: '0', bottom: '0', left: '0' },
+      displayHeaderFooter: false,
+    });
 
-  await browser.close();
+    const size = (fs.statSync(outputPath).size / 1024).toFixed(0);
+    console.log(`✓ PDF generated: public/mithul-mistry-cv.pdf  (${size} KB)`);
+    if (parseInt(size, 10) > 500) {
+      console.warn('⚠  PDF is larger than 500 KB — check for large embedded images.');
+    }
 
-  const size = (fs.statSync(outputPath).size / 1024).toFixed(0);
-  console.log(`✓ PDF generated: public/mithul-mistry-cv.pdf  (${size} KB)`);
-
-  if (parseInt(size, 10) > 500) {
-    console.warn('⚠  PDF is larger than 500 KB. Check for embedded images.');
+  } finally {
+    await browser.close();
+    server.close();
   }
 }
 
