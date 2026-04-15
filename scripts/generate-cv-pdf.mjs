@@ -105,6 +105,7 @@ async function generateCVPdf() {
       if (content) content.style.display = 'block';
 
       document.getElementById('download-cv')?.remove();
+      document.querySelector('.cv-footer')?.remove();
 
       // Remove Building with AI section — covered in profile; full version on website.
       document.querySelector('.cv-building-section')?.remove();
