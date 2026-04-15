@@ -302,7 +302,110 @@ const year = new Date().getFullYear();
         </div>
       </section>
 
-      <!-- ── SECTION 6: Education + Tools (chalk) ───────────────── -->
+      <!-- ── SECTION 6: Building with AI (chalk) ──────────────── -->
+      <section class="cv-light-section cv-building-section section-pad">
+        <div class="container">
+
+          <p class="eyebrow eyebrow-dark">Beyond Consulting</p>
+          <h2 class="cv-building-heading">Building with AI</h2>
+          <p class="cv-building-intro">
+            Alongside client work, I've been exploring how far AI-assisted development can go in the hands of someone with deep domain knowledge but no formal engineering background. The result is a suite of live SEO tools and a published iOS app — built entirely using Claude Code and vibe coding, shipped and used by real people.
+          </p>
+
+          <!-- SUB-SECTION: SEO Tools Suite -->
+          <h3 class="cv-sub-heading">SEO Tools Suite</h3>
+          <p class="cv-sub-intro">Seven browser-based SEO tools built with Claude Code — each solving a specific, real workflow problem. All are live and publicly accessible.</p>
+
+          <div class="cv-tools-grid">
+            <div class="cv-tool-card">
+              <span class="cv-tool-category cv-tool-category--onpage">On-Page</span>
+              <p class="cv-tool-name">Internal Linking Finder</p>
+              <p class="cv-tool-desc">Discovers internal linking opportunities across a site to strengthen topical authority and improve crawlability.</p>
+            </div>
+            <div class="cv-tool-card">
+              <span class="cv-tool-category cv-tool-category--technical">Technical</span>
+              <p class="cv-tool-name">URL Status Checker</p>
+              <p class="cv-tool-desc">Bulk-checks HTTP status codes and redirect chains for any list of URLs, fast and without leaving the browser.</p>
+            </div>
+            <div class="cv-tool-card">
+              <span class="cv-tool-category cv-tool-category--onpage">On-Page</span>
+              <p class="cv-tool-name">Schema Opportunity Finder</p>
+              <p class="cv-tool-desc">Identifies missing structured data opportunities on any page to boost rich-result eligibility in search.</p>
+            </div>
+            <div class="cv-tool-card">
+              <span class="cv-tool-category cv-tool-category--technical">Technical</span>
+              <p class="cv-tool-name">GTM Inspector</p>
+              <p class="cv-tool-desc">Audits Google Tag Manager setups — inspects tags, triggers, and variables firing on any URL.</p>
+            </div>
+            <div class="cv-tool-card">
+              <span class="cv-tool-category cv-tool-category--research">Research</span>
+              <p class="cv-tool-name">Keyword Cluster</p>
+              <p class="cv-tool-desc">Groups keyword lists into semantic clusters automatically, making content planning faster and more strategic.</p>
+            </div>
+            <div class="cv-tool-card">
+              <span class="cv-tool-category cv-tool-category--technical">Technical</span>
+              <p class="cv-tool-name">Robots.txt Validator</p>
+              <p class="cv-tool-desc">Validates and debugs robots.txt files — checks syntax, tests URL matching, and catches crawl-blocking mistakes.</p>
+            </div>
+            <div class="cv-tool-card">
+              <span class="cv-tool-category cv-tool-category--technical">Technical</span>
+              <p class="cv-tool-name">AI Bot Access Tester</p>
+              <p class="cv-tool-desc">Tests whether AI bots and crawlers can access a site — verifies bot permissions, user-agent rules, and crawl accessibility.</p>
+            </div>
+          </div>
+
+          <p class="cv-tools-note">All tools built using Claude Code. No prior software engineering background.</p>
+
+          <!-- Divider -->
+          <hr class="cv-building-rule" />
+
+          <!-- SUB-SECTION: iOS App -->
+          <h3 class="cv-sub-heading">iOS App — Exercise Snacks: Desk Breaks</h3>
+
+          <div class="cv-app-card">
+            <div class="cv-app-left">
+              <span class="cv-tool-category cv-tool-category--app">App Store · iOS</span>
+              <p class="cv-app-title">Exercise Snacks: Desk Breaks</p>
+              <p class="cv-app-body">
+                A science-backed iOS app that prompts office workers to take brief movement breaks — typically 10 bodyweight squats — at regular intervals throughout the workday. Built to demonstrate how far AI-assisted development can go without a traditional engineering background.
+              </p>
+              <p class="cv-app-body" style="margin-top:0.75rem;">
+                The app is grounded in peer-reviewed research (Gao et al., 2024) showing that short bouts of bodyweight exercise reduce postprandial blood glucose by 21% — equivalent to frequent walking breaks. It features 30 guided exercises with custom Lottie animations, three notification modes, streak tracking, and a compassionate gamification system inspired by Gentler Streak.
+              </p>
+              <p class="cv-app-tech">Built with Expo / React Native using Claude Code. Designed, developed, and published independently — no agency, no engineering team.</p>
+            </div>
+            <div class="cv-app-right">
+              <div class="cv-app-stats">
+                <div class="cv-app-stat">
+                  <span class="cv-app-stat-value">30</span>
+                  <span class="cv-app-stat-label">Guided exercises</span>
+                </div>
+                <div class="cv-app-stat">
+                  <span class="cv-app-stat-value">21%</span>
+                  <span class="cv-app-stat-label">Blood glucose reduction (clinical evidence)</span>
+                </div>
+                <div class="cv-app-stat">
+                  <span class="cv-app-stat-value">3</span>
+                  <span class="cv-app-stat-label">Notification modes</span>
+                </div>
+                <div class="cv-app-stat">
+                  <span class="cv-app-stat-value">£49.99</span>
+                  <span class="cv-app-stat-label">Premium annual subscription</span>
+                </div>
+              </div>
+              <p class="cv-app-store-note">Available on the Apple App Store</p>
+            </div>
+          </div>
+
+          <!-- Closing sentence -->
+          <p class="cv-building-close">
+            These projects represent a deliberate effort to stay at the frontier of what's possible for a practitioner — not just advising clients on AI and search, but building with it.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ── SECTION 7: Education + Tools (chalk) ───────────────── -->
       <section class="cv-light-section section-pad">
         <div class="container cv-edu-grid">
 
@@ -719,6 +822,223 @@ const year = new Date().getFullYear();
     font-size: 0.875rem;
     color: var(--muted);
     margin: 0;
+  }
+
+  /* ── Building with AI section ────────────────────────────────────── */
+  .cv-building-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cv-building-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  .cv-sub-heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.625rem;
+  }
+
+  .cv-sub-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+  }
+
+  .cv-tools-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .cv-tools-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .cv-tool-card {
+    background: #fff;
+    border: 1px solid rgba(10, 10, 15, 0.10);
+    border-radius: 2px;
+    padding: 1.125rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .cv-tool-category {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 2px;
+    margin-bottom: 0.35rem;
+    width: fit-content;
+  }
+
+  .cv-tool-category--technical {
+    color: #FF6826;
+    background: rgba(255, 104, 38, 0.09);
+  }
+
+  .cv-tool-category--onpage {
+    color: #FF6826;
+    background: rgba(255, 104, 38, 0.09);
+  }
+
+  .cv-tool-category--research {
+    color: #FF6826;
+    background: rgba(255, 104, 38, 0.09);
+  }
+
+  .cv-tool-category--app {
+    color: #FF6826;
+    background: rgba(255, 104, 38, 0.09);
+  }
+
+  .cv-tool-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .cv-tool-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .cv-tools-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.875rem;
+    margin-bottom: 0;
+  }
+
+  .cv-building-rule {
+    border: none;
+    border-top: 1px solid rgba(10, 10, 15, 0.10);
+    margin-block: 2.5rem;
+  }
+
+  /* ── iOS App featured card ────────────────────────────────────────── */
+  .cv-app-card {
+    background: #fff;
+    border-left: 3px solid #FF6826;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 720px) {
+    .cv-app-card {
+      grid-template-columns: 3fr 2fr;
+      gap: 2.5rem;
+    }
+  }
+
+  .cv-app-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0.5rem 0 0.875rem;
+    line-height: 1.3;
+  }
+
+  .cv-app-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cv-app-tech {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  .cv-app-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+
+  .cv-app-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .cv-app-stat-value {
+    font-family: 'DM Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #FF6826;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .cv-app-stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .cv-app-store-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  /* ── Closing sentence ─────────────────────────────────────────────── */
+  .cv-building-close {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    line-height: 1.7;
   }
 
   /* ── CV-specific footer ───────────────────────────────────────────── */
