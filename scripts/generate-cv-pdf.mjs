@@ -94,7 +94,7 @@ async function generateCVPdf() {
     // Allow fonts to load
     await new Promise(resolve => setTimeout(resolve, 800));
 
-    // 1. Show content, strip chrome elements
+    // 1. Show content, strip chrome elements, replace Building with AI cards with compact text
     await page.evaluate(() => {
       document.getElementById('cv-gate')?.remove();
       document.getElementById('site-nav')?.remove();
@@ -104,23 +104,38 @@ async function generateCVPdf() {
       const content = document.getElementById('cv-content');
       if (content) content.style.display = 'block';
 
-      const downloadBtn = document.getElementById('download-cv');
-      if (downloadBtn) downloadBtn.style.display = 'none';
+      document.getElementById('download-cv')?.remove();
+
+      // Remove Building with AI section — covered in profile; full version on website.
+      document.querySelector('.cv-building-section')?.remove();
+
+      // Hide 3rd profile paragraph (AI work — covered by Building with AI on website)
+      const profileParas = document.querySelectorAll('.cv-profile-text');
+      if (profileParas.length >= 3) profileParas[2].remove();
+
+      // Keep 4 cards (2x2 grid): Gulf, Witter, Number1Plates, Illuminated Mirrors
+      // Remove Kingsmead (index 2) — "Full" and "Clear" metric values look weak in print
+      const resultCards = document.querySelectorAll('.cv-result-card');
+      resultCards[2]?.remove();
     });
 
-    // 2. Inject compact layout styles.
-    //    Font sizes are kept large so they remain readable at scale: 0.75 in page.pdf().
-    //    At scale 0.75: 1rem CSS (16px) → 12px → ~9pt in PDF — minimum readable.
+    // 2. Inject compact layout styles
     await page.addStyleTag({ content: `
-      /* ── Hero: remove nav clearance ── */
+      /* ── Page break controls ── */
+      .cv-experience-item  { page-break-inside: avoid; }
+      .cv-result-card      { page-break-inside: avoid; }
+      .cv-building-section { page-break-inside: avoid; }
+      .cv-edu-grid         { page-break-inside: avoid; }
+
+      /* ── Hero ── */
       .cv-hero-section {
         padding-top:    0.75rem !important;
         padding-bottom: 0.5rem !important;
       }
-      .cv-name        { font-size: 2rem !important;    margin-bottom: 0.15rem !important; }
-      .cv-job-title   { font-size: 1.25rem !important; margin-bottom: 0.15rem !important; }
-      .cv-subtitle    { font-size: 0.9375rem !important; margin-bottom: 0.4rem !important; }
-      .cv-contact-row { font-size: 0.8125rem !important; gap: 0.15rem 0.875rem !important; }
+      .cv-name         { font-size: 2rem !important;      margin-bottom: 0.15rem !important; }
+      .cv-job-title    { font-size: 1.25rem !important;   margin-bottom: 0.15rem !important; }
+      .cv-subtitle     { font-size: 0.9375rem !important; margin-bottom: 0.4rem !important; }
+      .cv-contact-row  { font-size: 0.8125rem !important; gap: 0.15rem 0.875rem !important; }
       .cv-download-btn { display: none !important; }
 
       /* ── All section-pad sections ── */
@@ -133,7 +148,7 @@ async function generateCVPdf() {
       .cv-stats-strip { padding-block: 0.375rem !important; }
       .cv-stats-grid  { gap: 0.5rem !important; }
       .cv-stat-number { font-size: 1.75rem !important; }
-      .cv-stat-label  { font-size: 0.8125rem !important; }
+      .cv-stat-label  { font-size: 0.75rem !important; white-space: nowrap !important; }
 
       /* ── Profile ── */
       .cv-profile-grid {
@@ -141,14 +156,14 @@ async function generateCVPdf() {
         gap: 1.25rem !important;
       }
       .cv-profile-text {
-        font-size:   0.9375rem !important;
-        line-height: 1.5 !important;
-        margin-top:  0.25rem !important;
+        font-size:   0.9rem !important;
+        line-height: 1.45 !important;
+        margin-top:  0.2rem !important;
       }
       .cv-pill-group   { margin-bottom: 0.5rem !important; }
       .cv-pill-heading { margin-bottom: 0.35rem !important; }
       .cv-pills        { gap: 0.2rem !important; }
-      .cv-pill         { padding: 0.15rem 0.45rem !important; }
+      .cv-pill         { padding: 0.15rem 0.45rem !important; font-size: 0.75rem !important; }
 
       /* ── Selected Results ── */
       .cv-results-grid {
@@ -159,27 +174,32 @@ async function generateCVPdf() {
       .cv-result-card    { padding: 0.625rem !important; gap: 0.3rem !important; }
       .cv-result-metrics { padding-top: 0.375rem !important; gap: 0.375rem !important; }
       .cv-result-value   { font-size: 1.125rem !important; }
-      .cv-result-summary { font-size: 0.875rem !important; line-height: 1.45 !important; }
+      .cv-result-summary { font-size: 0.8125rem !important; line-height: 1.4 !important; }
+      .cv-result-label   { font-size: 0.7rem !important; }
 
       /* ── Experience ── */
       .cv-timeline    { margin-top: 0.5rem !important; }
       .cv-rule        { margin-block: 0.375rem !important; }
       .cv-role-header { margin-bottom: 0.25rem !important; }
-      .cv-role-title  { font-size: 1rem !important;     margin-bottom: 0.1rem !important; }
-      .cv-company     { font-size: 0.75rem !important;  margin-bottom: 0.05rem !important; }
-      .cv-dates       { font-size: 0.8125rem !important; }
+      .cv-role-title  { font-size: 1rem !important;      margin-bottom: 0.1rem !important; }
+      .cv-company     { font-size: 0.7rem !important;    margin-bottom: 0.05rem !important; }
+      .cv-dates       { font-size: 0.75rem !important; }
       .cv-bullets     { gap: 0.1rem !important; }
       .cv-bullets li  {
-        font-size:    0.875rem !important;
-        line-height:  1.38 !important;
+        font-size:    0.8125rem !important;
+        line-height:  1.35 !important;
         padding-left: 1rem !important;
       }
+
 
       /* ── Education ── */
       .cv-edu-grid {
         grid-template-columns: 1fr 1fr !important;
-        gap: 1.25rem !important;
+        gap: 0.75rem !important;
       }
+      .cv-edu-heading  { font-size: 0.875rem !important; margin-bottom: 0.35rem !important; }
+      .cv-edu-degree   { font-size: 0.875rem !important; }
+      .cv-edu-uni      { font-size: 0.8rem !important; }
 
       /* ── Eyebrow labels ── */
       .eyebrow { margin-bottom: 0.375rem !important; }
@@ -189,14 +209,14 @@ async function generateCVPdf() {
     `});
 
     // Allow layout to reflow after style injection
-    await new Promise(resolve => setTimeout(resolve, 400));
+    await new Promise(resolve => setTimeout(resolve, 600));
 
     console.log('Generating PDF…');
     await page.pdf({
       path: outputPath,
       format: 'A4',
       printBackground: true,
-      scale: 0.9,
+      scale: 0.88,
       margin: { top: '0', right: '0', bottom: '0', left: '0' },
       displayHeaderFooter: false,
     });
