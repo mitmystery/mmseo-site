@@ -178,6 +178,7 @@ async function generateCVPdf() {
       .cv-result-label   { font-size: 0.7rem !important; }
 
       /* ── Experience ── */
+      .cv-experience-section { page-break-before: always; }
       .cv-timeline    { margin-top: 0.5rem !important; }
       .cv-rule        { margin-block: 0.375rem !important; }
       .cv-role-header { margin-bottom: 0.25rem !important; }
