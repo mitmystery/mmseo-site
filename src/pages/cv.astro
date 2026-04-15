@@ -27,23 +27,53 @@ const tools = ['GA4', 'Google Search Console', 'Ahrefs', 'Screaming Frog', 'Site
 
 const caseStudies = [
   {
-    client: 'Illuminated Mirrors',
-    sector: 'eCommerce',
-    summary: 'Full technical audit, content rewrite around search intent, blog strategy, and targeted link building — delivered within the first 6 months of engagement.',
+    client: 'Gulf Oil International',
+    sector: 'Global B2C / Lubricants',
+    summary: 'Shifted Gulf from heavy brand-search reliance to broad organic visibility. Content strategy repositioned the brand as a practical advice resource for everyday drivers, with technical improvements supporting global reach.',
     metrics: [
-      { value: '+125%', label: 'Organic traffic' },
-      { value: '+552%', label: 'Organic revenue' },
-      { value: '75+',   label: 'Page 1 rankings' },
+      { value: '+30%',  label: 'YoY organic clicks' },
+      { value: '6.1M',  label: 'Total impressions' },
+      { value: '+43%',  label: 'Top 3 keyword rankings' },
+    ],
+  },
+  {
+    client: 'Witter Towbars',
+    sector: 'Automotive / Manufacturing',
+    summary: 'Full SEO overhaul addressing technical blockers, on-page targeting, and a link-building programme to grow domain authority. Turned an underperforming site into a lead-generation asset.',
+    metrics: [
+      { value: '+110%', label: 'Organic traffic' },
+      { value: '+186%', label: 'Backlink growth' },
+      { value: '+103%', label: 'Keyword rankings' },
+    ],
+  },
+  {
+    client: 'Kingsmead Carpets',
+    sector: 'Home / Manufacturing',
+    summary: 'SEO was not part of the original site build. Full audit uncovered critical crawlability and structural issues. Rebuilt site architecture from scratch and delivered a clear optimisation roadmap.',
+    metrics: [
+      { value: '+250%', label: 'Organic traffic' },
+      { value: 'Full',  label: 'Architecture rebuild' },
+      { value: 'Clear', label: 'Long-term SEO roadmap' },
     ],
   },
   {
     client: 'Number 1 Plates',
     sector: 'Automotive eCommerce',
-    summary: 'In-depth technical audit identifying crawl issues and content gaps, followed by a comprehensive keyword strategy backed by competitor and persona research.',
+    summary: 'Technical audit identifying crawl issues and content gaps, followed by a keyword strategy backed by competitor and persona research.',
     metrics: [
       { value: '+95%',   label: 'Organic traffic' },
       { value: '+99.5%', label: 'Revenue growth' },
       { value: 'Top 3',  label: 'Core product keywords' },
+    ],
+  },
+  {
+    client: 'Illuminated Mirrors',
+    sector: 'eCommerce',
+    summary: 'Technical audit, content rewrite around search intent, blog strategy, and targeted link building. Results delivered within the first 6 months.',
+    metrics: [
+      { value: '+125%', label: 'Organic traffic' },
+      { value: '+552%', label: 'Organic revenue' },
+      { value: '75+',   label: 'Page 1 rankings' },
     ],
   },
 ];
@@ -54,31 +84,28 @@ const experience = [
     role: 'Senior SEO Manager',
     dates: 'Sep 2020 – Present',
     bullets: [
-      'Develop and lead SEO strategies across high-value accounts, aligning technical, content, and authority work to commercial objectives.',
-      'Own technical audits and implementation planning; work closely with dev, content, and paid teams to improve delivery quality.',
-      'Manage client relationships, portfolio budgets, QA standards, and mentoring for junior SEOs.',
-      'Introduced AI-search readiness thinking alongside core SEO delivery.',
+      'Lead SEO across a portfolio of high-value accounts, owning strategy through to delivery across technical, content, and authority workstreams.',
+      'Delivered measurable growth for clients including Gulf Oil International (+30% YoY clicks, 43% uplift in Top 3 rankings), Witter Towbars (+110% organic traffic, +186% backlinks), and Kingsmead Carpets (+250% organic traffic following a full architecture rebuild).',
+      'Run technical audits and implementation planning; work closely with development and content teams to remove blockers and raise delivery quality.',
+      'Manage client relationships, QA standards, and mentoring for junior team members.',
+      'Introduced AI search readiness frameworks alongside core SEO delivery, including structured data and content positioning for AI Overviews.',
     ],
   },
   {
-    company: 'Powerful Vision Ltd',
-    role: 'SEO Manager',
+    company: 'Powerful Vision Ltd (Illuminated Mirrors)',
+    role: 'In-house SEO Manager',
     dates: 'Aug 2018 – Jul 2020',
     bullets: [
-      'Led end-to-end SEO campaigns that delivered material revenue growth across client accounts.',
-      'Worked directly with C-level stakeholders to align SEO priorities with wider business goals.',
-      'Managed cross-functional delivery spanning developers and marketing specialists.',
+      'Moved in-house to Illuminated Mirrors following the agency engagement that had delivered 125% organic traffic growth and 552% revenue uplift.',
+      'Owned ongoing SEO strategy end-to-end, working directly with the founders to align search priorities with trading and product objectives.',
+      'Managed development, content, and marketing teams to maintain and build on the gains achieved during the agency phase.',
     ],
   },
   {
     company: 'Platform81',
     role: 'SEO Manager',
     dates: 'Aug 2017 – Aug 2018',
-    bullets: [
-      'Built a comprehensive SEO service framework from the ground up.',
-      'Provided strategic direction to internal teams, improving delivery consistency and campaign performance.',
-      'Optimised existing client campaigns to improve results and satisfaction.',
-    ],
+    bullets: [],
   },
   {
     company: 'After Digital',
@@ -292,9 +319,11 @@ const year = new Date().getFullYear();
                   <h3 class="cv-role-title">{role.role}</h3>
                   <p class="cv-dates">{role.dates}</p>
                 </div>
-                <ul class="cv-bullets">
-                  {role.bullets.map(b => <li>{b}</li>)}
-                </ul>
+                {role.bullets.length > 0 && (
+                  <ul class="cv-bullets">
+                    {role.bullets.map(b => <li>{b}</li>)}
+                  </ul>
+                )}
                 {i < experience.length - 1 && <hr class="cv-rule" />}
               </div>
             ))}
