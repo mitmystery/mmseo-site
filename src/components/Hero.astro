@@ -25,7 +25,7 @@
       </h1>
 
       <p class="hero-sub">
-        I'm Mithul Mistry, a freelance SEO consultant with 18 years of
+        I'm a freelance SEO consultant with 18 years of
         experience turning underperforming websites into traffic and revenue
         machines. No agency bloat. Just expert SEO, direct from the source.
       </p>
@@ -45,23 +45,6 @@
           <li>Country House Wedding Venues</li>
         </ul>
       </div>
-    </div>
-
-    <!-- ── Right: headshot ────────────────────────────────── -->
-    <div class="hero-photo-wrap">
-      <picture>
-        <source srcset="/mithul-mistry.webp" type="image/webp" />
-        <img
-          src="/mithul-mistry.jpg"
-          alt="Mithul Mistry, Freelance SEO Consultant based in Stockport"
-          class="hero-photo"
-          width="800"
-          height="800"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </picture>
     </div>
 
   </div>
@@ -88,7 +71,7 @@
 
   @media (min-width: 900px) {
     .hero-inner {
-      grid-template-columns: 56fr 44fr;
+      grid-template-columns: 1fr;
       gap: 3rem;
       min-height: calc(100svh - 68px);
     }
@@ -160,36 +143,4 @@
     margin-inline: 0.35rem;
   }
 
-  /* ── Photo ───────────────────────────────────────────────── */
-  .hero-photo-wrap {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  @media (min-width: 900px) {
-    .hero-photo-wrap {
-      justify-content: flex-end;
-      align-self: flex-end;
-    }
-  }
-
-  .hero-photo {
-    width: 100%;
-    max-width: 360px;
-    height: auto;
-    mix-blend-mode: luminosity;
-    filter: contrast(1.05) brightness(0.95);
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  }
-
-  @media (min-width: 900px) {
-    .hero-photo {
-      max-width: 100%;
-      max-height: calc(100svh - 68px);
-      object-fit: cover;
-      object-position: top center;
-    }
-  }
 </style>
