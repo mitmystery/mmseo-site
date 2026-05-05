@@ -3,9 +3,48 @@ import ServicePage from '../layouts/ServicePage.astro';
 import ContactForm from '../components/ContactForm.astro';
 ---
 
+<script type="application/ld+json" is:inline>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is included in a technical SEO audit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A technical SEO audit covers crawlability and indexation, Core Web Vitals (LCP, CLS, INP), site architecture, structured data, site speed, mobile usability, HTTPS setup, duplicate content, and internal linking. You receive a prioritised action plan explaining each issue in plain language and how to fix it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a technical SEO audit take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most small to medium business websites, a comprehensive technical SEO audit takes 3–5 days to complete. Larger eCommerce sites or those with complex architectures may take 7–10 days. You'll receive a full report with prioritised recommendations at the end."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can technical SEO issues cause ranking drops?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — many ranking drops are caused by technical issues rather than content or link-related factors. Common culprits include accidental noindex tags, redirect chains diluting link equity, canonicalisation errors, and Core Web Vitals failures. Technical SEO should be the first thing investigated when rankings unexpectedly fall."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need ongoing technical SEO or is a one-off audit enough?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A one-off audit is a great starting point that surfaces the issues currently holding your site back. Ongoing technical SEO makes sense for sites that publish frequently, run major development projects, or need continuous monitoring for crawl errors, indexation problems, and Core Web Vitals regressions. I offer both."
+      }
+    }
+  ]
+}</script>
+
 <ServicePage
-  title="Technical SEO Consultant Manchester & Stockport | MM SEO"
-  description="Expert technical SEO from MM SEO — 18 years experience. Crawl audits, Core Web Vitals, site speed and indexation fixes. Based in Stockport, serving Manchester & UK."
+  title="Technical SEO Consultant Stockport & Manchester | MM SEO"
+  description="Freelance technical SEO consultant in Stockport. Crawl audits, Core Web Vitals fixes, indexation issues — 18 years experience. Free consultation, no contracts."
   canonical="https://www.mmseo.co.uk/technical-seo/"
   breadcrumb="Technical SEO"
 >
@@ -143,7 +182,94 @@ import ContactForm from '../components/ContactForm.astro';
     </div>
   </section>
 
-  <!-- ── 6. Contact CTA ───────────────────────────────────────── -->
+  <!-- ── 6. FAQ (light) ──────────────────────────────────────── -->
+  <section class="sp-content section-light">
+    <div class="container sp-content-inner reveal">
+      <h2 class="sp-h2">Frequently Asked Questions</h2>
+
+      <dl class="page-faq-list">
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-0" id="pfaq-btn-0">
+              <span class="page-faq-question">What is included in a technical SEO audit?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-0" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-0" hidden>
+            <div class="page-faq-answer-inner">
+              <p>A technical SEO audit covers crawlability and indexation, Core Web Vitals (LCP, CLS, INP), site architecture, structured data, site speed, mobile usability, HTTPS setup, duplicate content, and internal linking. You receive a prioritised action plan explaining each issue in plain language and how to fix it.</p>
+            </div>
+          </dd>
+        </div>
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-1" id="pfaq-btn-1">
+              <span class="page-faq-question">How long does a technical SEO audit take?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-1" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-1" hidden>
+            <div class="page-faq-answer-inner">
+              <p>For most small to medium business websites, a comprehensive technical SEO audit takes 3–5 days to complete. Larger eCommerce sites or those with complex architectures may take 7–10 days. You'll receive a full report with prioritised recommendations at the end.</p>
+            </div>
+          </dd>
+        </div>
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-2" id="pfaq-btn-2">
+              <span class="page-faq-question">Can technical SEO issues cause ranking drops?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-2" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-2" hidden>
+            <div class="page-faq-answer-inner">
+              <p>Yes — many ranking drops are caused by technical issues rather than content or link-related factors. Common culprits include accidental noindex tags, redirect chains diluting link equity, canonicalisation errors, and Core Web Vitals failures. Technical SEO should be the first thing investigated when rankings unexpectedly fall.</p>
+            </div>
+          </dd>
+        </div>
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-3" id="pfaq-btn-3">
+              <span class="page-faq-question">Do I need ongoing technical SEO or is a one-off audit enough?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-3" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-3" hidden>
+            <div class="page-faq-answer-inner">
+              <p>A one-off audit is a great starting point that surfaces the issues currently holding your site back. Ongoing technical SEO makes sense for sites that publish frequently, run major development projects, or need continuous monitoring for crawl errors, indexation problems, and Core Web Vitals regressions. I offer both.</p>
+            </div>
+          </dd>
+        </div>
+
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── 7. Contact CTA ───────────────────────────────────────── -->
   <ContactForm />
 
 </ServicePage>
@@ -310,6 +436,68 @@ import ContactForm from '../components/ContactForm.astro';
   }
   .sp-inline-link:hover { color: var(--accent-dk); }
 
+  /* ── Page FAQ ────────────────────────────────────────────────── */
+  .page-faq-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .page-faq-item { border-bottom: 1px solid var(--border-light); }
+  .page-faq-item:first-child { border-top: 1px solid var(--border-light); }
+  .page-faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.375rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    cursor: pointer;
+    text-align: left;
+  }
+  .page-faq-question {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    color: var(--ink);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .page-faq-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-dk);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .page-faq-trigger:hover .page-faq-icon {
+    background-color: rgba(10, 10, 15, 0.04);
+    border-color: rgba(10, 10, 15, 0.2);
+  }
+  .pfaq-icon-v {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+  .page-faq-trigger[aria-expanded="true"] .pfaq-icon-v {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+  .page-faq-answer-inner { padding-bottom: 1.375rem; }
+  .page-faq-answer-inner p {
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    color: rgba(10, 10, 15, 0.7);
+    line-height: 1.75;
+    max-width: 65ch;
+  }
+
   /* ── Scroll reveal ───────────────────────────────────────────── */
   .reveal {
     opacity: 0;
@@ -329,4 +517,21 @@ import ContactForm from '../components/ContactForm.astro';
     { threshold: 0.12 }
   );
   revealEls.forEach(el => io.observe(el));
+
+  const pageFaqTriggers = document.querySelectorAll<HTMLButtonElement>('.page-faq-trigger');
+  pageFaqTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      const answerId = trigger.getAttribute('aria-controls')!;
+      const answer = document.getElementById(answerId)!;
+      pageFaqTriggers.forEach((t) => {
+        if (t !== trigger) {
+          t.setAttribute('aria-expanded', 'false');
+          document.getElementById(t.getAttribute('aria-controls')!)!.hidden = true;
+        }
+      });
+      trigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      answer.hidden = expanded;
+    });
+  });
 </script>

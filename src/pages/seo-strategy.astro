@@ -3,9 +3,48 @@ import ServicePage from '../layouts/ServicePage.astro';
 import ContactForm from '../components/ContactForm.astro';
 ---
 
+<script type="application/ld+json" is:inline>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to develop an SEO strategy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A thorough SEO strategy typically takes 2–3 weeks to develop from scratch. This includes a technical audit, competitor analysis, keyword research, content gap analysis, and the roadmap itself. For clients with urgent timelines, a lighter version can be delivered faster — but rushing strategy usually costs more time in execution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does an SEO strategy deliverable look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The output is a prioritised action plan covering technical fixes, content opportunities, and off-page work, with timelines and expected outcomes for each area. It's designed to be acted on immediately — either by me, your in-house team, or a combination of both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I have an SEO strategy before doing any SEO work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Without a clear strategy, SEO activity tends to be fragmented and slow to produce results. The strategy defines what to work on first, why, and in what order. Even a light strategy document is better than starting with tactics and hoping they add up to something."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should an SEO strategy be reviewed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO strategies should be reviewed quarterly at minimum. The search landscape changes — competitors update their sites, Google rolls out algorithm updates, and your own business goals may shift. A good strategy is a living document that evolves as the data develops, not a one-time report."
+      }
+    }
+  ]
+}</script>
+
 <ServicePage
-  title="SEO Strategy Consultant Manchester | MM SEO"
-  description="Bespoke SEO strategy from an experienced freelance consultant. Clear, actionable roadmaps tailored to your business goals and search landscape. Manchester & UK."
+  title="SEO Strategy Consultant Stockport & Manchester | MM SEO"
+  description="Freelance SEO strategy consultant in Stockport. Competitor analysis, keyword research and clear prioritised roadmaps. Free consultation — Manchester & UK."
   canonical="https://www.mmseo.co.uk/seo-strategy/"
   breadcrumb="SEO Strategy"
 >
@@ -212,7 +251,94 @@ import ContactForm from '../components/ContactForm.astro';
     </div>
   </section>
 
-  <!-- ── 5. Contact CTA ───────────────────────────────────────── -->
+  <!-- ── 9. Page FAQ (light) ──────────────────────────────────── -->
+  <section class="sp-content section-light">
+    <div class="container sp-content-inner reveal">
+      <h2 class="sp-h2">Frequently Asked Questions</h2>
+
+      <dl class="page-faq-list">
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-0" id="pfaq-btn-0">
+              <span class="page-faq-question">How long does it take to develop an SEO strategy?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-0" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-0" hidden>
+            <div class="page-faq-answer-inner">
+              <p>A thorough SEO strategy typically takes 2–3 weeks to develop from scratch. This includes a technical audit, competitor analysis, keyword research, content gap analysis, and the roadmap itself. For clients with urgent timelines, a lighter version can be delivered faster — but rushing strategy usually costs more time in execution.</p>
+            </div>
+          </dd>
+        </div>
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-1" id="pfaq-btn-1">
+              <span class="page-faq-question">What does an SEO strategy deliverable look like?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-1" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-1" hidden>
+            <div class="page-faq-answer-inner">
+              <p>The output is a prioritised action plan covering technical fixes, content opportunities, and off-page work, with timelines and expected outcomes for each area. It's designed to be acted on immediately — either by me, your in-house team, or a combination of both.</p>
+            </div>
+          </dd>
+        </div>
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-2" id="pfaq-btn-2">
+              <span class="page-faq-question">Should I have an SEO strategy before doing any SEO work?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-2" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-2" hidden>
+            <div class="page-faq-answer-inner">
+              <p>Yes. Without a clear strategy, SEO activity tends to be fragmented and slow to produce results. The strategy defines what to work on first, why, and in what order. Even a light strategy document is better than starting with tactics and hoping they add up to something.</p>
+            </div>
+          </dd>
+        </div>
+
+        <div class="page-faq-item">
+          <dt>
+            <button class="page-faq-trigger" aria-expanded="false" aria-controls="pfaq-3" id="pfaq-btn-3">
+              <span class="page-faq-question">How often should an SEO strategy be reviewed?</span>
+              <span class="page-faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="pfaq-icon-v"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd id="pfaq-3" class="page-faq-answer" role="region" aria-labelledby="pfaq-btn-3" hidden>
+            <div class="page-faq-answer-inner">
+              <p>SEO strategies should be reviewed quarterly at minimum. The search landscape changes — competitors update their sites, Google rolls out algorithm updates, and your own business goals may shift. A good strategy is a living document that evolves as the data develops, not a one-time report.</p>
+            </div>
+          </dd>
+        </div>
+
+      </dl>
+    </div>
+  </section>
+
+  <!-- ── 10. Contact CTA ──────────────────────────────────────── -->
   <ContactForm />
 
 </ServicePage>
@@ -379,6 +505,68 @@ import ContactForm from '../components/ContactForm.astro';
     font-style: normal;
   }
 
+  /* ── Page FAQ ────────────────────────────────────────────────── */
+  .page-faq-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .page-faq-item { border-bottom: 1px solid var(--border-light); }
+  .page-faq-item:first-child { border-top: 1px solid var(--border-light); }
+  .page-faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.375rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    cursor: pointer;
+    text-align: left;
+  }
+  .page-faq-question {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    color: var(--ink);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .page-faq-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-dk);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .page-faq-trigger:hover .page-faq-icon {
+    background-color: rgba(10, 10, 15, 0.04);
+    border-color: rgba(10, 10, 15, 0.2);
+  }
+  .pfaq-icon-v {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+  .page-faq-trigger[aria-expanded="true"] .pfaq-icon-v {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+  .page-faq-answer-inner { padding-bottom: 1.375rem; }
+  .page-faq-answer-inner p {
+    font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+    color: rgba(10, 10, 15, 0.7);
+    line-height: 1.75;
+    max-width: 65ch;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -397,4 +585,21 @@ import ContactForm from '../components/ContactForm.astro';
     { threshold: 0.12 }
   );
   revealEls.forEach(el => io.observe(el));
+
+  const pageFaqTriggers = document.querySelectorAll<HTMLButtonElement>('.page-faq-trigger');
+  pageFaqTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      const answerId = trigger.getAttribute('aria-controls')!;
+      const answer = document.getElementById(answerId)!;
+      pageFaqTriggers.forEach((t) => {
+        if (t !== trigger) {
+          t.setAttribute('aria-expanded', 'false');
+          document.getElementById(t.getAttribute('aria-controls')!)!.hidden = true;
+        }
+      });
+      trigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      answer.hidden = expanded;
+    });
+  });
 </script>
