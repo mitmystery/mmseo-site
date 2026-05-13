@@ -16,6 +16,13 @@ const homepageSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': 'WebSite',
+      '@id': 'https://www.mmseo.co.uk/#website',
+      'name': 'MM SEO',
+      'url': 'https://www.mmseo.co.uk/',
+      'publisher': { '@id': 'https://www.mmseo.co.uk/#business' },
+    },
+    {
       '@type': ['LocalBusiness', 'ProfessionalService'],
       '@id': 'https://www.mmseo.co.uk/#business',
       'name': 'MM SEO',
@@ -32,14 +39,20 @@ const homepageSchema = {
         { '@type': 'Country', 'name': 'United Kingdom' },
       ],
       'founder': { '@id': 'https://www.mmseo.co.uk/#person' },
+      'sameAs': [
+        'https://www.linkedin.com/in/mithul-mistry/',
+      ],
     },
     {
       '@type': 'Person',
       '@id': 'https://www.mmseo.co.uk/#person',
-      'name': 'MM SEO',
+      'name': 'Mithul Mistry',
       'jobTitle': 'Freelance SEO Consultant',
       'url': 'https://www.mmseo.co.uk/',
       'worksFor': { '@id': 'https://www.mmseo.co.uk/#business' },
+      'sameAs': [
+        'https://www.linkedin.com/in/mithul-mistry/',
+      ],
       'knowsAbout': [
         'SEO', 'Technical SEO', 'Keyword Research', 'Link Building',
         'Local SEO', 'Google Analytics 4', 'Google Search Console',
