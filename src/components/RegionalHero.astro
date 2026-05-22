@@ -1,0 +1,295 @@
+---
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? '67a9b07a-de54-4434-8087-a81079d15921';
+
+interface Props {
+  eyebrow: string;
+  h1: string;
+  intro: string;
+  benefits: string[];
+  location: string;
+}
+
+const { eyebrow, h1, intro, benefits, location } = Astro.props;
+---
+
+<section class="rh-section section-dark">
+  <div class="container rh-inner">
+
+    <!-- Left column: content -->
+    <div class="rh-content reveal">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1 class="rh-h1">{h1}</h1>
+      <p class="rh-intro">{intro}</p>
+      <ul class="rh-benefits" aria-label="Key benefits">
+        {benefits.map(b => <li>{b}</li>)}
+      </ul>
+      <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+    </div>
+
+    <!-- Right column: lead capture form -->
+    <div class="rh-form-wrap reveal reveal-delay-2">
+      <div class="rh-form-card">
+        <p class="rh-form-heading">Get a Free SEO Audit</p>
+        <form id="rh-form" class="rh-form" aria-label="SEO audit request form" novalidate>
+          <input type="hidden" name="access_key"  value={accessKey} />
+          <input type="hidden" name="subject"     value={`New SEO enquiry — ${location}`} />
+          <input type="hidden" name="from_name"   value="MM SEO Website" />
+          <input type="hidden" name="page"        value={location} />
+          <input type="checkbox" name="botcheck"  style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="rh-row">
+            <div class="rh-field">
+              <label for="rh-name">Name <abbr title="required" aria-label="required">*</abbr></label>
+              <input type="text"  id="rh-name"    name="name"    required autocomplete="name"  placeholder="Your name" />
+            </div>
+            <div class="rh-field">
+              <label for="rh-email">Email <abbr title="required" aria-label="required">*</abbr></label>
+              <input type="email" id="rh-email"   name="email"   required autocomplete="email" placeholder="you@example.com" />
+            </div>
+          </div>
+
+          <div class="rh-field">
+            <label for="rh-phone">Phone</label>
+            <input type="tel" id="rh-phone" name="phone" autocomplete="tel" placeholder="07700 000000" />
+          </div>
+
+          <div class="rh-field">
+            <label for="rh-website">Website <abbr title="required" aria-label="required">*</abbr></label>
+            <input type="url" id="rh-website" name="website" required placeholder="https://yoursite.co.uk" />
+          </div>
+
+          <button type="submit" id="rh-submit" class="btn-primary rh-submit">
+            Get My Free Audit
+          </button>
+
+          <div id="rh-success" class="rh-msg rh-msg--ok" hidden role="alert">
+            Message sent — I'll be in touch within 24 hours.
+          </div>
+          <div id="rh-error" class="rh-msg rh-msg--err" hidden role="alert">
+            Something went wrong. Please try again or <a href="#contact">use the form below</a>.
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .rh-section {
+    position: relative;
+    padding-top: clamp(5.5rem, 10vw, 9rem); /* clears fixed nav */
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+    overflow: hidden;
+  }
+
+  .rh-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 860px) {
+    .rh-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+  }
+
+  /* ── Left column ──────────────────────────────────────── */
+  .rh-h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--chalk);
+    margin: 0.75rem 0 1.25rem;
+  }
+
+  .rh-intro {
+    font-size: 1.0625rem;
+    line-height: 1.72;
+    color: rgba(248, 247, 242, 0.7);
+    margin-bottom: 1.75rem;
+  }
+
+  .rh-benefits {
+    list-style: none;
+    margin: 0 0 2.25rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .rh-benefits li {
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.82);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .rh-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.875rem;
+    top: 0.1em;
+  }
+
+  /* ── Form card ────────────────────────────────────────── */
+  .rh-form-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .rh-form-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--chalk);
+    margin-bottom: 1.375rem;
+  }
+
+  .rh-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .rh-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .rh-row { grid-template-columns: 1fr; }
+  }
+
+  .rh-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .rh-field label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(248, 247, 242, 0.58);
+    letter-spacing: 0.02em;
+  }
+
+  .rh-field label abbr {
+    text-decoration: none;
+    color: var(--accent);
+    margin-left: 0.15em;
+  }
+
+  .rh-field input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 0.25rem;
+    padding: 0.75rem 0.875rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: rgba(248, 247, 242, 0.9);
+    width: 100%;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .rh-field input::placeholder {
+    color: rgba(248, 247, 242, 0.25);
+  }
+
+  .rh-field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .rh-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Status messages ──────────────────────────────────── */
+  .rh-msg {
+    font-size: 0.9rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.25rem;
+    line-height: 1.55;
+  }
+
+  .rh-msg--ok {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    color: #86efac;
+  }
+
+  .rh-msg--err {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.22);
+    color: #fca5a5;
+  }
+
+  .rh-msg--err a {
+    color: inherit;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  const form      = document.getElementById('rh-form')    as HTMLFormElement | null;
+  const submitBtn = document.getElementById('rh-submit')  as HTMLButtonElement | null;
+  const success   = document.getElementById('rh-success') as HTMLElement | null;
+  const error     = document.getElementById('rh-error')   as HTMLElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn) return;
+
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.style.display = 'none';
+        if (success) success.hidden = false;
+
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', {
+            event_category: 'contact',
+            event_label: 'regional_hero_form',
+          });
+        }
+        if (typeof (window as any).gtag_report_conversion === 'function') {
+          (window as any).gtag_report_conversion();
+        }
+      } else {
+        throw new Error('failed');
+      }
+    } catch {
+      if (error) error.hidden = false;
+      submitBtn.textContent = 'Get My Free Audit';
+      submitBtn.disabled = false;
+    }
+  });
+</script>

@@ -1,0 +1,260 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import RegionalHero from '../components/RegionalHero.astro';
+import QuickFacts from '../components/QuickFacts.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import Process from '../components/Process.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const facts = [
+  {
+    label: 'Map Pack Click Share',
+    value: '44%',
+    detail: 'Of all local search clicks go to the top 3 Map Pack results — making visibility there critical (BrightLocal 2024)',
+  },
+  {
+    label: 'Mobile Local Searches',
+    value: '76%',
+    detail: 'Of local mobile searches lead to a visit within 24 hours — Manchester businesses need to be findable on mobile first (Google)',
+  },
+  {
+    label: 'GBP Advantage',
+    value: '70% more',
+    detail: 'Visits for businesses with a complete and up-to-date Google Business Profile versus those with incomplete listings (Google)',
+  },
+  {
+    label: 'Review Influence',
+    value: '87%',
+    detail: 'Of consumers read online reviews before choosing a local business — reviews are a direct ranking factor in the Map Pack (BrightLocal 2024)',
+  },
+  {
+    label: 'Local Purchase Intent',
+    value: '28%',
+    detail: 'Of local searches result in a purchase the same day — Manchester local search converts faster than most other channels (Google)',
+  },
+  {
+    label: 'Ranking Timeline',
+    value: '3–6 months',
+    detail: 'Typical timeframe to see meaningful improvements for competitive Manchester local search terms with focused SEO work',
+  },
+];
+---
+
+<script type="application/ld+json" is:inline>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do Manchester businesses need local SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manchester is one of the UK's most competitive local business markets. Whether you're a solicitor in Spinningfields, a restaurant in the Northern Quarter, or a trade in Didsbury, your customers are searching Google before they call. Local SEO ensures your business appears in those searches — in the Map Pack, in organic results, and on the right keywords — without relying on paid ads every month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from your Local SEO service page?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Local SEO service page explains what local SEO is and how it works. This page is specifically for Manchester businesses — it's designed as a starting point if you're based in or targeting Greater Manchester and want to understand whether local SEO is right for you, and to get a free audit scoped to your location."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does local SEO take to work in Manchester?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Business Profile improvements and citation fixes can show movement within 4–8 weeks. Organic local rankings for competitive Manchester terms typically improve meaningfully within 3–6 months of consistent, well-targeted work. The Map Pack is generally faster to influence than organic positions for a new campaign."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a Manchester address to rank locally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For Google Business Profile visibility, yes — you need a verifiable business address in or near Manchester. For organic local SEO, a service-area business without a public premises can still rank for Manchester searches through content strategy, local citations, and structured data. I'll advise on the right approach for your specific situation in the free audit."
+      }
+    }
+  ]
+}</script>
+
+<ServicePage
+  title="SEO Consultant Manchester | Free Local SEO Audit | MM SEO"
+  description="Manchester-based SEO consultant. Rank in local search and the Map Pack, get more enquiries, and grow without paid ads. Free audit for Manchester businesses."
+  canonical="https://www.mmseo.co.uk/seo-manchester/"
+  breadcrumb="SEO Manchester"
+>
+
+  <!-- ── 1. Hero + inline lead form ───────────────────────── -->
+  <RegionalHero
+    eyebrow="SEO Consultant | Manchester & Greater Manchester"
+    h1="SEO for Manchester Businesses: Rank Higher, Win More Customers"
+    intro="If your customers are in Manchester, they're searching Google before they contact you. I help Manchester businesses rank in local search and the Map Pack — generating consistent enquiries without spending on ads every month."
+    benefits={[
+      "Free audit to show exactly where you're losing ground to competitors",
+      'Map Pack and organic local rankings, not just vanity metrics',
+      'No agency overhead — direct expert access, every week',
+      'Transparent reporting you can actually read',
+      'No long-term contracts — stay because results speak for themselves',
+    ]}
+    location="seo-manchester"
+  />
+
+  <!-- ── 2. Quick facts data grid ─────────────────────────── -->
+  <QuickFacts
+    heading="Local Search in Manchester: What the Data Shows"
+    subheading="Understanding the local search landscape helps you see where the opportunity is — and where competitors are already winning."
+    facts={facts}
+  />
+
+  <!-- ── 3. How it works ──────────────────────────────────── -->
+  <Process />
+
+  <!-- ── 4. Mid-page CTA banner ───────────────────────────── -->
+  <CtaBanner
+    heading="Ready to rank in Manchester? Let's talk."
+    subheading="Book a free 30-minute call. No hard sell — just an honest look at what SEO can do for your business."
+    phone="07951 064 235"
+    ctaText="Book a Free Consultation"
+    ctaHref="#contact"
+  />
+
+  <!-- ── 5. Testimonials ──────────────────────────────────── -->
+  <Testimonials />
+
+  <!-- ── 6. Content: why Manchester, differentiation ──────── -->
+  <section class="sp-content section-light">
+    <div class="container sp-content-inner reveal">
+      <h2 class="sp-h2">Local SEO for Manchester Businesses</h2>
+
+      <p>
+        Manchester's business market is large and increasingly competitive.
+        Searches for local services — solicitors, accountants, trades, restaurants,
+        clinics, agencies — are dominated by a mix of Google Business Profiles,
+        Map Pack results, and organic listings. Appearing in the right places for
+        the right searches is the difference between a steady flow of inbound
+        enquiries and an expensive reliance on paid ads.
+      </p>
+
+      <p>
+        I'm a freelance SEO consultant based in Stockport, working with businesses
+        across Greater Manchester — from the city centre to Didsbury, Chorlton,
+        Sale, Altrincham, Salford, and the wider region. I work directly with you,
+        not through account managers or junior staff.
+      </p>
+
+      <h2 class="sp-h2">What Local SEO for Manchester Involves</h2>
+
+      <p>
+        A Manchester local SEO campaign typically covers: Google Business Profile
+        optimisation (the single highest-impact action for most businesses),
+        local keyword research scoped to your actual service area, on-page
+        location signals, citation building and cleanup, and link acquisition from
+        locally relevant sources. I also handle review strategy and structured
+        data to maximise how your listing appears in search.
+      </p>
+
+      <p>
+        The goal is sustainable visibility — rankings that stay because the
+        underlying signals are strong, not because you're running a paid campaign
+        this month.
+      </p>
+
+      <h2 class="sp-h2">Frequently Asked Questions</h2>
+
+      <details class="sp-faq">
+        <summary>Why do Manchester businesses need local SEO?</summary>
+        <p>
+          Manchester is one of the UK's most competitive local business markets.
+          Whether you're a solicitor in Spinningfields, a restaurant in the
+          Northern Quarter, or a trade in Didsbury, your customers are searching
+          Google before they call. Local SEO ensures your business appears in those
+          searches — in the Map Pack, in organic results, and on the right keywords
+          — without relying on paid ads every month.
+        </p>
+      </details>
+
+      <details class="sp-faq">
+        <summary>How long does local SEO take to work in Manchester?</summary>
+        <p>
+          Google Business Profile improvements and citation fixes can show movement
+          within 4–8 weeks. Organic local rankings for competitive Manchester terms
+          typically improve meaningfully within 3–6 months of consistent, targeted
+          work. The Map Pack is generally faster to influence than organic positions.
+        </p>
+      </details>
+
+      <details class="sp-faq">
+        <summary>Do I need a Manchester address to rank locally?</summary>
+        <p>
+          For Google Business Profile visibility, yes — you need a verifiable
+          business address in or near Manchester. For organic local SEO, a
+          service-area business without a public premises can still rank for
+          Manchester searches through content strategy, local citations, and
+          structured data. I'll advise on the right approach for your situation
+          in the free audit.
+        </p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ── 7. Full contact form ─────────────────────────────── -->
+  <ContactForm />
+
+</ServicePage>
+
+<style>
+  .sp-content { padding: 4rem 0; }
+  .sp-content-inner { display: flex; flex-direction: column; gap: 1.5rem; }
+  .sp-h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sp-content p, .sp-content-inner p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(10, 10, 15, 0.8);
+  }
+
+  /* FAQ accordion */
+  .sp-faq {
+    border-top: 1px solid var(--border-light);
+    padding: 1rem 0;
+  }
+  .sp-faq:last-child { border-bottom: 1px solid var(--border-light); }
+  .sp-faq summary {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    list-style: none;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .sp-faq summary::-webkit-details-marker { display: none; }
+  .sp-faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.25rem;
+    color: var(--accent);
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  .sp-faq[open] summary::after { transform: rotate(45deg); }
+  .sp-faq p {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem !important;
+    color: rgba(10, 10, 15, 0.7) !important;
+  }
+</style>
