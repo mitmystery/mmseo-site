@@ -1,0 +1,715 @@
+{
+  "version": "1.0",
+  "schema": "https://entitymap.org/spec/v1.0",
+"publisher": {
+  "name": "MM SEO",
+  "url": "https://www.mmseo.co.uk",
+  "sameAs": "https://www.wikidata.org/wiki/Q140136440"
+},
+  "generated": "2026-06-09T00:00:00Z",
+  "verificationStatus": "generator-draft",
+  "profile": "core",
+  "entities": [
+    {
+      "entityId": "e_001",
+      "@type": "Organization",
+      "name": "MM SEO",
+      "url": "https://www.mmseo.co.uk",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q140136440"
+      ],
+      "description": "Freelance SEO consultancy based in Stockport, Greater Manchester, operated by a senior consultant with 18+ years of experience across agency and in-house digital environments. Serves eCommerce brands, professional services firms, and local businesses across Manchester, Cheshire, and the UK.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_001",
+          "text": "I'm a freelance SEO consultant with 18 years of experience turning underperforming websites into traffic and revenue machines. No agency bloat. Just expert SEO, direct from the source.",
+          "sourceUrl": "https://www.mmseo.co.uk/",
+          "pageTitle": "Freelance SEO Consultant Manchester & Stockport | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.97,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_002",
+          "text": "Most agencies take your money then hand your account to a junior. With MM SEO, you deal directly with me. I'm a senior SEO consultant with 18 years of experience across agency and in-house digital environments in the UK.",
+          "sourceUrl": "https://www.mmseo.co.uk/",
+          "pageTitle": "Freelance SEO Consultant Manchester & Stockport | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.95,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_003",
+          "text": "Based in Stockport — I serve clients across Manchester, Cheshire, and the UK. Whether you're a local business in Stockport or a national brand looking for a freelance SEO consultant who delivers results, I offer the same direct, expert service with no agency layers in between.",
+          "sourceUrl": "https://www.mmseo.co.uk/",
+          "pageTitle": "Freelance SEO Consultant Manchester & Stockport | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.92,
+          "contentType": "definition",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "OFFERS",
+          "targetId": "e_002",
+          "targetName": "SEO Strategy"
+        },
+        {
+          "predicate": "OFFERS",
+          "targetId": "e_009",
+          "targetName": "Link Building"
+        },
+        {
+          "predicate": "OFFERS",
+          "targetId": "e_014",
+          "targetName": "Freelance SEO Consultancy"
+        }
+      ]
+    },
+    {
+      "entityId": "e_002",
+      "@type": "Service",
+      "name": "SEO Strategy",
+      "description": "A bespoke, evidence-based SEO planning service that maps business goals through competitive analysis, keyword research, and content gap analysis to produce a prioritised roadmap of technical, on-page, content, and off-page actions with defined KPIs and timelines.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_004",
+          "text": "A real strategy starts with your business goals, maps the search landscape around them, and produces a prioritised plan of action that connects what you do in month one to where you want to be in month twelve.",
+          "sourceUrl": "https://www.mmseo.co.uk/seo-strategy/",
+          "pageTitle": "SEO Strategy Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.96,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_005",
+          "text": "A proper SEO strategy is not a list of tactics. It is a coherent plan that answers: where are you now, where do you need to get to, what is standing in the way, and in what order should we address it.",
+          "sourceUrl": "https://www.mmseo.co.uk/seo-strategy/",
+          "pageTitle": "SEO Strategy Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.95,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_006",
+          "text": "A one-off SEO strategy engagement typically includes the full audit, competitor analysis, keyword research, and a 6-month prioritised roadmap. An ongoing retainer includes all of that plus monthly execution, reporting, and continuous refinement as the data develops.",
+          "sourceUrl": "https://www.mmseo.co.uk/seo-strategy/",
+          "pageTitle": "SEO Strategy Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.91,
+          "contentType": "definition",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "INCLUDES",
+          "targetId": "e_004",
+          "targetName": "Technical SEO Audit"
+        },
+        {
+          "predicate": "INCLUDES",
+          "targetId": "e_005",
+          "targetName": "Keyword Research"
+        },
+        {
+          "predicate": "DEPENDS_ON",
+          "targetId": "e_003",
+          "targetName": "Technical SEO"
+        }
+      ]
+    },
+    {
+      "entityId": "e_003",
+      "@type": "Concept",
+      "name": "Technical SEO",
+      "description": "The practice of diagnosing and resolving the crawlability, indexation, site speed, structured data, and architecture issues that determine whether search engines can properly discover, interpret, and rank a website's pages.",
+      "maturityStatus": "established",
+      "audienceType": "technical",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_007",
+          "text": "If Google can't properly crawl, interpret, and index your site, no amount of great content or backlinks will get you to page one. I diagnose and fix the technical foundations that underpin every successful SEO campaign.",
+          "sourceUrl": "https://www.mmseo.co.uk/technical-seo/",
+          "pageTitle": "Technical SEO Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.97,
+          "contentType": "definition",
+          "audienceType": "technical"
+        },
+        {
+          "chunkId": "c_008",
+          "text": "Technical SEO is the infrastructure that everything else sits on. You can produce the best content in your industry and earn high-quality backlinks, but if your site has fundamental crawlability or speed issues, Google will struggle to evaluate and reward that work.",
+          "sourceUrl": "https://www.mmseo.co.uk/technical-seo/",
+          "pageTitle": "Technical SEO Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.96,
+          "contentType": "definition",
+          "audienceType": "technical"
+        },
+        {
+          "chunkId": "c_009",
+          "text": "After a technical audit and implementation, clients typically see improvements in crawl coverage, faster indexing of new content, and meaningful lifts in Core Web Vitals scores, all of which feed directly into rankings.",
+          "sourceUrl": "https://www.mmseo.co.uk/technical-seo/",
+          "pageTitle": "Technical SEO Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.93,
+          "contentType": "evidence",
+          "audienceType": "technical"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "COVERS",
+          "targetId": "e_012",
+          "targetName": "Core Web Vitals"
+        },
+        {
+          "predicate": "ENABLES",
+          "targetId": "e_007",
+          "targetName": "On-Page SEO"
+        },
+        {
+          "predicate": "ENABLES",
+          "targetId": "e_010",
+          "targetName": "Local SEO"
+        }
+      ],
+      "sameAs": "https://www.wikidata.org/wiki/Q108680742"
+    },
+    {
+      "entityId": "e_004",
+      "@type": "Methodology",
+      "name": "Technical SEO Audit",
+      "description": "A systematic review of a site's technical health using tools including Screaming Frog, Sitebulb, Google Search Console, and PageSpeed Insights, covering crawlability, Core Web Vitals, architecture, structured data, speed, and mobile usability — producing a prioritised action plan with plain-language recommendations.",
+      "maturityStatus": "established",
+      "audienceType": "technical",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_010",
+          "text": "Using tools including Screaming Frog, Sitebulb, Google Search Console, and PageSpeed Insights, I conduct a systematic review across every critical dimension of your site's technical health. You receive a prioritised action plan, not a raw data dump. Each issue is explained in plain language with a clear recommendation, ranked by the impact it will have on your organic performance.",
+          "sourceUrl": "https://www.mmseo.co.uk/technical-seo/",
+          "pageTitle": "Technical SEO Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.97,
+          "contentType": "procedure",
+          "audienceType": "technical"
+        },
+        {
+          "chunkId": "c_011",
+          "text": "Every strategy starts with understanding where you actually are. I conduct a technical audit of your site, a keyword position baseline, an analysis of your current traffic sources, and a review of your existing content. This gives us a factual starting point — not assumptions.",
+          "sourceUrl": "https://www.mmseo.co.uk/seo-strategy/",
+          "pageTitle": "SEO Strategy Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.9,
+          "contentType": "procedure",
+          "audienceType": "technical"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "ENABLES",
+          "targetId": "e_003",
+          "targetName": "Technical SEO"
+        }
+      ]
+    },
+    {
+      "entityId": "e_005",
+      "@type": "Methodology",
+      "name": "Keyword Research",
+      "description": "The process of identifying and evaluating search terms using tools including Ahrefs, Google Search Console, and Google Keyword Planner — mapping terms to commercial intent, site architecture, and competitive opportunity — used as the strategic foundation that shapes content, page structure, and link acquisition priorities.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_012",
+          "text": "I use a combination of tools: Ahrefs, Google Search Console, Google Keyword Planner, and competitor analysis, to build a complete picture of the search landscape around your business. The goal isn't maximum search volume. It's finding the terms where the intent matches your offer, the competition is beatable within your budget and timeline, and ranking will produce actual enquiries or sales, not just impressions.",
+          "sourceUrl": "https://www.mmseo.co.uk/keyword-research/",
+          "pageTitle": "Keyword Research Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.96,
+          "contentType": "procedure",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_013",
+          "text": "Keyword research isn't a one-time deliverable that sits in a spreadsheet. It's the strategic layer that shapes everything: which pages you build, what content you write, how your site is structured, and where you focus link acquisition.",
+          "sourceUrl": "https://www.mmseo.co.uk/keyword-research/",
+          "pageTitle": "Keyword Research Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.94,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_014",
+          "text": "I also use keyword research to identify content gaps: topics your customers are searching for where you have no presence. These gaps represent some of the highest-value opportunities, especially in competitive markets where going head-to-head on core terms isn't the right first move.",
+          "sourceUrl": "https://www.mmseo.co.uk/keyword-research/",
+          "pageTitle": "Keyword Research Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.91,
+          "contentType": "evidence",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "INCLUDES",
+          "targetId": "e_006",
+          "targetName": "Search Intent Mapping"
+        },
+        {
+          "predicate": "ENABLES",
+          "targetId": "e_007",
+          "targetName": "On-Page SEO"
+        },
+        {
+          "predicate": "ENABLES",
+          "targetId": "e_009",
+          "targetName": "Link Building"
+        }
+      ]
+    },
+    {
+      "entityId": "e_006",
+      "@type": "Concept",
+      "name": "Search Intent Mapping",
+      "description": "The classification of keywords by the underlying motivation of the searcher — informational, navigational, commercial, or transactional — used to determine which page type and content structure Google expects to see for a given query.",
+      "maturityStatus": "established",
+      "audienceType": "technical",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_015",
+          "text": "Search intent mapping: categorising keywords by informational, navigational, commercial, and transactional intent.",
+          "sourceUrl": "https://www.mmseo.co.uk/keyword-research/",
+          "pageTitle": "Keyword Research Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.93,
+          "contentType": "definition",
+          "audienceType": "technical"
+        },
+        {
+          "chunkId": "c_016",
+          "text": "I identify the full keyword universe relevant to your business and map each term to a stage in the customer journey — awareness, consideration, decision. This keyword research determines what content you need to create, what pages need to be optimised, and where to focus first.",
+          "sourceUrl": "https://www.mmseo.co.uk/seo-strategy/",
+          "pageTitle": "SEO Strategy Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.91,
+          "contentType": "definition",
+          "audienceType": "technical"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "ENABLES",
+          "targetId": "e_008",
+          "targetName": "Intent Alignment"
+        }
+      ]
+    },
+    {
+      "entityId": "e_007",
+      "@type": "Concept",
+      "name": "On-Page SEO",
+      "description": "The discipline of optimising individual pages through title tags, meta descriptions, heading structure, content, internal linking, image optimisation, and schema markup so that pages both rank in search engines and convert visitors.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_017",
+          "text": "On-page SEO is the layer of optimisation that sits between your technical foundations and your off-page authority. It ensures that each page on your site is structured to rank and to convert once people arrive.",
+          "sourceUrl": "https://www.mmseo.co.uk/on-page-seo/",
+          "pageTitle": "On-Page SEO Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.96,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_018",
+          "text": "Rankings come from Google understanding exactly what a page is about and trusting that it's the best answer for the searcher. On-page SEO is the discipline of making that case as clearly and compellingly as possible, through structure, content, and signals that are entirely within your control.",
+          "sourceUrl": "https://www.mmseo.co.uk/on-page-seo/",
+          "pageTitle": "On-Page SEO Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.95,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_019",
+          "text": "On-page optimisation also directly supports conversion. Pages that are clear, well-structured, and trust-building convert at higher rates. Every on-page recommendation I make is made with both the crawler and the human visitor in mind.",
+          "sourceUrl": "https://www.mmseo.co.uk/on-page-seo/",
+          "pageTitle": "On-Page SEO Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.9,
+          "contentType": "evidence",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "DEPENDS_ON",
+          "targetId": "e_003",
+          "targetName": "Technical SEO"
+        },
+        {
+          "predicate": "DEPENDS_ON",
+          "targetId": "e_005",
+          "targetName": "Keyword Research"
+        }
+      ]
+    },
+    {
+      "entityId": "e_008",
+      "@type": "ProprietaryTerm",
+      "name": "Intent Alignment",
+      "canonicalLabel": "search intent alignment",
+      "description": "MM SEO's term for the principle of matching a page's type, content depth, and structure to the dominant search intent of its target keyword — identified as the single most important principle in on-page SEO — assessed by auditing each priority page against what Google's top results reveal about the expected page format.",
+      "maturityStatus": "established",
+      "audienceType": "technical",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_020",
+          "text": "The single most important principle in on-page SEO is intent alignment. Google doesn't just match keywords; it matches intent. If someone searches \"best accounting software for small business\" they want a comparison guide, not a product page.",
+          "sourceUrl": "https://www.mmseo.co.uk/on-page-seo/",
+          "pageTitle": "On-Page SEO Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.98,
+          "contentType": "definition",
+          "audienceType": "technical"
+        },
+        {
+          "chunkId": "c_021",
+          "text": "I audit every priority page against its target keyword's dominant intent, informational, commercial, or transactional, and ensure the page type, content depth, and structure all match what Google's top results show us is working. It's a more rigorous approach than most agencies apply, and it produces measurably better outcomes.",
+          "sourceUrl": "https://www.mmseo.co.uk/on-page-seo/",
+          "pageTitle": "On-Page SEO Services UK | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.97,
+          "contentType": "procedure",
+          "audienceType": "technical"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "PART_OF",
+          "targetId": "e_007",
+          "targetName": "On-Page SEO"
+        },
+        {
+          "predicate": "IMPROVES",
+          "targetId": "e_007",
+          "targetName": "On-Page SEO",
+          "confidence": "inferred",
+          "context": {
+            "condition": "produces measurably better outcomes than generic approaches"
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "e_009",
+      "@type": "Service",
+      "name": "Link Building",
+      "description": "The acquisition of quality backlinks through digital PR, blogger and editorial outreach, content-led campaigns, broken link building, and competitor backlink analysis — focused on earning editorial links that build domain authority sustainably and withstand algorithm updates.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_022",
+          "text": "Backlinks remain one of Google's most important ranking signals. But the kind of links that move rankings and stand the test of algorithm updates are the ones earned through genuine relevance and value, not bought in bulk from link farms. I build the kind of authority that compounds over time.",
+          "sourceUrl": "https://www.mmseo.co.uk/off-page-seo/",
+          "pageTitle": "Link Building & Off-Page SEO | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.97,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_023",
+          "text": "The quality and relevance of links matters far more than quantity. A single editorial mention in a well-regarded industry publication is worth more than hundreds of directory listings. My approach is built around this reality.",
+          "sourceUrl": "https://www.mmseo.co.uk/off-page-seo/",
+          "pageTitle": "Link Building & Off-Page SEO | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.94,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_024",
+          "text": "Link building takes time. The results of a link acquisition campaign typically begin to show in rankings after 3–6 months, as Google processes and weighs new links.",
+          "sourceUrl": "https://www.mmseo.co.uk/off-page-seo/",
+          "pageTitle": "Link Building & Off-Page SEO | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.88,
+          "contentType": "evidence",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "DEPENDS_ON",
+          "targetId": "e_003",
+          "targetName": "Technical SEO"
+        },
+        {
+          "predicate": "DEPENDS_ON",
+          "targetId": "e_005",
+          "targetName": "Keyword Research"
+        }
+      ]
+    },
+    {
+      "entityId": "e_010",
+      "@type": "Concept",
+      "name": "Local SEO",
+      "description": "The set of strategies — including Google Business Profile optimisation, local citation building, and geo-targeted content — that helps businesses rank in geographic and near-me searches, with a focus on the local map pack and local organic results.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_025",
+          "text": "Local SEO is the process of optimising your online presence so your business appears when people nearby search for your products or services. Unlike national SEO, local SEO focuses on geo-specific searches — \"SEO consultant near me\", \"hair salon Manchester\", \"solicitor Stockport\" — the kind of searches where proximity and relevance combine to determine who wins the customer.",
+          "sourceUrl": "https://www.mmseo.co.uk/local-seo/",
+          "pageTitle": "Local SEO Stockport & Manchester | Freelance Consultant | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.97,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_026",
+          "text": "The local search ecosystem has three main components: your Google Business Profile, your on-site geo-targeted content, and your local citations and links. All three need to be strong and consistent for you to compete effectively in the map pack and local organic results.",
+          "sourceUrl": "https://www.mmseo.co.uk/local-seo/",
+          "pageTitle": "Local SEO Stockport & Manchester | Freelance Consultant | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.95,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_027",
+          "text": "For service businesses, tradespeople, professional services firms, and local retailers, local SEO is typically the highest-ROI marketing activity available. The searchers are already in buying mode. They know what they want.",
+          "sourceUrl": "https://www.mmseo.co.uk/local-seo/",
+          "pageTitle": "Local SEO Stockport & Manchester | Freelance Consultant | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.91,
+          "contentType": "evidence",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "COVERS",
+          "targetId": "e_011",
+          "targetName": "Google Business Profile Optimisation"
+        },
+        {
+          "predicate": "COVERS",
+          "targetId": "e_013",
+          "targetName": "NAP Consistency"
+        },
+        {
+          "predicate": "DEPENDS_ON",
+          "targetId": "e_003",
+          "targetName": "Technical SEO"
+        }
+      ],
+      "sameAs": "https://www.wikidata.org/wiki/Q30324357"
+    },
+    {
+      "entityId": "e_011",
+      "@type": "Methodology",
+      "name": "Google Business Profile Optimisation",
+      "description": "The process of auditing and optimising every element of a Google Business Profile — including category selection, service areas, opening hours, photo quality, Q&A, review responses, and posting frequency — to improve visibility in Google's local map pack.",
+      "alternateName": "GBP Optimisation",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_028",
+          "text": "Your Google Business Profile (formerly Google My Business) is the single most important local SEO asset you have. It determines whether you appear in the Map Pack — the three business listings shown above organic results for local searches.",
+          "sourceUrl": "https://www.mmseo.co.uk/local-seo/",
+          "pageTitle": "Local SEO Stockport & Manchester | Freelance Consultant | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.96,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_029",
+          "text": "I audit and optimise every element of your profile: business category, service areas, opening hours, photo quality, Q&A, review responses, and posting frequency. A well-optimised GBP can move you from invisible to the top three results for searches in your area.",
+          "sourceUrl": "https://www.mmseo.co.uk/local-seo/",
+          "pageTitle": "Local SEO Stockport & Manchester | Freelance Consultant | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.95,
+          "contentType": "procedure",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "IMPROVES",
+          "targetId": "e_010",
+          "targetName": "Local SEO",
+          "confidence": "inferred",
+          "context": {
+            "condition": "a well-optimised GBP can move a business from invisible to the top three local results"
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "e_012",
+      "@type": "Concept",
+      "name": "Core Web Vitals",
+      "description": "Google's set of user experience metrics — Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), and Interaction to Next Paint (INP) — measured across mobile and desktop, which function as ranking signals and indicate loading speed, visual stability, and interactivity.",
+      "maturityStatus": "established",
+      "audienceType": "technical",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_030",
+          "text": "Core Web Vitals: LCP, CLS, INP across mobile and desktop; specific recommendations for improvement.",
+          "sourceUrl": "https://www.mmseo.co.uk/technical-seo/",
+          "pageTitle": "Technical SEO Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.9,
+          "contentType": "definition",
+          "audienceType": "technical"
+        },
+        {
+          "chunkId": "c_031",
+          "text": "After a technical audit and implementation, clients typically see improvements in crawl coverage, faster indexing of new content, and meaningful lifts in Core Web Vitals scores, all of which feed directly into rankings.",
+          "sourceUrl": "https://www.mmseo.co.uk/technical-seo/",
+          "pageTitle": "Technical SEO Consultant Stockport & Manchester | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.88,
+          "contentType": "evidence",
+          "audienceType": "technical"
+        }
+      ],
+      "relations": [],
+      "sameAs": "https://www.wikidata.org/wiki/Q104618838"
+    },
+    {
+      "entityId": "e_013",
+      "@type": "Concept",
+      "name": "NAP Consistency",
+      "description": "The requirement that a business's Name, Address, and Phone number are recorded identically across all directories, data aggregators, and local website listings — a discrepancy in any element can suppress local search rankings.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_032",
+          "text": "Citations are mentions of your business name, address, and phone number (NAP) across directories, data aggregators, and local websites. Consistency matters — a single discrepancy between \"St\" and \"Street\" across 50 directory listings can suppress your local rankings.",
+          "sourceUrl": "https://www.mmseo.co.uk/local-seo/",
+          "pageTitle": "Local SEO Stockport & Manchester | Freelance Consultant | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.95,
+          "contentType": "definition",
+          "audienceType": "general"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "entityId": "e_014",
+      "@type": "Service",
+      "name": "Freelance SEO Consultancy",
+      "description": "A model of senior-level SEO delivery where the client works directly with an experienced practitioner, without agency layers, account managers, or junior team members — providing both strategic and execution work under a single point of contact.",
+      "maturityStatus": "established",
+      "audienceType": "general",
+      "status": "active",
+      "hasChunks": [
+        {
+          "chunkId": "c_033",
+          "text": "Most agencies take your money then hand your account to a junior. With MM SEO, you deal directly with me. I'm a senior SEO consultant with 18 years of experience across agency and in-house digital environments in the UK.",
+          "sourceUrl": "https://www.mmseo.co.uk/",
+          "pageTitle": "Freelance SEO Consultant Manchester & Stockport | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.96,
+          "contentType": "definition",
+          "audienceType": "general"
+        },
+        {
+          "chunkId": "c_034",
+          "text": "From technical fixes to content and outreach, I handle the work directly. No account managers, no junior team members.",
+          "sourceUrl": "https://www.mmseo.co.uk/",
+          "pageTitle": "Freelance SEO Consultant Manchester & Stockport | MM SEO",
+          "publisher": "MM SEO",
+          "retrieved": "2026-06-09T00:00:00Z",
+          "relevanceScore": 0.94,
+          "contentType": "definition",
+          "audienceType": "general"
+        }
+      ],
+      "relations": [
+        {
+          "predicate": "INCLUDES",
+          "targetId": "e_002",
+          "targetName": "SEO Strategy"
+        },
+        {
+          "predicate": "INCLUDES",
+          "targetId": "e_003",
+          "targetName": "Technical SEO"
+        }
+      ]
+    }
+  ]
+}
