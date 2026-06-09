@@ -77,6 +77,13 @@ const GA_ID = 'G-83NJ4NF8CJ';
           href="/fonts/dm-sans-400.woff2" />
 
     <!-- ── JSON-LD structured data ──────────────────────────── -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MM SEO",
+      "url": "https://www.mmseo.co.uk",
+      "sameAs": ["https://www.wikidata.org/wiki/Q140136440"]
+    })} />
     {Array.isArray(schema)
       ? schema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s, null, 0)} />)
       : schema && <script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)} />
